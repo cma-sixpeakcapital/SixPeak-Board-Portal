@@ -14,7 +14,7 @@ body{font-family:var(--font);background:var(--denim);color:var(--white);-webkit-
 .logo-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:1.8rem;padding:1.4rem 3rem;background:linear-gradient(180deg,var(--denim) 70%,transparent);pointer-events:none}
 .back-link{position:fixed;top:1.6rem;right:2.2rem;z-index:101;color:var(--steel);text-decoration:none;font-family:var(--font);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em;opacity:.75;transition:opacity .2s,color .2s}
 .back-link:hover{opacity:1;color:var(--rust-glow)}
-@media(max-width:768px){.back-link{top:1.05rem;right:1.2rem;font-size:.65rem;letter-spacing:.12em}}
+@media(max-width:768px){.back-link{top:1.05rem;right:1rem;font-size:.6rem;letter-spacing:.1em}.back-link .long{display:none}}
 .logo-bar img.lv-logo{height:40px}
 .logo-bar img.sp-logo{height:32px}
 .logo-bar .divider{width:1px;height:28px;background:var(--steel);opacity:.25}
@@ -109,7 +109,7 @@ body{font-family:var(--font);background:var(--denim);color:var(--white);-webkit-
 </style>
 </head>
 <body>
-<a class="back-link" href="../">&larr; Back to Landing</a>
+<a class="back-link" href="../">&larr; Back<span class="long">&nbsp;to Landing</span></a>
 <div class="logo-bar">
   <img class="lv-logo" src="../images/lv logo for pedro.jpg" alt="LV Construction">
   <span class="divider"></span>
