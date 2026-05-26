@@ -158,6 +158,11 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 .scen .ds { font-size:0.78rem; color:var(--gray-dk); line-height:1.5; flex:1; }
 .scen .dl { display:inline-flex; align-items:center; gap:6px; margin-top:12px; padding:7px 12px; background:var(--steel-light); border-radius:6px; font-size:0.7rem; font-weight:700; color:var(--denim); text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; border:1px solid rgba(11,24,51,0.08); transition:all 0.15s ease; }
 .scen .dl:hover { background:var(--rust); color:#fff; border-color:var(--rust); }
+.scen .metrics { display:grid; grid-template-columns:1fr 1fr; gap:9px 12px; margin:12px 0 2px; padding-top:12px; border-top:1px solid rgba(11,24,51,0.08); }
+.scen .metrics .m .ml { display:block; font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gray-dk); margin-bottom:1px; }
+.scen .metrics .m .mv { font-family:var(--font-display); font-size:1.02rem; font-weight:700; color:var(--denim); }
+.scen .metrics .m .mv.neg { color:#a13b3b; }
+.scen .metrics .m .mv.pos { color:#0b6e54; }
 .attach-list { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1.2rem; }
 @media(max-width:700px) { .attach-list { grid-template-columns:1fr; } }
 .attach-list a { display:flex; align-items:center; gap:12px; padding:13px 16px; background:#FFFFFF; border:1px solid rgba(11,24,51,0.08); border-radius:8px; color:var(--denim); text-decoration:none; font-size:0.85rem; transition:all 0.15s ease; box-shadow:0 2px 6px rgba(0,0,0,0.02); }
@@ -292,26 +297,68 @@ details .body { padding:0 1.2rem 1.2rem; }
 <section class="slide" id="slide-1">
   <div class="slide-cover">
     <div class="slide-label">02 · Plans &amp; Files</div>
-    <h1 class="title">Seven modeled plans <em>·</em> download any model</h1>
-    <p class="lede">Each plan is a fully-built Excel model with Q1 2026 actuals folded into the projection. Primary plans cover the 2026–2028 transition; the Extended and Breakeven BD plans run the full FY2026–FY2033 horizon. Files are stamped with the snapshot date (May 25, 2026); going forward each refresh is tracked by date.</p>
+    <h1 class="title">Seven modeled plans <em>·</em> outcomes at a glance</h1>
+    <p class="lede">Each plan is a fully-built Excel model with Q1 2026 actuals folded into the projection. The metrics on every card are <strong style="color:var(--denim);">cumulative across the FY2026–FY2033 horizon</strong>. The Base Case shows the awarded book running off; the Uplifters and Klump/Scott levers soften the near-term transition; the Extended and Breakeven BD plans are what turn the consolidated business cash-positive through 2033. Files are date-stamped (May 25, 2026) and tracked by date going forward.</p>
   </div>
   <div class="subhead" style="margin-top:0;">Primary plans</div>
   <div class="scen-grid"><div class="scen"><div class="accent" style="background:var(--space-light);"></div>
-      <div class="nm">Base Case (In-Place)</div><div class="ds">The current awarded book. Klump &amp; Scott excluded (pending). No Uplifters, no new BD. Construction billing runs off to zero by FY2031.</div>
+      <div class="nm">Base Case (In-Place)</div><div class="ds">The awarded book runs off through FY2029 — without new work, consolidated NI turns negative in FY2028 and total cash goes negative by July 2029.</div>
+      <div class="metrics">
+        <div class="m"><span class="ml">Projects</span><span class="mv">11</span></div>
+        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$34.6M</span></div>
+        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">−$29.7M</span></div>
+        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$244M</span></div>
+      </div>
       <a class="dl" href="../models/SixPeak_BaseCase_2026-05-25.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:var(--rust);"></div>
-      <div class="nm">Base Case + Uplifters</div><div class="ds">Base Case plus the Uplifters Foundation development-fee program — 60 properties, 10% SP overhead ($150K/yr cap), tiered bonus (40/45/50%).</div>
+      <div class="nm">Base Case + Uplifters</div><div class="ds">Layering the Uplifters development-fee program onto the Base Case lifts Six Peak income and pushes the cash shortfall out to March 2030, but the GC book still rolls off.</div>
+      <div class="metrics">
+        <div class="m"><span class="ml">Projects</span><span class="mv">11</span></div>
+        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$38.7M</span></div>
+        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">−$25.6M</span></div>
+        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$244M</span></div>
+      </div>
       <a class="dl" href="../models/SixPeak_Uplifters_2026-05-25.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:var(--space);"></div>
-      <div class="nm">Base Case + Klump/Scott</div><div class="ds">Base Case plus two Steyn-guaranteed non-LIHTC developer deals. $1.5M pref equity (15% cost of capital) + $900K outsourced PM/site cost. Not bonded.</div>
+      <div class="nm">Base Case + Klump/Scott</div><div class="ds">Two Steyn-guaranteed developer deals add roughly $1.8M of 2026–28 NI and stretch cash to December 2029, without changing the post-2028 runoff.</div>
+      <div class="metrics">
+        <div class="m"><span class="ml">Projects</span><span class="mv">13</span></div>
+        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$37.6M</span></div>
+        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">−$27.8M</span></div>
+        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$261M</span></div>
+      </div>
       <a class="dl" href="../models/SixPeak_KlumpScott_2026-05-25.xlsx" download>↓ Download .xlsx</a></div></div>
   <div class="subhead" style="margin-top:1.5rem;">Extended &amp; Breakeven BD plans (FY2026–FY2033)</div>
   <div class="scen-grid"><div class="scen"><div class="accent" style="background:var(--rust-glow);"></div>
-      <div class="nm">Base Case + Extended BD</div><div class="ds">Base Case plus Tom Taggart's 27-deal third-party GC pipeline ($432.0M GMP), ~bimonthly Mar 2028 – Jan 2033. Bonding neutral in aggregate. No Uplifters.</div>
+      <div class="nm">Base Case + Extended BD</div><div class="ds">A sustained 27-deal BD pipeline refills the book — consolidated NI holds in the $3–4M range from FY2029 and cash never goes negative, compounding to ~$17M by FY2033.</div>
+      <div class="metrics">
+        <div class="m"><span class="ml">Projects</span><span class="mv">38</span></div>
+        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$84.7M</span></div>
+        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$18.8M</span></div>
+        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$666M</span></div>
+      </div>
       <a class="dl" href="../models/SixPeak_ExtendedBD_2026-05-25.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:var(--warning);"></div>
-      <div class="nm">Base Case + Uplifters + Extended BD</div><div class="ds">Full growth plan. 27 BD deals + Uplifters Foundation. <strong>$22.94M cumulative NI through FY2033.</strong></div>
+      <div class="nm">Base + Uplifters + Extended BD</div><div class="ds">The full growth plan (27 BD deals plus Uplifters) is the strongest outcome — the highest cumulative NI and a ~$21M cash position by FY2033.</div>
+      <div class="metrics">
+        <div class="m"><span class="ml">Projects</span><span class="mv">38</span></div>
+        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$88.8M</span></div>
+        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$22.9M</span></div>
+        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$666M</span></div>
+      </div>
       <a class="dl" href="../models/SixPeak_Uplifters_ExtendedBD_2026-05-25.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:#4A8B8C;"></div>
-      <div class="nm">Base Case + Breakeven BD</div><div class="ds">Minimum BD volume to hold consolidated NI near $0 each year FY28–FY33 and keep cash positive. <strong>17 deals, $279.0M GMP</strong>, Oct 2028 – Jan 2033.</div>
+      <div class="nm">Base Case + Breakeven BD</div><div class="ds">The minimum 17-deal pipeline that holds consolidated NI near zero each year and keeps total cash positive through FY2033.</div>
+      <div class="metrics">
+        <div class="m"><span class="ml">Projects</span><span class="mv">28</span></div>
+        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$66.3M</span></div>
+        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$1.4M</span></div>
+        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$513M</span></div>
+      </div>
       <a class="dl" href="../models/SixPeak_BreakevenBD_2026-05-25.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:#7B9464;"></div>
-      <div class="nm">Base + Uplifters + Breakeven BD</div><div class="ds">Breakeven BD pipeline combined with the Uplifters development-fee program — modest positive consolidated NI with a comfortable cash cushion.</div>
+      <div class="nm">Base + Uplifters + Breakeven BD</div><div class="ds">Breakeven BD plus the Uplifters program delivers modest positive NI with a comfortable multi-year cash cushion.</div>
+      <div class="metrics">
+        <div class="m"><span class="ml">Projects</span><span class="mv">28</span></div>
+        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$70.4M</span></div>
+        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$5.5M</span></div>
+        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$513M</span></div>
+      </div>
       <a class="dl" href="../models/SixPeak_Uplifters_BreakevenBD_2026-05-25.xlsx" download>↓ Download .xlsx</a></div></div>
 </section>
 <section class="slide" id="slide-2">
