@@ -1,210 +1,170 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Six Peak Capital &middot; LV Construction &middot; AI Mission Control</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>SPC Board Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
 <style>
-:root {
-  /* Core palette (brand kit tokens) */
-  --denim:#0B1833;
-  --space:#2C3A51;
-  --space-light:#384862;
-  --space-muted:#1E2C44;
-  --steel:#BFC7DA;
-  --steel-light:#E2E7F0;
-  --ghost:#F8F9F4;
-  --ghost-warm:#FAFAF6;
-  --rust:#C4581A;
-  --rust-glow:#E8935A;
-  --rust-light:rgba(196,88,26,0.12);
-  --gray:#94A3B8;
-  --gray-dk:#475569;
+  :root{
+    --denim:#0B1833;
+    --denim-deep:#070F22;
+    --space:#2C3A51;
+    --space-muted:#1E2C44;
+    --steel:#BFC7DA;
+    --steel-dim:#8A96AE;
+    --steel-light:#E2E7F0;
+    --rust:#C4581A;
+    --rust-glow:#E8935A;
+    --ghost:#F8F9F4;
+    --ghost-warm:#FAFAF6;
+    --line:rgba(191,199,218,0.14);
+    --line-soft:rgba(191,199,218,0.08);
+    --display:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --body:'Aptos','DM Sans',Calibri,'Segoe UI',sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
 
-  /* Type */
-  --font-primary:'Aptos','DM Sans',Calibri,'Segoe UI',sans-serif;
-  --font-display:'DM Sans','Aptos','Segoe UI',sans-serif;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:var(--font-primary);
-  min-height:100vh;
-  background:linear-gradient(135deg, var(--space-light) 0%, var(--space-muted) 100%);
-  color:var(--ghost-warm);
-  display:flex; align-items:center; justify-content:center;
-  padding:2rem;
-}
-.wrap { max-width:1100px; width:100%; text-align:center; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    /* slate-blue brand background (Space Blue) */
+    background:
+      radial-gradient(1100px 560px at 50% -8%, rgba(196,88,26,0.08), transparent 70%),
+      linear-gradient(105deg, #34435B 0%, #2E3D54 55%, #2A384F 100%);
+    background-attachment:fixed;
+    color:var(--steel);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    min-height:100vh;
+    display:flex;align-items:center;
+  }
 
-header { margin-bottom:2.5rem; }
-header .section-label {
-  font-family:var(--font-primary);
-  font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.25em;
-  color:var(--rust); margin-bottom:0.75rem;
-}
-header .section-label::after {
-  content:''; display:block; width:60px; height:2px;
-  background:linear-gradient(90deg,var(--rust),transparent);
-  margin:0.5rem auto 0;
-}
-header h1 {
-  font-family:var(--font-display); font-size:1.8rem; font-weight:700;
-  color:var(--ghost-warm); margin-bottom:0.75rem; letter-spacing:-0.01em;
-}
-header p {
-  font-family:var(--font-primary); font-size:0.95rem; color:var(--steel);
-  opacity:0.85; max-width:560px; margin:0 auto; line-height:1.7;
-}
+  .shell{max-width:900px;margin:0 auto;padding:48px 32px;width:100%;}
 
-/* Top row — two large primary tiles */
-.grid-primary {
-  display:grid; grid-template-columns:1fr 1fr; gap:2rem;
-  margin-bottom:1.5rem;
-}
-/* Bottom row — smaller mission control tile, centered */
-.grid-secondary {
-  display:grid; grid-template-columns:minmax(0, 480px);
-  justify-content:center;
-}
+  /* ---------- hero ---------- */
+  .hero{padding:0 0 36px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--rust);margin-bottom:22px;
+  }
+  .eyebrow .tick{width:36px;height:2px;background:linear-gradient(90deg,var(--rust),transparent);}
+  h1{
+    font-family:var(--display);font-weight:600;color:var(--ghost);
+    font-size:clamp(2.4rem,5.4vw,3.9rem);line-height:1.02;letter-spacing:-.025em;
+  }
+  h1 .light{display:block;color:var(--steel);font-weight:300;font-size:clamp(1.2rem,2.6vw,1.7rem);letter-spacing:-.01em;margin-top:12px;}
+  .lede{font-size:1.02rem;line-height:1.6;color:var(--steel);max-width:600px;margin:22px 0 0;}
 
-.tile {
-  background:var(--ghost-warm); color:var(--denim);
-  border-radius:12px;
-  text-decoration:none;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  border:1px solid rgba(11,24,51,0.08);
-  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  box-shadow:0 4px 20px rgba(0,0,0,0.08);
-}
-.tile:hover {
-  transform:translateY(-4px);
-  border-color:rgba(196,88,26,0.4);
-  box-shadow:0 12px 40px rgba(11,24,51,0.12);
-}
+  /* ---------- section heading ---------- */
+  .sec-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding-top:16px;margin:14px 0 18px;border-top:1px solid var(--line-soft);
+  }
+  .sec-head .label{font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-dim);}
+  .sec-head .count{font-family:var(--display);font-size:.7rem;letter-spacing:.16em;color:var(--rust);}
 
-/* Primary tiles (big) */
-.tile.primary {
-  padding:3rem 2rem;
-  min-height:340px;
-}
-.tile.primary .logo-wrap {
-  height:120px; display:flex; align-items:center; justify-content:center;
-  margin-bottom:1.5rem;
-}
-.tile.primary .logo-wrap img { max-height:100%; max-width:80%; object-fit:contain; }
-.tile.primary .tile-name {
-  font-family:var(--font-display); font-size:1.3rem; font-weight:700;
-  color:var(--denim); margin-bottom:0.5rem;
-}
-.tile.primary .tile-desc {
-  font-family:var(--font-primary); font-size:0.88rem;
-  color:var(--gray-dk); line-height:1.55;
-  max-width:300px;
-}
-.tile.primary .tile-cta {
-  margin-top:1.5rem;
-  font-family:var(--font-primary);
-  font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.2em;
-  color:var(--rust); display:flex; align-items:center; gap:6px;
-}
-.tile:hover .tile-cta { color:var(--rust-glow); }
+  /* ---------- portal buttons (stacked vertically) ---------- */
+  .stack{display:flex;flex-direction:column;gap:18px;}
 
-/* Secondary tile (smaller, text only) */
-.tile.secondary {
-  padding:1.5rem 2rem;
-  min-height:auto;
-  flex-direction:row; justify-content:space-between; align-items:center;
-  text-align:left;
-}
-.tile.secondary .sec-main {
-  display:flex; flex-direction:column; gap:3px;
-}
-.tile.secondary .sec-label {
-  font-family:var(--font-primary);
-  font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.22em;
-  color:var(--rust);
-}
-.tile.secondary .sec-name {
-  font-family:var(--font-display);
-  font-size:1.15rem; font-weight:700; color:var(--denim);
-}
-.tile.secondary .sec-desc {
-  font-family:var(--font-primary);
-  font-size:0.78rem; color:var(--gray-dk); margin-top:3px; line-height:1.5;
-  max-width:340px;
-}
-.tile.secondary .sec-cta {
-  font-family:var(--font-primary);
-  font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.18em;
-  color:var(--rust); white-space:nowrap; margin-left:1rem; display:flex; align-items:center; gap:4px;
-}
-.tile.secondary:hover .sec-cta { color:var(--rust-glow); }
+  .portal{
+    position:relative;display:flex;align-items:center;gap:28px;
+    /* button surface distinct from the dark background */
+    background:linear-gradient(165deg,rgba(86,103,130,0.55),rgba(64,82,109,0.45));
+    border:1px solid rgba(191,199,218,0.22);border-radius:16px;
+    padding:24px 28px;text-decoration:none;color:inherit;overflow:hidden;
+    box-shadow:0 10px 30px -16px rgba(0,0,0,0.6);
+    transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease),background .45s var(--ease);
+  }
+  .portal::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:var(--rust);transform:scaleY(0);transform-origin:center;
+    transition:transform .45s var(--ease);
+  }
+  .portal:hover{
+    transform:translateY(-6px);
+    border-color:rgba(196,88,26,0.45);
+    background:linear-gradient(165deg,rgba(99,117,145,0.65),rgba(76,95,123,0.55));
+    box-shadow:0 26px 52px -22px rgba(0,0,0,0.7);
+  }
+  .portal:active{transform:translateY(-2px);}
+  .portal:hover::before{transform:scaleY(1);}
+  .portal:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
 
-footer {
-  margin-top:2.5rem; font-size:0.7rem; opacity:0.55; letter-spacing:0.15em;
-  text-transform:uppercase; color:var(--steel);
-}
+  /* logo plate — light so the logos read clearly */
+  .plate{
+    flex:0 0 auto;width:168px;height:140px;border-radius:14px;
+    background:#FFFFFF;border:1px solid rgba(255,255,255,0.6);
+    box-shadow:0 6px 18px rgba(0,0,0,0.22);
+    display:flex;align-items:center;justify-content:center;padding:14px;
+    transition:border-color .45s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease);
+  }
+  .portal:hover .plate{border-color:rgba(196,88,26,0.3);transform:scale(1.02);}
+  .plate img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+  /* icon plate for the initiative (no wordmark logo) */
+  .plate.icon{background:var(--denim);border-color:var(--space);color:var(--steel-light);}
+  .plate.icon svg{width:72px;height:72px;}
 
-/* Mobile */
-@media (max-width: 640px) {
-  body { padding: 1rem; }
-  header { margin-bottom: 2rem; }
-  header h1 { font-size: 1.3rem; }
-  header p { font-size: 0.85rem; }
-  .grid-primary { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
-  .grid-secondary { grid-template-columns: 1fr; }
-  .tile.primary { padding: 2rem 1.25rem; min-height: 260px; }
-  .tile.primary .logo-wrap { height: 90px; margin-bottom: 1rem; }
-  .tile.primary .tile-name { font-size: 1.1rem; }
-  .tile.primary .tile-desc { font-size: 0.82rem; }
-  .tile.primary .tile-cta { margin-top: 1rem; font-size: 0.64rem; }
-  .tile.secondary { flex-direction: column; align-items: flex-start; padding: 1.25rem 1.25rem; }
-  .tile.secondary .sec-cta { margin-left: 0; margin-top: 0.75rem; }
-  footer { margin-top: 1.75rem; }
-}
-</style></head><body>
-<div class="wrap">
-<header>
-  <div class="section-label">Board Portal</div>
-  <h1>Six Peak Capital Portal Directory</h1>
-  <p>Board financials and strategic plans, LV Construction operations, and the AI Mission Control initiative library. Select a portal to continue.</p>
-</header>
+  .pbody{flex:1;min-width:0;}
+  .pidx{
+    font-family:var(--display);font-size:.66rem;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--rust);margin-bottom:6px;
+  }
+  .pbody h3{
+    font-family:var(--display);font-weight:600;font-size:1.42rem;color:var(--ghost);
+    letter-spacing:-.01em;margin-bottom:7px;
+  }
+  .pbody p{font-size:.93rem;line-height:1.52;color:var(--steel);}
+  .pbody .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .chip{
+    font-family:var(--display);font-size:.64rem;font-weight:500;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--steel-dim);
+    border:1px solid var(--line);border-radius:100px;padding:4px 10px;
+    transition:color .4s var(--ease),border-color .4s var(--ease);
+  }
+  .portal:hover .chip{color:var(--steel);border-color:rgba(191,199,218,0.25);}
 
-<div class="grid-primary">
-  <a class="tile primary" href="board/">
-    <div class="logo-wrap"><img src="images/six-peak-logo.webp" alt="Six Peak Capital"></div>
-    <div class="tile-name">Six Peak Capital</div>
-    <div class="tile-desc">Board financials, scenario plans, Extended BD outlook, and model downloads.</div>
-    <div class="tile-cta">Enter Board Portal &rarr;</div>
-  </a>
-  <a class="tile primary" href="lv/">
-    <div class="logo-wrap"><img src="images/lv logo for pedro.jpg" alt="LV Construction"></div>
-    <div class="tile-name">LV Construction</div>
-    <div class="tile-desc">Project status, bonding capacity, safety, change orders, and operational tracking.</div>
-    <div class="tile-cta">Enter LV Portal &rarr;</div>
-  </a>
-</div>
+  .cta{
+    flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+    font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--steel);text-align:right;
+  }
+  .cta .arrow{
+    width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);color:var(--rust);font-size:1.05rem;
+    transition:transform .45s var(--ease),background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease);
+  }
+  .portal:hover .cta{color:var(--ghost);}
+  .portal:hover .cta .arrow{background:var(--rust);color:#fff;border-color:var(--rust);transform:translateX(4px);}
 
-<div class="grid-secondary">
-  <a class="tile secondary" href="mission-control/">
-    <div class="sec-main">
-      <div class="sec-label">Initiative</div>
-      <div class="sec-name">AI Mission Control</div>
-      <div class="sec-desc">AI-powered construction tech thesis, phase rollout plans, financial model, and business plan library.</div>
-    </div>
-    <div class="sec-cta">Open &rarr;</div>
-  </a>
-</div>
+  /* ---------- entrance animation ---------- */
+  .rise{opacity:0;transform:translateY(20px);animation:rise .8s var(--ease) forwards;}
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}
+  .d4{animation-delay:.32s}.d5{animation-delay:.42s}.d6{animation-delay:.52s}.d7{animation-delay:.62s}
+  @media(prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none;}}
 
-<footer><span id="current-date"></span> &middot; Confidential</footer>
-<script>
-(function(){
-  var d = new Date();
-  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var el = document.getElementById('current-date');
-  if (el) el.textContent = months[d.getMonth()] + ' ' + d.getFullYear();
-})();
-</script>
-</div>
-</body></html>
+  /* ---------- responsive ---------- */
+  @media(max-width:620px){
+    .shell{padding:36px 20px;}
+    .portal{flex-wrap:wrap;gap:18px;padding:22px 22px;}
+    .plate{width:100%;height:110px;}
+    .cta{flex-direction:row;width:100%;justify-content:space-between;align-items:center;
+         border-top:1px solid var(--line);padding-top:14px;margin-top:2px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="shell">
+
+    <!-- hero -->
+    <section class="hero">
+      <span class="eyebrow rise d1"><span class="tick"></span>Portal Directory</span>
+      <h1 class="rise d2">SPC Board Portal<span class="light">Board, operating company &amp; strategic initiativ
