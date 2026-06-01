@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Mission Control | Six Peak Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --denim:#0B1833;--denim-lt:#111E3D;--space:#2C3A51;--space-muted:#1E2C44;--steel:#BFC7DA;--steel-light:#E2E7F0;
+  --surface:#FFFFFF;--surface-alt:#F4F6FA;--ghost:#FAFAF6;
+  --rust:#C4581A;--rust-glow:#E8935A;--rust-lt:rgba(196,88,26,.12);--rust-subtle:rgba(196,88,26,.06);
+  --text:#0B1833;--text-sub:#2C3A51;--muted:#475569;--gray:#94A3B8;
+  --border:rgba(11,24,51,.08);--border-md:rgba(11,24,51,.14);
+  --copper:#D4845A;--amber:#E8A84C;--sage:#7B9464;--teal:#4A8B8C;--slate:#5E7B9B;--vsteel:#8EA3BE;--mist:#B8C7D8;
+  --body:'Aptos','DM Sans',Calibri,'Segoe UI',sans-serif;--display:'DM Sans','Aptos','Segoe UI',sans-serif;
+  --shadow-card:0 4px 20px rgba(0,0,0,.08);--shadow-hover:0 18px 50px rgba(11,24,51,.16);--shadow-glow:0 10px 30px rgba(196,88,26,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:80px}
+body{font-family:var(--body);background:var(--steel-light);color:var(--text);-webkit-font-smoothing:antialiased;font-size:17px;line-height:1.6}
+::selection{background:var(--rust);color:#fff}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 2.4rem;background:rgba(226,231,240,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:1rem}
+.nav-brand img.lv{height:30px}
+.nav-brand img.sp{height:22px;opacity:.9}
+.nav-brand .divider{width:1px;height:22px;background:var(--border-md)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--rust)}
+.nav-links a.cta{background:var(--rust);color:#fff;padding:.55rem 1.2rem;border-radius:8px;letter-spacing:.08em}
+.nav-links a.cta:hover{background:#A84A15;color:#fff;box-shadow:var(--shadow-glow)}
+.nav-back{font-size:.72rem!important;letter-spacing:.14em!important}
+.scroll-prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--rust),var(--rust-glow));z-index:201;transition:width .1s linear}
+@media(max-width:860px){.nav-links a:not(.cta):not(.nav-back){display:none}.nav{padding:.7rem 1.2rem}}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 2.4rem}
+section{position:relative}
+.eyebrow{font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--rust);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:'';width:34px;height:2px;background:linear-gradient(90deg,var(--rust),transparent)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.06;letter-spacing:-.015em;color:var(--text)}
+.lead{color:var(--muted);font-size:1.18rem;line-height:1.75;max-width:62ch}
+.reveal{transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal-armed{opacity:0;transform:translateY(34px)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- HERO ---------- */
+.hero{background:radial-gradient(120% 120% at 80% -10%,#16264a 0%,var(--denim) 55%,#070f22 100%);color:#fff;
+  padding:9rem 0 4.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(191,199,218,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(191,199,218,.05) 1px,transparent 1px);
+  background-size:54px 54px;mask-image:radial-gradient(80% 70% at 70% 20%,#000 30%,transparent 75%)}
+.hero::after{content:'';position:absolute;top:-30%;right:-10%;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,88,26,.22),transparent 62%);filter:blur(20px)}
+.hero .wrap{position:relative;z-index:2}
+.hero .eyebrow{color:var(--rust-glow)}
+.hero h1{font-size:clamp(2.7rem,6.2vw,5.1rem);color:#fff;max-width:16ch;margin:1.6rem 0 1.4rem}
+.hero h1 em{font-style:normal;color:var(--rust-glow)}
+.hero .lead{color:var(--steel);max-width:60ch;font-size:clamp(1.1rem,1.7vw,1.32rem)}
+.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:3.4rem;background:rgba(191,199,218,.14);
+  border:1px solid rgba(191,199,218,.14);border-radius:14px;overflow:hidden}
+.kpi{background:rgba(17,30,61,.72);padding:1.5rem 1.6rem;backdrop-filter:blur(4px)}
+.kpi .v{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);color:#fff;line-height:1;letter-spacing:-.02em}
+.kpi .v em{font-style:normal;color:var(--rust-glow)}
+.kpi .l{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-top:.6rem;opacity:.8}
+@media(max-width:760px){.kpi-strip{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- SECTION SHELL ---------- */
+.band{padding:6.5rem 0}
+.band-tight{padding:4.5rem 0}
+.section-head{max-width:60ch;margin-bottom:3rem}
+.section-head h2{font-size:clamp(2rem,4vw,3.1rem);margin:1.3rem 0 1.2rem}
+.section-head h2 em{font-style:normal;color:var(--rust)}
+
+/* ---------- THESIS ---------- */
+.thesis{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);gap:3.5rem;align-items:center}
+.bignum{font-family:var(--display);font-weight:700;font-size:clamp(7rem,15vw,12rem);line-height:.8;color:var(--rust);letter-spacing:-.04em}
+.bignum span{display:block;font-size:1.4rem;font-weight:600;letter-spacing:.04em;color:var(--text);margin-top:1.2rem;line-height:1.25;max-width:18ch}
+.prob-list{list-style:none;margin-top:1.8rem;border-top:1px solid var(--border)}
+.prob-list li{padding:1.05rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem;font-size:1.02rem;color:var(--text-sub)}
+.prob-list li b{color:var(--rust);font-family:var(--display);font-weight:700;font-size:.85rem;letter-spacing:.05em;min-width:2.4rem}
+@media(max-width:820px){.thesis{grid-template-columns:1fr;gap:2rem}}
+
+/* ---------- MODULE GRID ---------- */
+.mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.mod{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 1.8rem;transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
+.mod::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rust),var(--rust-glow));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.mod:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:rgba(196,88,26,.35)}
+.mod:hover::before{transform:scaleX(1)}
+.mod .ic{width:48px;height:48px;border-radius:12px;background:var(--rust-lt);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem}
+.mod .ic svg{width:24px;height:24px;stroke:var(--rust);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mod h3{font-size:1.22rem;margin-bottom:.55rem}
+.mod p{font-size:.95rem;color:var(--muted);line-height:1.6}
+.mod .tag{position:absolute;top:1.5rem;right:1.5rem;font-family:var(--display);font-size:.7rem;font-weight:700;color:var(--gray);letter-spacing:.08em}
+@media(max-width:820px){.mod-grid{grid-template-columns:1fr}}
+
+/* ---------- FLOW ---------- */
+.flow{display:grid;grid-template-columns:repeat(4,1fr) ;gap:1rem;margin-top:2.5rem}
+.flow-step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.6rem;position:relative}
+.flow-step .n{font-family:var(--display);font-weight:700;font-size:.78rem;color:var(--rust);letter-spacing:.1em}
+.flow-step h4{font-family:var(--display);font-size:1.05rem;font-weight:700;margin:.7rem 0 .4rem;color:var(--text)}
+.flow-step p{font-size:.88rem;color:var(--muted);line-height:1.55}
+.flow-step:not(:last-child)::after{content:'→';position:absolute;right:-.85rem;top:50%;transform:translateY(-50%);color:var(--rust);font-size:1.1rem;z-index:2}
+@media(max-width:820px){.flow{grid-template-columns:1fr}.flow-step:not(:last-child)::after{content:'↓';right:50%;top:auto;bottom:-1.1rem;transform:translateX(50%)}}
+
+/* ---------- MODEL / CONSOLE ---------- */
+.console{background:linear-gradient(165deg,#0d1c3c 0%,#0a1530 60%,#091327 100%);color:#fff;padding:6.5rem 0}
+.console .eyebrow{color:var(--rust-glow)}
+.console h2{color:#fff}
+.console h2 em{color:var(--rust-glow)}
+.console .lead{color:var(--steel)}
+.chart-card{background:rgba(17,30,61,.55);border:1px solid rgba(191,199,218,.13);border-radius:18px;padding:2rem 2rem 1.4rem;margin-top:2.4rem}
+.chart-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.4rem}
+.chart-title{font-family:var(--display);font-weight:700;font-size:1.15rem;color:#fff}
+.chart-sub{font-size:.82rem;color:var(--steel);margin-top:.2rem}
+.seg{display:inline-flex;background:rgba(11,24,51,.6);border:1px solid rgba(191,199,218,.16);border-radius:10px;padding:.25rem;gap:.2rem}
+.seg button{font-family:var(--body);font-size:.82rem;font-weight:600;color:var(--steel);background:transparent;border:none;padding:.5rem .95rem;border-radius:7px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.seg button.active{background:var(--rust);color:#fff}
+.seg button:not(.active):hover{color:#fff}
+.chart-wrap{width:100%;overflow:visible}
+#mcChart{width:100%;height:auto;display:block}
+.chart-axis{fill:var(--steel);font-family:var(--body);font-size:12px;font-weight:600}
+.chart-grid{stroke:rgba(191,199,218,.12)}
+.chart-bar{transition:transform .7s cubic-bezier(.2,.8,.3,1),opacity .5s;transform-box:fill-box;transform-origin:bottom}
+.chart-bar.grow{transform:scaleY(1)}
+.chart-bar.seed{transform:scaleY(0)}
+.chart-val{fill:#fff;font-family:var(--display);font-size:12px;font-weight:700}
+.chart-flag{fill:var(--rust-glow);font-family:var(--body);font-size:11px;font-weight:600}
+.model-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:2rem;background:rgba(191,199,218,.12);border:1px solid rgba(191,199,218,.12);border-radius:14px;overflow:hidden}
+.model-cards .mc{background:rgba(11,24,51,.55);padding:1.4rem 1.5rem}
+.model-cards .mc .v{font-family:var(--display);font-weight:700;font-size:1.7rem;color:#fff;line-height:1}
+.model-cards .mc .v.rust{color:var(--rust-glow)}
+.model-cards .mc .l{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-top:.5rem;opacity:.85}
+.foot-note{font-size:.78rem;color:var(--gray);margin-top:1.4rem;max-width:70ch;line-height:1.55}
+@media(max-width:760px){.model-cards{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- MULTIPLIER ---------- */
+.mult{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.ladder{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2.2rem;box-shadow:var(--shadow-card)}
+.rung{display:flex;align-items:center;gap:1.2rem;padding:1rem 0;border-bottom:1px dashed var(--border)}
+.rung:last-child{border-bottom:none}
+.rung .bar{height:14px;border-radius:7px;background:var(--rust);flex-shrink:0}
+.rung .meta{flex:1}
+.rung .meta .t{font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--text)}
+.rung .meta .d{font-size:.82rem;color:var(--muted)}
+.rung .amt{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--rust);white-space:nowrap}
+.rung.total .amt{font-size:1.5rem}
+.rung.total .bar{background:var(--denim)}
+@media(max-width:820px){.mult{grid-template-columns:1fr;gap:2rem}}
+
+/* ---------- COMPETITIVE ---------- */
+.compete{background:var(--denim);color:#fff;border-radius:20px;padding:3.6rem;position:relative;overflow:hidden}
+.compete::after{content:'';position:absolute;bottom:-40%;left:-5%;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(196,88,26,.18),transparent 65%)}
+.compete .wrap2{position:relative;z-index:2}
+.compete .eyebrow{color:var(--rust-glow)}
+.compete h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.8rem);margin:1.2rem 0 1rem;max-width:18ch}
+.compete h2 em{color:var(--rust-glow)}
+.compete p{color:var(--steel);max-width:60ch;font-size:1.08rem;line-height:1.75}
+.compete .pull{display:inline-block;margin-top:2rem;padding:1.1rem 1.8rem;border:1px solid rgba(196,88,26,.4);border-radius:12px;background:var(--rust-subtle);color:var(--rust-glow);font-size:1.02rem;font-weight:500}
+.compete .pull b{color:#fff}
+
+/* ---------- LIBRARY ---------- */
+.lib-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:2.2rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem}
+.filters button{font-family:var(--body);font-size:.82rem;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:.5rem 1rem;border-radius:999px;cursor:pointer;transition:all .2s}
+.filters button.active{background:var(--denim);color:#fff;border-color:var(--denim)}
+.filters button:not(.active):hover{border-color:var(--rust);color:var(--rust)}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+.doc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.7rem;cursor:pointer;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden}
+.doc-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:rgba(196,88,26,.35)}
+.doc-card.hide{display:none}
+.doc-card.feat{grid-column:1/-1;background:linear-gradient(120deg,var(--surface),var(--rust-subtle));border-color:rgba(196,88,26,.25)}
+.doc-card.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rust),var(--rust-glow),transparent)}
+.doc-card.feat h3{font-size:1.6rem}
+.doc-card.feat p{max-width:58ch}
+.badge{display:inline-block;font-family:var(--display);font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:.28rem .7rem;border-radius:5px;margin-bottom:.9rem}
+.b-core{background:var(--rust-lt);color:var(--rust)}
+.b-financial{background:var(--rust-lt);color:var(--rust)}
+.b-ops{background:rgba(44,58,81,.08);color:var(--space)}
+.b-tax{background:var(--rust-subtle);color:var(--rust-glow)}
+.b-strategy{background:rgba(113,127,75,.14);color:#5E6B3A}
+.doc-card h3{font-family:var(--display);font-size:1.18rem;font-weight:700;margin-bottom:.5rem;color:var(--text);line-height:1.25}
+.doc-card p{font-size:.92rem;color:var(--muted);line-height:1.55}
+.lib-group{font-family:var(--display);font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin:2.6rem 0 1rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+
+/* ---------- MODALS ---------- */
+.overlay{display:none;position:fixed;inset:0;background:rgba(11,24,51,.66);backdrop-filter:blur(10px);z-index:300;justify-content:center;align-items:center;padding:1.5rem}
+.overlay.open{display:flex}
+.detail{background:var(--surface);border-radius:18px;max-width:720px;width:100%;max-height:86vh;overflow-y:auto;padding:2.6rem;position:relative;animation:pop .35s ease}
+.detail::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:18px 18px 0 0;background:linear-gradient(90deg,var(--rust),var(--rust-glow),transparent)}
+@keyframes pop{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.x-btn{position:absolute;top:1.1rem;right:1.2rem;width:38px;height:38px;border-radius:50%;border:1px solid var(--border-md);background:transparent;color:var(--muted);font-size:1.2rem;cursor:pointer;transition:all .2s}
+.x-btn:hover{border-color:var(--rust);color:var(--rust)}
+.detail h3{font-family:var(--display);font-size:1.7rem;margin:.4rem 0 1rem;color:var(--text)}
+.detail .sum{font-size:1.02rem;line-height:1.7;color:var(--text-sub);margin-bottom:1.6rem}
+.detail h4{font-family:var(--display);font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:.7rem}
+.detail ul{list-style:none}
+.detail li{font-size:.93rem;color:var(--muted);padding:.4rem 0 .4rem 1.3rem;position:relative;line-height:1.5}
+.detail li::before{content:'';position:absolute;left:0;top:.7rem;width:6px;height:6px;border-radius:50%;background:var(--rust)}
+.btn-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.9rem;border-radius:9px;font-family:var(--display);font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none;transition:all .25s;border:none}
+.btn-primary{background:var(--rust);color:#fff}
+.btn-primary:hover{background:#A84A15;box-shadow:var(--shadow-glow);transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1px solid rgba(196,88,26,.4);color:var(--rust)}
+.btn-ghost:hover{background:var(--rust-lt);transform:translateY(-2px)}
+
+.pdfv{display:none;position:fixed;inset:0;z-index:400;background:var(--denim);flex-direction:column}
+.pdfv.open{display:flex}
+.pdfv-bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.8rem;background:var(--space-muted);border-bottom:1px solid rgba(191,199,218,.12)}
+.pdfv-bar span{font-family:var(--display);font-weight:600;color:#fff}
+.pdfv-bar div{display:flex;gap:.7rem}
+.pbtn{padding:.6rem 1.4rem;border:1px solid rgba(191,199,218,.22);background:transparent;color:var(--steel);font-family:var(--body);font-size:.92rem;border-radius:7px;cursor:pointer;text-decoration:none;transition:all .2s}
+.pbtn:hover{border-color:var(--rust);color:#fff}
+.pbtn.close{background:var(--rust);border-color:var(--rust);color:#fff;font-weight:600}
+.pbtn.close:hover{background:#A84A15}
+
+/* ---------- FOOTER ---------- */
+.site-foot{background:var(--denim);color:var(--steel);padding:3.5rem 0;text-align:center}
+.site-foot img{height:40px;opacity:.7;margin-bottom:1.3rem}
+.site-foot p{font-size:.84rem;color:var(--gray)}
+.site-foot .meta{margin-top:.5rem;font-size:.78rem}
+
+@media(max-width:820px){.wrap{padding:0 1.3rem}.band{padding:4.5rem 0}.compete{padding:2.4rem}}
+</style>
+</head>
+<body>
+<div class="scroll-prog" id="prog"></div>
+<nav class="nav">
+  <div class="nav-brand">
+    <img class="lv" src="../images/lv logo for pedro.jpg" alt="LV Construction">
+    <span class="divider"></span>
+    <img class="sp" src="../images/six-peak-logo.webp" alt="Six Peak Capital">
+  </div>
+  <div class="nav-links">
+    <a href="#thesis">Thesis</a>
+    <a href="#product">Product</a>
+    <a href="#model">The Model</a>
+    <a href="#library">Library</a>
+    <a class="nav-back" href="../">&larr; Portal</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">AI Mission Control</span>
+    <h1>Construction runs on spreadsheets. We're building its <em>operating system.</em></h1>
+    <p class="lead">LV Construction delivers 30&ndash;200 unit multifamily across Los Angeles. Mission Control is the AI platform that lets a lean team run the entire portfolio &mdash; turning field data into drafted documents, live cost intelligence, and real-time control over every project.</p>
+    <div class="kpi-strip">
+      <div class="kpi"><div class="v" data-count="718" data-prefix="$" data-suffix="M">$718M</div><div class="l">Contracted Volume</div></div>
+      <div class="kpi"><div class="v" data-count="41" data-suffix="">41</div><div class="l">Active Projects</div></div>
+      <div class="kpi"><div class="v" data-count="19.4" data-prefix="$" data-suffix="M" data-dec="1">$19.4M</div><div class="l">Cum. Net Income FY26&ndash;33</div></div>
+      <div class="kpi"><div class="v" data-count="35" data-suffix="">35</div><div class="l">Person Team</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- THESIS -->
+<section class="band" id="thesis">
+  <div class="wrap reveal">
+    <div class="thesis">
+      <div class="bignum">90%<span>of project management isn't building &mdash; it's coordination.</span></div>
+      <div>
+        <span class="eyebrow">The Problem</span>
+        <h2 style="font-size:clamp(1.7rem,3.2vw,2.4rem);margin:1.1rem 0 .8rem">Every PM spends half their day on work a machine should handle.</h2>
+        <ul class="prob-list">
+          <li><b>01</b><span>RFIs drafted by hand; draw packages assembled over days.</span></li>
+          <li><b>02</b><span>Cost data that's a month old by the time anyone sees it.</span></li>
+          <li><b>03</b><span>Schedules updated weekly &mdash; and wrong by Tuesday.</span></li>
+          <li><b>04</b><span>Sub insurance and compliance tracked in fragile spreadsheets.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="band-tight" id="product">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Mission Control</span>
+      <h2>Six modules. One platform. <em>Trained on our own data.</em></h2>
+      <p class="lead">A single source of truth for the entire construction lifecycle &mdash; document intelligence, live cost tracking tied to field progress, automated draws, compliance, and scheduling.</p>
+    </div>
+    <div class="mod-grid">
+      <div class="mod"><span class="tag">01</span><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Document Intelligence</h3><p>Drafts RFIs, submittals, and correspondence in minutes from project context.</p></div>
+      <div class="mod"><span class="tag">02</span><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><h3>Cost Intelligence</h3><p>Real-time cost tracking tied to field progress &mdash; not month-old reports.</p></div>
+      <div class="mod"><span class="tag">03</span><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div><h3>Draw Automation</h3><p>Assembles draw packages and pay apps automatically from verified data.</p></div>
+      <div class="mod"><span class="tag">04</span><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Compliance Monitor</h3><p>Continuous COI and insurance tracking with AI-powered intake and alerts.</p></div>
+      <div class="mod"><span class="tag">05</span><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h3M8 17h6"/></svg></div><h3>Schedule Engine</h3><p>Live schedules that update from the field and flag risk before it lands.</p></div>
+      <div class="mod"><span class="tag">06</span><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Command Dashboard</h3><p>Every project's status in real time &mdash; manage a dozen from one screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="band-tight">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">How It Works</span>
+      <h2>Field data in. <em>Intelligence out.</em></h2>
+    </div>
+    <div class="flow">
+      <div class="flow-step"><div class="n">CAPTURE</div><h4>Three taps + a photo</h4><p>Superintendents log progress from the field in seconds.</p></div>
+      <div class="flow-step"><div class="n">PROCESS</div><h4>The platform works</h4><p>Updates schedules, flags risk, drafts documents, verifies compliance.</p></div>
+      <div class="flow-step"><div class="n">SURFACE</div><h4>Live intelligence</h4><p>Costs, reports, and status appear in real time across the portfolio.</p></div>
+      <div class="flow-step"><div class="n">CONTROL</div><h4>Run from a dashboard</h4><p>The CEO manages 12 projects from a screen, not the driver's seat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL / CONSOLE -->
+<section class="console" id="model">
+  <div class="wrap reveal">
+    <span class="eyebrow">The Pro Forma</span>
+    <h2 style="font-size:clamp(2rem,4vw,3.1rem);margin:1.2rem 0 1rem">The Base Case + Extended BD plan is the <em>engine.</em></h2>
+    <p class="lead">A $718M contracted pipeline &mdash; 11 active in-place projects ($238M) plus 30 business-development deals ($480M) signed on a roughly bimonthly cadence across the rollout &mdash; generates <strong style="color:#fff">$19.4M of cumulative consolidated net income through FY2033</strong>. That pipeline funds the Mission Control buildout and justifies the investment.</p>
+
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <div class="chart-title" id="chTitle">Consolidated Net Income by Year</div>
+          <div class="chart-sub" id="chSub">$ millions &middot; FY2026&ndash;FY2033 &middot; per updated pro forma</div>
+        </div>
+        <div class="seg" id="seg">
+          <button class="active" data-mode="annual">Annual NI</button>
+          <button data-mode="cum">Cumulative NI</button>
+          <button data-mode="billing">Construction Billing</button>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <svg id="mcChart" viewBox="0 0 920 380" role="img" aria-label="Bar chart of Six Peak financial projections by fiscal year"></svg>
+      </div>
+    </div>
+
+    <div class="model-cards">
+      <div class="mc"><div class="v">$718M</div><div class="l">Contracted GMP</div></div>
+      <div class="mc"><div class="v">$99.3M</div><div class="l">Peak Billing (FY30)</div></div>
+      <div class="mc"><div class="v">$79.4M</div><div class="l">Cum. Gross Profit</div></div>
+      <div class="mc"><div class="v rust">$19.4M</div><div class="l">Cum. NI FY26&ndash;33</div></div>
+    </div>
+    <p class="foot-note">Source: Six Peak Projections &mdash; Base Case (in-place) + LV BD (extended), Annual Summary. Consolidated net income is LV (GC) plus Six Peak net income. Figures reflect the updated pro forma and supersede prior versions of this page.</p>
+  </div>
+</section>
+
+<!-- SCALING -->
+<section class="band">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">The Scaling Mechanism</span>
+      <h2>Add a project. <em>Hire onsite staff.</em> That's it.</h2>
+      <p class="lead">Mission Control automates the non-site work, so a new project requires only a superintendent and a field engineer on the ground. PMs, coordinators, and accounting absorb the incremental back-office load through the platform &mdash; no new PM, no new coordinator, no added accounting staff for each project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MULTIPLIER -->
+<section class="band-tight">
+  <div class="wrap reveal">
+    <div class="mult">
+      <div>
+        <span class="eyebrow">The Multiplier</span>
+        <h2 style="font-size:clamp(1.8rem,3.4vw,2.5rem);margin:1.1rem 0 1rem">The pipeline is the juice. <em style="color:var(--rust);font-style:normal">Mission Control is the multiplier.</em></h2>
+        <p class="lead" style="font-size:1.05rem">On top of the $19.4M baseline, the platform layers a margin-expansion and deferred-hiring overlay &mdash; cost-control automation, faster draws, and fewer change-order errors across the $480M of BD volume.</p>
+      </div>
+      <div class="ladder">
+        <div class="rung"><div class="bar" style="width:120px"></div><div class="meta"><div class="t">Baseline pro forma</div><div class="d">Cumulative consolidated NI, FY26&ndash;33</div></div><div class="amt">$19.4M</div></div>
+        <div class="rung"><div class="bar" style="width:46px"></div><div class="meta"><div class="t">Margin expansion</div><div class="d">~150 bps on $480M BD GMP</div></div><div class="amt">+$7.2M</div></div>
+        <div class="rung"><div class="bar" style="width:14px"></div><div class="meta"><div class="t">Deferred next-wave hiring</div><div class="d">Platform absorbs coordination load</div></div><div class="amt">+$1.5M</div></div>
+        <div class="rung total"><div class="bar" style="width:175px"></div><div class="meta"><div class="t">With Mission Control uplift</div><div class="d">Illustrative overlay on baseline</div></div><div class="amt">~$28M</div></div>
+      </div>
+    </div>
+    <p class="foot-note" style="color:var(--gray)">The uplift is an illustrative modeling overlay applied on top of the pro forma, not a line item within it. Margin-expansion and deferred-hiring assumptions are management estimates pending validation.</p>
+  </div>
+</section>
+
+<!-- COMPETITIVE -->
+<section class="band-tight">
+  <div class="wrap reveal">
+    <div class="compete">
+      <div class="wrap2">
+        <span class="eyebrow">The Competitive Advantage</span>
+        <h2>Algorithms can be copied. <em>Data can't.</em></h2>
+        <p>Every project on the platform trains the AI on our specific operation &mdash; our subs, our schedules, our cost patterns, our building types. Across the rollout, 41 active projects feed a proprietary intelligence layer no competitor can purchase. Off-the-shelf AI gives you generic. Mission Control gives you specific.</p>
+        <div class="pull"><b>78%</b> of contractors are testing AI. <b>Less than 2%</b> have deployed it. The window is now.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIBRARY -->
+<section class="band" id="library">
+  <div class="wrap reveal">
+    <div class="lib-head">
+      <div>
+        <span class="eyebrow">Complete Strategic Framework</span>
+        <h2 style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin-top:1rem">Document Library</h2>
+      </div>
+      <div class="filters" id="filters">
+        <button class="active" data-f="all">All</button>
+        <button data-f="strategy">Strategy</button>
+        <button data-f="ops">Operations</button>
+        <button data-f="financial">Financial &amp; Tax</button>
+        <button data-f="hiring">Hiring</button>
+      </div>
+    </div>
+    <div class="doc-grid" id="docGrid"></div>
+  </div>
+</section>
+
+<!-- DETAIL MODAL -->
+<div class="overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="detail"><button class="x-btn" onclick="closeDetail()">&times;</button>
+    <span class="badge" id="dBadge"></span>
+    <h3 id="dTitle"></h3>
+    <div class="sum" id="dSum"></div>
+    <h4>What's Inside</h4>
+    <ul id="dList"></ul>
+    <div class="btn-row">
+      <a class="btn btn-primary" id="dView" href="#" onclick="viewPdf(event)">&#9654;&nbsp; View Document</a>
+      <a class="btn btn-ghost" id="dDownload" href="#" download>&#8595;&nbsp; Download PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- PDF VIEWER -->
+<div class="pdfv" id="pdfv" onclick="if(event.target===this)closePdf()">
+  <div class="pdfv-bar"><span id="pdfTitle"></span><div><a class="pbtn" id="pdfDownload" href="#" download>Download</a><button class="pbtn close" onclick="closePdf()">&larr; Back to Library</button></div></div>
+  <div id="pdfBox" style="flex:1;position:relative"></div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <img src="../images/lv logo for pedro.jpg" alt="LV Construction">
+    <p>Six Peak Capital &middot; LV Construction &middot; AI Mission Control &middot; Confidential &middot; <span id="cdate"></span></p>
+    <p class="meta">13 documents &middot; Complete strategic, financial, operational, tax, and competitive framework</p>
+  </div>
+</footer>
+
+<script>
+/* ---- scroll progress + reveal ---- */
+var prog=document.getElementById('prog');
+window.addEventListener('scroll',function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight);prog.style.width=(p*100)+'%'});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('reveal-armed');e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('reveal-armed');io.observe(el);});
+setTimeout(function(){document.querySelectorAll('.reveal-armed').forEach(function(el){el.classList.remove('reveal-armed');el.classList.add('in')})},2500);
+
+/* ---- count-up ---- */
+function countUp(el){var t=parseFloat(el.dataset.count),dec=parseInt(el.dataset.dec||'0'),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',d=1400,s=null;
+  function step(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1);var e=1-Math.pow(1-p,3);var v=t*e;el.textContent=pre+(dec?v.toFixed(dec):Math.round(v))+suf;if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+var hio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);hio.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('.kpi .v[data-count]').forEach(function(el){hio.observe(el)});
+
+/* ---- PRO FORMA DATA (updated, $M) ---- */
+var YEARS=['FY26','FY27','FY28','FY29','FY30','FY31','FY32','FY33'];
+var SERIES={
+  annual:{vals:[1.34,1.28,1.28,2.61,3.88,3.48,3.59,1.95],color:'#C4581A',title:'Consolidated Net Income by Year',sub:'$ millions · FY2026–FY2033 · per updated pro forma',fmt:function(v){return '$'+v.toFixed(1)+'M'}},
+  cum:{vals:[1.34,2.62,3.90,6.52,10.40,13.88,17.47,19.42],color:'#D4845A',title:'Cumulative Net Income',sub:'$ millions · running total · $19.4M through FY2033',fmt:function(v){return '$'+v.toFixed(1)+'M'}},
+  billing:{vals:[58.8,87.4,66.0,88.0,99.3,95.9,96.5,73.8],color:'#5E7B9B',title:'Construction Billing by Year',sub:'$ millions · GC construction revenue · peak $99.3M FY30',fmt:function(v){return '$'+Math.round(v)+'M'}}
+};
+var W=920,H=380,padL=58,padR=24,padT=34,padB=46;
+function renderChart(mode){
+  var s=SERIES[mode];var vals=s.vals;var max=Math.max.apply(null,vals);var nice=Math.ceil(max/ (mode==='billing'?20:5))*(mode==='billing'?20:5);
+  var plotW=W-padL-padR,plotH=H-padT-padB;var n=vals.length;var bw=plotW/n*0.56;var gap=plotW/n;
+  var svg='';
+  var ticks=5;
+  for(var i=0;i<=ticks;i++){var gv=nice/ticks*i;var y=padT+plotH-(gv/nice)*plotH;
+    svg+='<line class="chart-grid" x1="'+padL+'" y1="'+y+'" x2="'+(W-padR)+'" y2="'+y+'"/>';
+    svg+='<text class="chart-axis" x="'+(padL-10)+'" y="'+(y+4)+'" text-anchor="end">'+Math.round(gv)+'</text>';}
+  for(var j=0;j<n;j++){var x=padL+gap*j+(gap-bw)/2;var bh=(vals[j]/nice)*plotH;var y=padT+plotH-bh;
+    svg+='<rect class="chart-bar seed" x="'+x+'" y="'+y+'" width="'+bw+'" height="'+Math.max(bh,0.5)+'" rx="4" fill="'+s.color+'" style="transition-delay:'+(j*60)+'ms"><title>'+YEARS[j]+': '+s.fmt(vals[j])+'</title></rect>';
+    svg+='<text class="chart-val" x="'+(x+bw/2)+'" y="'+(y-9)+'" text-anchor="middle" style="opacity:0;transition:opacity .4s '+(j*60+400)+'ms" data-v="1">'+s.fmt(vals[j])+'</text>';
+    svg+='<text class="chart-axis" x="'+(x+bw/2)+'" y="'+(H-padB+22)+'" text-anchor="middle">'+YEARS[j]+'</text>';}
+  var c=document.getElementById('mcChart');c.innerHTML=svg;
+  document.getElementById('chTitle').textContent=s.title;
+  document.getElementById('chSub').innerHTML=s.sub;
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    c.querySelectorAll('.chart-bar').forEach(function(b){b.classList.remove('seed');b.classList.add('grow')});
+    c.querySelectorAll('.chart-val').forEach(function(t){t.style.opacity='1'});
+  })});
+}
+var chartShown=false;
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!chartShown){chartShown=true;renderChart('annual')}})},{threshold:.3});
+cio.observe(document.getElementById('mcChart'));
+document.getElementById('seg').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('active')});b.classList.add('active');renderChart(b.dataset.mode)});
+
+/* ---- DOCUMENT LIBRARY ---- */
+var docs=[
+ {i:0,cat:'core',badge:'Core Document',bc:'b-core',feat:true,t:'AI Mission Control — Business Plan',f:'ai_mc_business_plan_v5.pdf',s:'The master strategic document. Positions Mission Control as the primary product — a 6-module AI operating system for construction — with a full "day in the life" walkthrough from the CEO’s 5 AM dashboard through end-of-day data flows.',x:['Executive Summary anchored on the Base Case + Extended BD plan: $718M contracted volume, 41 active projects, $19.4M cumulative consolidated NI (FY26–33)','Mission Control: the product, how it works daily, and the scaling mechanism','Named staff roster across executives, PMs, APMs, superintendents, field engineers, and coordinators','Two-layer model: pro forma baseline ($19.4M cum NI) plus Mission Control uplift overlay (~$8.7M illustrative)','Risks, mitigants, and master timeline Month 1 through Year 5','Cross-references to all 12 companion papers']},
+ {i:8,cat:'strategy',badge:'Strategy',bc:'b-strategy',feat:true,t:'The Competitive Imperative',f:'ai_mc_competitive_imperative.pdf',s:'The "why now" case. Industry AI adoption data, the data-moat thesis, a 5-phase adoption timeline, and cost-of-delay quantification — why Mission Control is a survival mechanism, not a luxury.',x:['78% of contractors testing AI; less than 2% deployed','$4B→$12B market by 2029 at 24% CAGR','Data moat: 41 active projects of proprietary operating data','Three scenarios: do nothing, start late, start now','A 2-year delay costs $40–75M in enterprise value']},
+ {i:4,cat:'ops',badge:'Operations',bc:'b-ops',t:'Mission Control System Evaluation',f:'ai_mc_system_evaluation_v2.pdf',s:'Complete technical evaluation. How every construction function transforms from manual to AI-driven, the technology architecture, and a phased implementation with gate reviews.',x:['Operating model comparison: current vs. AI-driven','6 module specs with technology stack','15 functional areas across 4 phases','Automation scoring: 5-dimension weighted framework','6-sprint plan with gate reviews at 6, 12, 18 months']},
+ {i:5,cat:'ops',badge:'Operations',bc:'b-ops',t:'Accounting & Back-Office Automation',f:'ai_mc_accounting_automation.pdf',s:'All 12 accounting workflows mapped with AI automation scores, plus the sub insurance/COI system — built into Mission Control from Sprint 1.',x:['12 workflows with automation scores (avg 8.6/10)','68–72% reduction in coordination overhead','COI system: AI-powered intake, continuous monitoring','CFO and Controller as integrated stakeholders','Sprint-aligned implementation']},
+ {i:9,cat:'ops',badge:'Phase 1',bc:'b-ops',t:'Preconstruction Deep Dive',f:'ai_mc_phase1_preconstruction.pdf',s:'Three functional areas from project award through construction start.',x:['1.1 Estimating & Bidding: 5 automations (6.5–8.5)','1.2 Contract & Buyout: 5 automations (8.0–9.0)','1.3 Schedule Development: 4 automations (7.0–8.2)']},
+ {i:10,cat:'ops',badge:'Phase 2',bc:'b-ops',t:'Field Operations Deep Dive',f:'ai_mc_phase2_field_operations.pdf',s:'The most observation-intensive phase, with 100% subcontracted site management.',x:['2.1 Daily Field Management: 4 automations','2.2 Sub Coordination: 4 automations','2.3 QC & Inspections: 4 automations','2.4 Safety: 4 automations']},
+ {i:11,cat:'ops',badge:'Phase 3',bc:'b-ops',t:'Project Controls Deep Dive',f:'ai_mc_phase3_project_controls.pdf',s:'The highest automation surface area and the fastest-ROI workflows.',x:['3.1 Cost Management: 4 automations (8.4–9.2)','3.2 Change Orders: 3 automations','3.3 Scheduling: 3 automations','3.4 Documents: RFIs 30min→5min, 3 automations']},
+ {i:12,cat:'ops',badge:'Phase 4',bc:'b-ops',t:'Office & Admin Deep Dive',f:'ai_mc_phase4_office_admin.pdf',s:'Office functions mapped with the CFO and Controller as primary stakeholders.',x:['4.1 Accounting: 5 automations (8.2–9.0)','4.2 Procurement: 3 automations','4.3 HR: 3 automations','4.4 Comms: 3 automations']},
+ {i:6,cat:'hiring',badge:'Hiring',bc:'b-ops',t:'Detailed Hiring Plan',f:'ai_mc_hiring_plan_v2.pdf',s:'A role-by-role AI team breakdown: profiles, compensation benchmarks, sourcing, success metrics, and three alternative hiring models.',x:['Construction-AI Translator: 18–24 month engagement','Head of AI Operations: first 90 days, equity-heavy comp','Full team: Process Eng, Full-Stack, AI/ML, Data Eng, CV Specialist','Hiring sequence and budget summary','Alternative models: agency, AI tools, technical co-founder']},
+ {i:7,cat:'hiring',badge:'Hiring',bc:'b-ops',t:'Job Descriptions (9 Roles)',f:'ai_mc_job_descriptions.pdf',s:'Ready-to-post JDs for the AI team in sequence — responsibilities, qualifications, comp, success metrics.',x:['Translator (Mo.1), APM (Mo.1–2), Super (Mo.1–2)','Field Tech Liaison (Mo.2–3, internal)','Head of AI Ops (Mo.3–4)','Process Eng, Full-Stack, AI/ML Engineer','Data Eng (Mo.12–14), CV Specialist (Mo.14–18)']},
+ {i:1,cat:'financial',badge:'Financial',bc:'b-financial',t:'Detailed Financial Analysis',f:'ai_mc_financial_analysis_v2.pdf',s:'Complete financial modeling built on the Base Case + Extended BD plan: $718M contracted volume, 30 BD deals signed on a roughly bimonthly cadence. Models Mission Control margin expansion (~150 bps) and deferred next-wave hiring on top of the $19.4M baseline cumulative NI (FY2026–2033).',x:['Pro forma FY2026–2033: $19.4M cumulative consolidated NI','Construction billing ramp peaking at $99.3M (FY2030)','Cumulative gross profit of $79.4M across the horizon','Sensitivity analysis: bear, base, bull, downside scenarios','Margin-uplift overlay and technology investment breakdown']},
+ {i:2,cat:'financial',badge:'Financial · Tax',bc:'b-financial',t:'Entity Restructuring, Valuation & Incentive Plan',f:'ai_mc_entity_valuation_incentives.pdf',s:'C-Corp conversion, pre-money valuation, full ownership structure, employee equity pool, profit-sharing pool, and the field-adoption bonus.',x:['Ownership across Steyn Group, Aiello, Kennedy, Lakamp, Krueger, Littlehale','Pre-money / post-money cap table and share structure','Post-raise: Six Peak, new investors, and employee pool','50% salary adoption bonus for field staff','Profit-sharing pool tied to income above baseline','Cash flow vs. PE exit — both outcomes work']},
+ {i:3,cat:'financial',badge:'Tax Strategy',bc:'b-tax',t:'C-Corp Conversion & QSBS Tax Strategy',f:'six_peak_ccorp_qsbs_analysis.pdf',s:'Section 1202 QSBS analysis post-OBBBA. Converting LP to C-Corp enables up to 100% federal capital-gains exclusion — potentially saving $30–42M.',x:['Post-OBBBA: $15M cap, $75M gross asset limit, tiered holding','LP-to-C-Corp via check-the-box (Form 8832)','10x basis advantage from existing LLC conversion','NJ conforms (2026); CA does NOT (13.3% remains)','Three exit scenarios and their tax outcomes']}
+];
+var grid=document.getElementById('docGrid');
+function cardHTML(d,idx){return '<div class="doc-card '+(d.feat?'feat':'')+'" data-cat="'+d.cat+'" onclick="openDetail('+idx+')"><span class="badge '+d.bc+'">'+d.badge+'</span><h3>'+d.t+'</h3><p>'+d.s.split('. ').slice(0,2).join('. ')+(d.s.indexOf('.')>-1?'.':'')+'</p></div>';}
+function buildGrid(){grid.innerHTML=docs.map(function(d,idx){return cardHTML(d,idx)}).join('')}
+buildGrid();
+document.getElementById('filters').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('active')});b.classList.add('active');var f=b.dataset.f;
+  grid.querySelectorAll('.doc-card').forEach(function(c){var show=(f==='all'||c.dataset.cat===f);c.classList.toggle('hide',!show)})});
+
+function openDetail(idx){var d=docs[idx];
+  var bd=document.getElementById('dBadge');bd.textContent=d.badge;bd.className='badge '+d.bc;
+  document.getElementById('dTitle').textContent=d.t;
+  document.getElementById('dSum').textContent=d.s;
+  document.getElementById('dList').innerHTML=d.x.map(function(s){return '<li>'+s+'</li>'}).join('');
+  var v=document.getElementById('dView');v.setAttribute('data-file',d.f);v.setAttribute('data-title',d.t);
+  document.getElementById('dDownload').href=d.f;
+  document.getElementById('detailOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeDetail(){document.getElementById('detailOverlay').classList.remove('open');document.body.style.overflow=''}
+function viewPdf(e){e.preventDefault();var el=document.getElementById('dView');var f=el.getAttribute('data-file');var t=el.getAttribute('data-title');if(!f)return;closeDetail();
+  document.getElementById('pdfTitle').textContent=t;document.getElementById('pdfDownload').href=f;
+  var box=document.getElementById('pdfBox');var url=new URL(f,window.location.href).href;
+  box.innerHTML='<iframe src="'+url+'" style="position:absolute;inset:0;width:100%;height:100%;border:none" allowfullscreen></iframe>';
+  document.getElementById('pdfv').classList.add('open');document.body.style.overflow='hidden'}
+function closePdf(){document.getElementById('pdfv').classList.remove('open');document.getElementById('pdfBox').innerHTML='';document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(document.getElementById('pdfv').classList.contains('open'))closePdf();else if(document.getElementById('detailOverlay').classList.contains('open'))closeDetail()}});
+
+/* ---- date ---- */
+(function(){var m=['January','February','March','April','May','June','July','August','September','October','November','December'];var d=new Date();document.getElementById('cdate').textContent=m[d.getMonth()]+' '+d.getFullYea
