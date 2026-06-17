@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LV Construction · Operations Portal · April 2026</title>
+<title>LV Construction · Operations Portal · May 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
@@ -102,6 +102,8 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 .tbl td:first-child { text-align:left; color:var(--denim); font-weight:600; }
 .tbl tr:last-child td { border-bottom:none; }
 .tbl tr:hover td { background:rgba(196,88,26,0.04); }
+.tbl tr.total-row td { background:rgba(11,24,51,0.04); font-weight:700; color:var(--denim); border-top:2px solid rgba(11,24,51,0.15); }
+.tbl tr.total-row:hover td { background:rgba(11,24,51,0.06); }
 .tbl .pos { color:#0b6e54; }
 .tbl .neg { color:#a13b3b; }
 .tbl .muted { color:var(--gray); }
@@ -119,6 +121,8 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 .bonding-fill { height:100%; background:linear-gradient(90deg, var(--success), var(--warning)); display:flex; align-items:center; padding-left:14px; font-size:0.8rem; font-weight:700; color:#FFFFFF; }
 .placeholder-ribbon { background:rgba(245,158,11,0.1); border-left:3px solid var(--warning); padding:0.85rem 1.1rem; margin-bottom:1.5rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--gray-dk); line-height:1.6; }
 .placeholder-ribbon strong { color:#92670a; font-weight:700; }
+.source-ribbon { background:rgba(16,185,129,0.08); border-left:3px solid var(--success); padding:0.85rem 1.1rem; margin-bottom:1.5rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--gray-dk); line-height:1.6; }
+.source-ribbon strong { color:#0b6e54; font-weight:700; }
 .deck-controls { position:fixed; bottom:0; left:0; right:0; background:rgba(255,255,255,0.96); backdrop-filter:blur(8px); border-top:1px solid rgba(11,24,51,0.1); padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; z-index:50; box-shadow:0 -4px 20px rgba(0,0,0,0.06); }
 .deck-controls .crumb { font-size:0.78rem; color:var(--gray-dk); display:flex; align-items:center; gap:10px; }
 .deck-controls .crumb .ix { font-family:var(--font-display); font-weight:700; color:var(--rust); }
@@ -151,81 +155,173 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
       <div style="height:1rem;"></div>
       <div class="label">Six Peak Capital · LV Construction · Operations</div>
       <h1>LV Construction Operations Portal</h1>
-      <p class="sub">Project status, bonding capacity, and operational tracking for the LV Construction GC platform. Use the section tabs or ← → arrows to move through the deck.</p>
+      <p class="sub">Project financials, contract backlog, and staffing for the Six Peak Construction LA (LV Construction) GC platform. Use the section tabs or ← → arrows to move through the deck.</p>
     </div>
     <div class="meta">
       <div class="now-showing">Now showing<span class="name" id="topbarName">Overview</span></div>
       <div class="progress">
-        <div class="bar"><div class="fill" id="progressFill" style="width:25%;"></div></div>
-        <div class="counter"><span class="cur" id="counterCur">01</span> / <span id="counterTot">04</span></div>
+        <div class="bar"><div class="fill" id="progressFill" style="width:16.6%;"></div></div>
+        <div class="counter"><span class="cur" id="counterCur">01</span> / <span id="counterTot">06</span></div>
       </div>
-      <div class="now-showing" style="opacity:0.6;">Current as of <span style="color:var(--ghost-warm);opacity:1;">April 2026</span></div>
+      <div class="now-showing" style="opacity:0.6;">Current as of <span style="color:var(--ghost-warm);opacity:1;">May 2026</span></div>
     </div>
   </div>
 </header>
 <nav class="deck-nav"><div class="deck-nav-inner">
 <button data-slide="0" class="active"><span class="ix">01</span>Overview</button>
 <button data-slide="1"><span class="ix">02</span>Active Projects</button>
-<button data-slide="2"><span class="ix">03</span>Bonding Capacity</button>
-<button data-slide="3"><span class="ix">04</span>Operational Metrics</button>
+<button data-slide="2"><span class="ix">03</span>Financial Results</button>
+<button data-slide="3"><span class="ix">04</span>Staffing</button>
+<button data-slide="4"><span class="ix">05</span>Bonding Capacity</button>
+<button data-slide="5"><span class="ix">06</span>Operational Metrics</button>
 </div></nav>
 <main class="stage"><div class="stage-inner">
 
 <section class="slide active" id="slide-0">
   <div class="slide-cover">
-    <div class="slide-label">01 · Overview · Current as of April 2026</div>
+    <div class="slide-label">01 · Overview · As of May 31, 2026</div>
     <h1 class="title">LV Construction — <em>operations at a glance</em></h1>
-    <p class="lede">A snapshot of the active construction book, bonding utilization, and operational health across the LV portfolio. Nine projects are in flight against a $150M bonding line, with a clean safety record and a healthy available-to-bid balance.</p>
+    <p class="lede">A snapshot of the active construction book, contract backlog, and year-to-date financial performance across the Six Peak Construction LA portfolio. Nine jobs are in the book — five under construction and four mobilizing — against $74.2M of current contract value and a $49.2M backlog.</p>
   </div>
 
-  <div class="placeholder-ribbon">
-    <strong>PLACEHOLDER DATA:</strong> All figures below are illustrative. The production LV Construction tracking portal will wire live data from project management, accounting, and bonding systems.
+  <div class="source-ribbon">
+    <strong>LIVE DATA:</strong> Figures on the Overview, Active Projects, Financial Results, and Staffing tabs are sourced from the 05.2026 Consolidated Financials (Job KPI workbook). Bonding Capacity and Operational Metrics remain illustrative pending data feeds.
   </div>
 
-  <div class="section-band"><span class="t">Portfolio Snapshot</span><span class="ln"></span><span class="note">Active book · bonding · operations</span></div>
+  <div class="section-band"><span class="t">Portfolio Snapshot</span><span class="ln"></span><span class="note">Contract · backlog · YTD financials</span></div>
   <div class="kpi-row">
-    <div class="kpi"><div class="lbl">Active Projects</div><div class="val denim">9</div><div class="delta ">$148.3M aggregate GMP</div></div>
-    <div class="kpi"><div class="lbl">Bonding Available</div><div class="val green">$60.1M</div><div class="delta up">Ready to bid</div></div>
-    <div class="kpi"><div class="lbl">Revenue-to-Date (FY26)</div><div class="val ">$6.4M</div><div class="delta up">On plan (+2.1%)</div></div>
-    <div class="kpi"><div class="lbl">OSHA Recordables (YTD)</div><div class="val green">0</div><div class="delta ">TRIR 0.00 · trailing 12mo</div></div>
+    <div class="kpi"><div class="lbl">Active Jobs</div><div class="val denim">9</div><div class="delta">5 under construction · 4 mobilizing</div></div>
+    <div class="kpi"><div class="lbl">Current Contract Value</div><div class="val">$74.2M</div><div class="delta">+$0.36M net change orders</div></div>
+    <div class="kpi"><div class="lbl">Backlog</div><div class="val green">$49.2M</div><div class="delta up">$25.0M billed to date (34%)</div></div>
+    <div class="kpi"><div class="lbl">YTD Net Profit (FY26)</div><div class="val">$0.40M</div><div class="delta">3% net margin · $15.26M revenue</div></div>
+  </div>
+  <div class="section-band"><span class="t">Performance &amp; People</span><span class="ln"></span><span class="note">Margin · buyout · headcount</span></div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="lbl">YTD Gross Profit</div><div class="val green">$1.68M</div><div class="delta">11% gross margin</div></div>
+    <div class="kpi"><div class="lbl">Job-to-Date Net Profit</div><div class="val">$0.76M</div><div class="delta">3% net margin · $24.9M JTD revenue</div></div>
+    <div class="kpi"><div class="lbl">Buyout Savings</div><div class="val green">$285.8K</div><div class="delta up">Cumulative across the book</div></div>
+    <div class="kpi"><div class="lbl">Headcount</div><div class="val denim">54</div><div class="delta">$296K monthly payroll</div></div>
   </div>
   <div class="callout">
-    <strong>Read of the book:</strong> The active portfolio runs $148.3M of GMP across nine projects, from Crenshaw in wrap-up to Acama in pre-construction. Bonding is 60% utilized against the $150M line, leaving $60.1M available to bid. Operationally the platform is clean — zero OSHA recordables, zero subcontractor defaults, and a portfolio averaging two days ahead of schedule.
+    <strong>Read of the book:</strong> The active portfolio carries $74.2M of current contract value across nine jobs, from Crenshaw in wrap-up (67% complete) to Acama in pre-construction. $25.0M has been billed, leaving a $49.2M backlog. Year-to-date the platform has produced $15.26M of revenue at an 11% gross margin and a 3% net margin ($399K). Crenshaw, Ramsgate, Califa and Whipple are the profit drivers; Nelrose, Francis and the mobilizing jobs are still carrying startup overhead.
   </div>
 </section>
 
 <section class="slide" id="slide-1">
   <div class="slide-cover">
-    <div class="slide-label">02 · Active Projects &amp; Status</div>
+    <div class="slide-label">02 · Active Projects &amp; Backlog</div>
     <h1 class="title">The active construction book</h1>
-    <p class="lede">Nine projects in flight totaling $148.3M of GMP. Crenshaw is in wrap-up; the bulk of the book is on schedule, with Lexington and Denny starting and Acama in pre-construction.</p>
+    <p class="lede">Nine jobs totaling $74.2M of current contract value. Crenshaw is in wrap-up; Ramsgate, Califa, Whipple and Nelrose are mid-build; Francis, Riverton, Lexington and Acama are mobilizing into the pipeline.</p>
   </div>
   <div class="tbl scroll"><table>
-    <thead><tr><th>Project</th><th>GMP</th><th style="text-align:center;">% Complete</th><th style="text-align:center;">Scheduled End</th><th>Status</th></tr></thead>
+    <thead><tr><th>Job</th><th>Current Contract</th><th>Billed to Date</th><th>Backlog</th><th style="text-align:center;">% Complete</th><th style="text-align:center;">Job End</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td>Crenshaw</td><td>$5.3M</td><td style="text-align:center;">82%</td><td style="text-align:center;">Nov 2026</td><td style="text-align:right;"><span class="status-chip wrap-up">Wrap-Up</span></td></tr>
-      <tr><td>Ramsgate</td><td>$20.0M</td><td style="text-align:center;">34%</td><td style="text-align:center;">Jul 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
-      <tr><td>Califa</td><td>$11.7M</td><td style="text-align:center;">41%</td><td style="text-align:center;">Jun 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
-      <tr><td>Whipple</td><td>$13.5M</td><td style="text-align:center;">38%</td><td style="text-align:center;">Jun 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
-      <tr><td>Nelrose</td><td>$4.1M</td><td style="text-align:center;">29%</td><td style="text-align:center;">Oct 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
-      <tr><td>Francis</td><td>$43.0M</td><td style="text-align:center;">12%</td><td style="text-align:center;">Dec 2028</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
-      <tr><td>Lexington</td><td>$13.6M</td><td style="text-align:center;">3%</td><td style="text-align:center;">Apr 2028</td><td style="text-align:right;"><span class="status-chip active">Starting</span></td></tr>
-      <tr><td>Denny</td><td>$15.8M</td><td style="text-align:center;">3%</td><td style="text-align:center;">Mar 2029</td><td style="text-align:right;"><span class="status-chip active">Starting</span></td></tr>
-      <tr><td>Acama</td><td>$21.3M</td><td style="text-align:center;">0%</td><td style="text-align:center;">Oct 2028</td><td style="text-align:right;"><span class="status-chip pending">Pre-construction</span></td></tr>
+      <tr><td>Crenshaw</td><td>$15.21M</td><td>$9.60M</td><td>$5.62M</td><td style="text-align:center;">67%</td><td style="text-align:center;">Jul 2026</td><td style="text-align:right;"><span class="status-chip wrap-up">Wrap-Up</span></td></tr>
+      <tr><td>Ramsgate</td><td>$25.99M</td><td>$8.50M</td><td>$17.49M</td><td style="text-align:center;">39%</td><td style="text-align:center;">Jul 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
+      <tr><td>Califa</td><td>$13.43M</td><td>$3.35M</td><td>$10.07M</td><td style="text-align:center;">24%</td><td style="text-align:center;">Jun 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
+      <tr><td>Whipple</td><td>$15.35M</td><td>$2.47M</td><td>$12.88M</td><td style="text-align:center;">14%</td><td style="text-align:center;">Jun 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
+      <tr><td>Nelrose</td><td>$4.21M</td><td>$1.05M</td><td>$3.16M</td><td style="text-align:center;">24%</td><td style="text-align:center;">Aug 2027</td><td style="text-align:right;"><span class="status-chip active">On Schedule</span></td></tr>
+      <tr><td>Francis</td><td class="muted">Pending buyout</td><td class="muted">—</td><td class="muted">—</td><td style="text-align:center;" class="muted">0%</td><td style="text-align:center;">Oct 2028</td><td style="text-align:right;"><span class="status-chip active">Starting</span></td></tr>
+      <tr><td>Riverton</td><td class="muted">Pending buyout</td><td class="muted">—</td><td class="muted">—</td><td style="text-align:center;" class="muted">0%</td><td style="text-align:center;">Jan 2028</td><td style="text-align:right;"><span class="status-chip pending">Pre-construction</span></td></tr>
+      <tr><td>Lexington</td><td class="muted">Pending buyout</td><td class="muted">—</td><td class="muted">—</td><td style="text-align:center;" class="muted">0%</td><td style="text-align:center;">Jan 2028</td><td style="text-align:right;"><span class="status-chip pending">Pre-construction</span></td></tr>
+      <tr><td>Acama</td><td class="muted">Pending buyout</td><td class="muted">—</td><td class="muted">—</td><td style="text-align:center;" class="muted">0%</td><td style="text-align:center;">TBD</td><td style="text-align:right;"><span class="status-chip pending">Pre-construction</span></td></tr>
+      <tr class="total-row"><td>Total</td><td>$74.19M</td><td>$24.97M</td><td>$49.22M</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td></td></tr>
     </tbody>
   </table></div>
-  <p class="tnote">Percent-complete and status are illustrative placeholders. GMP values shown are remaining contract balances for projects under construction.</p>
+  <p class="tnote">Current Contract = Original Contract + Net Change Orders ($0.36M across the book). Backlog = Current Contract − Billed to Date. Francis, Riverton, Lexington and Acama have not yet completed buyout, so contract values are not finalized; status reflects mobilization stage. % Complete is cost-to-date against current budget.</p>
 </section>
 
 <section class="slide" id="slide-2">
   <div class="slide-cover">
-    <div class="slide-label">03 · Bonding Capacity</div>
+    <div class="slide-label">03 · Financial Results</div>
+    <h1 class="title">Job financial results <em>·</em> YTD &amp; job-to-date</h1>
+    <p class="lede">Profit and loss by job for fiscal-year-to-date 2026 and over the full life of each project. The book is running an 11% gross margin and a 3% net margin year-to-date, with margins firming to 13% gross / 3% net on a job-to-date basis as completed jobs mature.</p>
+  </div>
+
+  <div class="section-band"><span class="t">Year-to-Date (FY2026)</span><span class="ln"></span><span class="note">Through May 31, 2026</span></div>
+  <div class="tbl scroll"><table>
+    <thead><tr><th>Job</th><th>Revenue</th><th>Cost of Sales</th><th>Gross Profit</th><th style="text-align:center;">GM%</th><th>Overhead</th><th>Net Profit</th><th style="text-align:center;">NM%</th></tr></thead>
+    <tbody>
+      <tr><td>Crenshaw</td><td>$3,414,616</td><td>$3,103,132</td><td class="pos">$311,484</td><td style="text-align:center;">9%</td><td>$185,334</td><td class="pos">$126,150</td><td style="text-align:center;">4%</td></tr>
+      <tr><td>Ramsgate</td><td>$5,741,483</td><td>$5,134,257</td><td class="pos">$607,226</td><td style="text-align:center;">11%</td><td>$343,600</td><td class="pos">$263,626</td><td style="text-align:center;">5%</td></tr>
+      <tr><td>Califa</td><td>$2,987,500</td><td>$2,651,470</td><td class="pos">$336,030</td><td style="text-align:center;">11%</td><td>$225,821</td><td class="pos">$110,209</td><td style="text-align:center;">4%</td></tr>
+      <tr><td>Whipple</td><td>$2,044,793</td><td>$1,797,361</td><td class="pos">$247,432</td><td style="text-align:center;">12%</td><td>$190,214</td><td class="pos">$57,218</td><td style="text-align:center;">3%</td></tr>
+      <tr><td>Nelrose</td><td>$990,605</td><td>$883,415</td><td class="pos">$107,190</td><td style="text-align:center;">11%</td><td>$117,777</td><td class="neg">($10,587)</td><td style="text-align:center;">-1%</td></tr>
+      <tr><td>Francis</td><td>$77,948</td><td>$10,000</td><td class="pos">$67,948</td><td style="text-align:center;">87%</td><td>$172,421</td><td class="neg">($104,473)</td><td style="text-align:center;">-134%</td></tr>
+      <tr><td>Riverton</td><td class="muted">$0</td><td>$311</td><td class="neg">($311)</td><td style="text-align:center;" class="muted">—</td><td>$14,866</td><td class="neg">($15,177)</td><td style="text-align:center;" class="muted">—</td></tr>
+      <tr><td>Lexington</td><td class="muted">$0</td><td>$50</td><td class="neg">($50)</td><td style="text-align:center;" class="muted">—</td><td>$14,866</td><td class="neg">($14,916)</td><td style="text-align:center;" class="muted">—</td></tr>
+      <tr><td>Acama</td><td class="muted">$0</td><td>$50</td><td class="neg">($50)</td><td style="text-align:center;" class="muted">—</td><td>$12,566</td><td class="neg">($12,616)</td><td style="text-align:center;" class="muted">—</td></tr>
+      <tr class="total-row"><td>Total</td><td>$15,256,945</td><td>$13,580,046</td><td>$1,676,899</td><td style="text-align:center;">11%</td><td>$1,277,465</td><td>$399,434</td><td style="text-align:center;">3%</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="section-band"><span class="t">Job-to-Date (Life of Project)</span><span class="ln"></span><span class="note">Cumulative since job start</span></div>
+  <div class="tbl scroll"><table>
+    <thead><tr><th>Job</th><th>Revenue</th><th>Gross Profit</th><th style="text-align:center;">GM%</th><th>Net Profit</th><th style="text-align:center;">NM%</th></tr></thead>
+    <tbody>
+      <tr><td>Crenshaw</td><td>$9,620,622</td><td class="pos">$1,019,235</td><td style="text-align:center;">11%</td><td class="pos">$340,149</td><td style="text-align:center;">4%</td></tr>
+      <tr><td>Ramsgate</td><td>$8,598,508</td><td class="pos">$1,148,871</td><td style="text-align:center;">13%</td><td class="pos">$437,201</td><td style="text-align:center;">5%</td></tr>
+      <tr><td>Califa</td><td>$3,291,428</td><td class="pos">$487,661</td><td style="text-align:center;">15%</td><td class="pos">$237,660</td><td style="text-align:center;">7%</td></tr>
+      <tr><td>Whipple</td><td>$2,288,197</td><td class="pos">$378,780</td><td style="text-align:center;">17%</td><td class="pos">$164,386</td><td style="text-align:center;">7%</td></tr>
+      <tr><td>Nelrose</td><td>$990,605</td><td class="pos">$107,190</td><td style="text-align:center;">11%</td><td class="neg">($81,372)</td><td style="text-align:center;">-8%</td></tr>
+      <tr><td>Francis</td><td>$77,948</td><td class="pos">$67,898</td><td style="text-align:center;">87%</td><td class="neg">($294,724)</td><td style="text-align:center;">-378%</td></tr>
+      <tr><td>Riverton</td><td class="muted">$0</td><td class="neg">($311)</td><td style="text-align:center;" class="muted">—</td><td class="neg">($15,177)</td><td style="text-align:center;" class="muted">—</td></tr>
+      <tr><td>Lexington</td><td class="muted">$0</td><td class="neg">($50)</td><td style="text-align:center;" class="muted">—</td><td class="neg">($14,916)</td><td style="text-align:center;" class="muted">—</td></tr>
+      <tr><td>Acama</td><td class="muted">$0</td><td class="neg">($50)</td><td style="text-align:center;" class="muted">—</td><td class="neg">($12,616)</td><td style="text-align:center;" class="muted">—</td></tr>
+      <tr class="total-row"><td>Total</td><td>$24,867,308</td><td>$3,209,224</td><td style="text-align:center;">13%</td><td>$760,591</td><td style="text-align:center;">3%</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Source: 05.2026 Consolidated Financials (KPI). Francis carries early-stage overhead against minimal recognized revenue, producing a large negative net margin that will normalize as the job ramps. Riverton, Lexington and Acama show only mobilization overhead.</p>
+</section>
+
+<section class="slide" id="slide-3">
+  <div class="slide-cover">
+    <div class="slide-label">04 · Staffing</div>
+    <h1 class="title">Staffing &amp; payroll allocation</h1>
+    <p class="lede">Fifty-four people allocated across the active jobs and shared functions, carrying $296K of monthly payroll. Field staffing tracks the build curve — the larger mid-build jobs (Califa, Whipple, Ramsgate) hold the heaviest crews.</p>
+  </div>
+  <div class="grid2" style="grid-template-columns:1.4fr 1fr; align-items:start;">
+    <div class="tbl scroll"><table>
+      <thead><tr><th>Job / Function</th><th style="text-align:center;">Headcount</th><th>Monthly Payroll</th><th style="text-align:center;">% of Total</th></tr></thead>
+      <tbody>
+        <tr><td>Crenshaw</td><td style="text-align:center;">6</td><td>$35,284</td><td style="text-align:center;">12%</td></tr>
+        <tr><td>Ramsgate</td><td style="text-align:center;">7</td><td>$50,351</td><td style="text-align:center;">17%</td></tr>
+        <tr><td>Califa</td><td style="text-align:center;">9</td><td>$49,976</td><td style="text-align:center;">17%</td></tr>
+        <tr><td>Whipple</td><td style="text-align:center;">9</td><td>$49,399</td><td style="text-align:center;">17%</td></tr>
+        <tr><td>Nelrose</td><td style="text-align:center;">7</td><td>$35,824</td><td style="text-align:center;">12%</td></tr>
+        <tr><td>Francis</td><td style="text-align:center;">3</td><td>$34,904</td><td style="text-align:center;">12%</td></tr>
+        <tr><td>Riverton</td><td style="text-align:center;">2</td><td>$7,115</td><td style="text-align:center;">2%</td></tr>
+        <tr><td>Lexington</td><td style="text-align:center;">2</td><td>$7,115</td><td style="text-align:center;">2%</td></tr>
+        <tr><td>Acama</td><td style="text-align:center;">2</td><td>$7,115</td><td style="text-align:center;">2%</td></tr>
+        <tr><td>Business Development</td><td style="text-align:center;">1</td><td>$1,154</td><td style="text-align:center;">0%</td></tr>
+        <tr><td>Estimating</td><td style="text-align:center;">2</td><td>$8,538</td><td style="text-align:center;">3%</td></tr>
+        <tr><td>Internal Management</td><td style="text-align:center;">2</td><td>$6,346</td><td style="text-align:center;">2%</td></tr>
+        <tr><td>Office Management</td><td style="text-align:center;">1</td><td>$2,019</td><td style="text-align:center;">1%</td></tr>
+        <tr><td>Payroll / Paperwork</td><td style="text-align:center;">1</td><td>$808</td><td style="text-align:center;">0%</td></tr>
+        <tr class="total-row"><td>Total</td><td style="text-align:center;">54</td><td>$295,949</td><td style="text-align:center;">100%</td></tr>
+      </tbody>
+    </table></div>
+    <div>
+      <div class="kpi" style="margin-bottom:1rem;"><div class="lbl">Total Headcount</div><div class="val denim">54</div><div class="delta">Across 9 jobs + 5 shared functions</div></div>
+      <div class="kpi" style="margin-bottom:1rem;"><div class="lbl">Monthly Payroll</div><div class="val">$295,949</div><div class="delta">Allocated by job (May 2026)</div></div>
+      <div class="kpi"><div class="lbl">Field vs. Overhead</div><div class="val sm green">88% / 12%</div><div class="delta">~$260K job-allocated · ~$36K G&amp;A functions</div></div>
+    </div>
+  </div>
+  <p class="tnote">Source: 05.2026 Consolidated Financials (STAFFING). Field vs. overhead split estimated from job-allocated payroll versus shared G&amp;A functions (Business Development, Estimating, Internal/Office Management, Payroll).</p>
+</section>
+
+<section class="slide" id="slide-4">
+  <div class="slide-cover">
+    <div class="slide-label">05 · Bonding Capacity</div>
     <h1 class="title">Bonding line <em>·</em> $150M aggregate</h1>
     <p class="lede">The surety line supports $150M aggregate with a $75M single-project cap. The book currently draws 60% of capacity, leaving $60.1M available against incoming bids.</p>
   </div>
+  <div class="placeholder-ribbon">
+    <strong>PLACEHOLDER DATA:</strong> Bonding figures below are illustrative pending a live feed from the surety. The Job KPI workbook does not include bonding capacity; these values will be wired from the bonding system.
+  </div>
   <div class="kpi-row" style="grid-template-columns:repeat(3,1fr);">
-    <div class="kpi"><div class="lbl">Total Capacity</div><div class="val green">$150.0M</div><div class="delta ">Single project: $75M</div></div>
-    <div class="kpi"><div class="lbl">Outstanding</div><div class="val amber">$89.9M</div><div class="delta ">60% utilized</div></div>
+    <div class="kpi"><div class="lbl">Total Capacity</div><div class="val green">$150.0M</div><div class="delta">Single project: $75M</div></div>
+    <div class="kpi"><div class="lbl">Outstanding</div><div class="val amber">$89.9M</div><div class="delta">60% utilized</div></div>
     <div class="kpi"><div class="lbl">Available</div><div class="val green">$60.1M</div><div class="delta up">Ready to bid</div></div>
   </div>
   <div class="card">
@@ -233,33 +329,36 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
     <div class="bonding-bar"><div class="bonding-fill" style="width:60%;">60%</div></div>
     <p>Liquidity held against the 2.5% reserve requirement: <strong style="color:#0b6e54;">$2.25M</strong> · Surplus over reserve: <strong style="color:#0b6e54;">$1.12M</strong>.</p>
   </div>
-  <div class="callout good">
-    <strong>Headroom:</strong> With $60.1M available and a $75M single-project cap, LV can underwrite additional mid-size awards without renegotiating the line. Reserve coverage carries a $1.12M surplus.
+  <div class="callout warn">
+    <strong>Pending data feed:</strong> These figures are placeholders. Once the surety feed is connected, this tab will reflect actual aggregate capacity, outstanding bonded backlog, and single-project headroom against the live book.
   </div>
 </section>
 
-<section class="slide" id="slide-3">
+<section class="slide" id="slide-5">
   <div class="slide-cover">
-    <div class="slide-label">04 · Operational Metrics</div>
+    <div class="slide-label">06 · Operational Metrics</div>
     <h1 class="title">Operational health</h1>
-    <p class="lede">Safety, change orders, revenue pacing, and schedule variance across the active portfolio. The platform is clean on safety and subcontractor risk, with revenue running slightly ahead of plan.</p>
+    <p class="lede">Safety, change orders, revenue pacing, and schedule across the active portfolio. Revenue-to-date is live from the financials; safety, change-order and schedule metrics await an operational data feed.</p>
+  </div>
+  <div class="placeholder-ribbon">
+    <strong>PARTIAL DATA:</strong> Revenue-to-Date is sourced from the 05.2026 financials. Safety, change orders, schedule variance and subcontractor metrics are illustrative placeholders pending an operational/PM data feed.
   </div>
   <div class="grid3">
-    <div class="card kpi"><div class="lbl">Safety — OSHA Recordables (YTD)</div><div class="val green">0</div><div class="delta ">Trailing 12-month TRIR: 0.00</div></div>
-    <div class="card kpi"><div class="lbl">Open Change Orders</div><div class="val amber">23</div><div class="delta ">$1.84M · avg age 18 days</div></div>
-    <div class="card kpi"><div class="lbl">Revenue-to-Date (FY26)</div><div class="val green">$6.4M</div><div class="delta up">On plan (+2.1%)</div></div>
-    <div class="card kpi"><div class="lbl">Schedule Variance (Portfolio Avg)</div><div class="val green">+2 days</div><div class="delta ">2 behind · 7 on/ahead</div></div>
-    <div class="card kpi"><div class="lbl">Subcontractor Defaults</div><div class="val green">0</div><div class="delta ">Last 12 months</div></div>
-    <div class="card kpi"><div class="lbl">Upcoming Closeouts (90d)</div><div class="val">1</div><div class="delta ">Crenshaw — Nov 2026</div></div>
+    <div class="card kpi"><div class="lbl">Revenue-to-Date (FY26)</div><div class="val green">$15.26M</div><div class="delta up">11% gross margin · live data</div></div>
+    <div class="card kpi"><div class="lbl">Job-to-Date Revenue</div><div class="val green">$24.87M</div><div class="delta">Life-of-project · live data</div></div>
+    <div class="card kpi"><div class="lbl">Net Change Orders (book)</div><div class="val">$0.36M</div><div class="delta">Current contract vs. original · live data</div></div>
+    <div class="card kpi"><div class="lbl">Safety — OSHA Recordables (YTD)</div><div class="val amber">—</div><div class="delta">Placeholder · awaiting feed</div></div>
+    <div class="card kpi"><div class="lbl">Open Change Orders (count)</div><div class="val amber">—</div><div class="delta">Placeholder · awaiting feed</div></div>
+    <div class="card kpi"><div class="lbl">Schedule Variance</div><div class="val amber">—</div><div class="delta">Placeholder · awaiting feed</div></div>
   </div>
-  <div class="callout">
-    <strong>Methodology:</strong> Metrics are illustrative placeholders pending live integration. Safety figures follow OSHA recordable definitions; schedule variance is the GMP-weighted portfolio average against baseline.
+  <div class="callout warn">
+    <strong>Methodology:</strong> Revenue and change-order figures are live from the consolidated financials. Safety, change-order counts, and schedule variance are placeholders pending integration with the project-management and safety systems.
   </div>
 </section>
 
 </div></main>
 <div class="deck-controls">
-  <div class="crumb"><span class="ix" id="crumbIx">01 / 04</span><span class="name" id="crumbName">Overview</span></div>
+  <div class="crumb"><span class="ix" id="crumbIx">01 / 06</span><span class="name" id="crumbName">Overview</span></div>
   <div class="kbd-hint">Use <kbd>←</kbd> <kbd>→</kbd> arrows to advance</div>
   <div class="arrows">
     <button class="arrow-btn" id="prevBtn" onclick="goPrev()" disabled><span class="arr">←</span> Previous</button>
@@ -270,7 +369,7 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 <script>
 const slides = document.querySelectorAll('.slide');
 const navBtns = document.querySelectorAll('.deck-nav button');
-const slideNames = ["Overview", "Active Projects", "Bonding Capacity", "Operational Metrics"];
+const slideNames = ["Overview", "Active Projects", "Financial Results", "Staffing", "Bonding Capacity", "Operational Metrics"];
 let cur = 0;
 function goSlide(i) {
   if (i < 0 || i >= slides.length) return;
