@@ -39,7 +39,7 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 .topbar .meta .now-showing .name { color:var(--ghost-warm); opacity:1; margin-left:6px; }
 .deck-nav { background:#FFFFFF; border-bottom:1px solid rgba(11,24,51,0.08); padding:0; position:sticky; top:0; z-index:40; box-shadow:0 2px 6px rgba(0,0,0,0.04); }
 .deck-nav-inner { max-width:1280px; margin:0 auto; padding:0 1.5rem; display:flex; gap:0; overflow-x:auto; }
-.deck-nav button { background:none; border:none; cursor:pointer; padding:13px 10px; font-family:inherit; font-size:0.7rem; font-weight:600; color:var(--gray-dk); text-transform:uppercase; letter-spacing:0.09em; white-space:nowrap; border-bottom:3px solid transparent; transition:all 0.15s ease; display:flex; align-items:center; gap:7px; }
+.deck-nav button { background:none; border:none; cursor:pointer; padding:13px 9px; font-family:inherit; font-size:0.7rem; font-weight:600; color:var(--gray-dk); text-transform:uppercase; letter-spacing:0.09em; white-space:nowrap; border-bottom:3px solid transparent; transition:all 0.15s ease; display:flex; align-items:center; gap:7px; }
 .deck-nav button .ix { color:var(--rust); font-weight:700; opacity:0.6; font-size:0.66rem; }
 .deck-nav button:hover { color:var(--rust); }
 .deck-nav button:hover .ix { opacity:1; }
@@ -104,6 +104,8 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 .tbl tr:hover td { background:rgba(196,88,26,0.04); }
 .tbl tr.total-row td { background:rgba(11,24,51,0.04); font-weight:700; color:var(--denim); border-top:2px solid rgba(11,24,51,0.15); }
 .tbl tr.total-row:hover td { background:rgba(11,24,51,0.06); }
+.tbl.wrap td { white-space:normal; }
+.tbl.wrap td:first-child { white-space:nowrap; }
 .tbl .pos { color:#0b6e54; }
 .tbl .neg { color:#a13b3b; }
 .tbl .muted { color:var(--gray); }
@@ -117,6 +119,7 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 .status-chip.active { background:rgba(16,185,129,0.12); color:#0b6e54; }
 .status-chip.wrap-up { background:rgba(245,158,11,0.14); color:#92670a; }
 .status-chip.pending { background:rgba(94,123,155,0.14); color:#3f5572; }
+.status-chip.risk { background:rgba(239,68,68,0.13); color:#b3261e; }
 .bonding-bar { background:rgba(11,24,51,0.06); border-radius:10px; overflow:hidden; height:30px; position:relative; margin:0.75rem 0; }
 .bonding-fill { height:100%; background:linear-gradient(90deg, var(--success), var(--warning)); display:flex; align-items:center; padding-left:14px; font-size:0.8rem; font-weight:700; color:#FFFFFF; }
 .placeholder-ribbon { background:rgba(245,158,11,0.1); border-left:3px solid var(--warning); padding:0.85rem 1.1rem; margin-bottom:1.5rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--gray-dk); line-height:1.6; }
@@ -160,8 +163,8 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
     <div class="meta">
       <div class="now-showing">Now showing<span class="name" id="topbarName">Overview</span></div>
       <div class="progress">
-        <div class="bar"><div class="fill" id="progressFill" style="width:12.5%;"></div></div>
-        <div class="counter"><span class="cur" id="counterCur">01</span> / <span id="counterTot">08</span></div>
+        <div class="bar"><div class="fill" id="progressFill" style="width:11.1%;"></div></div>
+        <div class="counter"><span class="cur" id="counterCur">01</span> / <span id="counterTot">09</span></div>
       </div>
       <div class="now-showing" style="opacity:0.6;">Financials <span style="color:var(--ghost-warm);opacity:1;">Jun 2026</span> · Buyout <span style="color:var(--ghost-warm);opacity:1;">Jul 2026</span></div>
     </div>
@@ -176,6 +179,7 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 <button data-slide="5"><span class="ix">06</span>Staffing</button>
 <button data-slide="6"><span class="ix">07</span>Operational Metrics</button>
 <button data-slide="7"><span class="ix">08</span>6/30 Financials</button>
+<button data-slide="8"><span class="ix">09</span>Board Q&amp;A</button>
 </div></nav>
 <main class="stage"><div class="stage-inner">
 
@@ -483,9 +487,227 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
   </div>
 </section>
 
+<section class="slide" id="slide-8">
+  <div class="slide-cover">
+    <div class="slide-label">09 · Board Q&amp;A · Appendix · August 2026</div>
+    <h1 class="title">Board questions — <em>answered from the current data</em></h1>
+    <p class="lede">This appendix responds to the questions raised ahead of the August board call: what in the HVN relationship is actually signed, funded and on site; cash today and over the next thirteen weeks; budget versus actuals; WIP and retention; the Krueger wage-compliance issue; a tracker for deals where Six Peak holds a stake or promote; and the job-level dashboards, risk register and warranty reporting that the pack does not yet carry.</p>
+  </div>
+
+  <div class="source-ribbon">
+    <strong>SOURCES:</strong> Cash, 13-week look-forward, budget-vs-actual and retention are pulled directly from the 06.2026 Base Case model (Model, Variance, Original Budget and Retention tabs — actuals through the June Yardi close). Job status, buyout and safety figures cross-reference the Active Projects, Project Buyout and Operational Metrics tabs of this deck. The wage-compliance answer summarizes the July 14–17, 2026 correspondence with Justin Krueger and outside counsel.
+  </div>
+
+  <div class="section-band"><span class="t">Q1 · HVN — what is signed, funded and on site</span><span class="ln"></span><span class="note">A definitive status ladder</span></div>
+  <p class="lvl">Short answer: <strong>two HVN jobs are contracted, financed and building today — Califa and Whipple.</strong> Everything else in the HVN relationship is either a bid LV has issued or a project awaiting its own financing close. The six HVN projects on the Pipeline tab are <strong>pursuits, not awards</strong>: the &ldquo;LIHTC Award&rdquo; label there refers to HVN&rsquo;s CTCAC 4% tax-credit award on the deal, not an LV contract award. The table below is the definitive list the pack was missing — every job in the book against the same five-stage ladder.</p>
+  <div class="tbl scroll"><table>
+    <thead><tr><th>Job</th><th>Contract Signed</th><th>Financing Closed / Funded</th><th>On Site</th><th style="text-align:center;">% Complete</th><th>Billed to Date</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Crenshaw</td><td class="pos">Yes</td><td class="pos">Yes</td><td class="pos">Yes</td><td style="text-align:center;">73%</td><td>$10.54M</td><td style="text-align:right;"><span class="status-chip wrap-up">Wrap-Up</span></td></tr>
+      <tr><td>Ramsgate</td><td class="pos">Yes</td><td class="pos">Yes</td><td class="pos">Yes</td><td style="text-align:center;">46%</td><td>$10.51M</td><td style="text-align:right;"><span class="status-chip active">Building</span></td></tr>
+      <tr><td>Califa <span class="badge steel">HVN</span></td><td class="pos">Yes</td><td class="pos">Yes · bonded</td><td class="pos">Yes</td><td style="text-align:center;">35%</td><td>$4.79M</td><td style="text-align:right;"><span class="status-chip active">Building</span></td></tr>
+      <tr><td>Whipple <span class="badge steel">HVN</span></td><td class="pos">Yes</td><td class="pos">Yes · bonded</td><td class="pos">Yes</td><td style="text-align:center;">23%</td><td>$3.79M</td><td style="text-align:right;"><span class="status-chip active">Building</span></td></tr>
+      <tr><td>Nelrose</td><td class="pos">Yes</td><td class="pos">Yes</td><td class="pos">Yes</td><td style="text-align:center;">33%</td><td>$1.42M</td><td style="text-align:right;"><span class="status-chip active">Building</span></td></tr>
+      <tr><td>Francis</td><td class="pos">Yes · $42.79M GMP</td><td class="neg">No — no scheduled closing as of Aug 1</td><td class="neg">No</td><td style="text-align:center;">0%</td><td class="muted">—</td><td style="text-align:right;"><span class="status-chip risk">Awaiting Close</span></td></tr>
+      <tr><td>Lexington</td><td class="pos">Yes · $12.99M GMP</td><td>Pending · Aug 2026 modeled</td><td class="neg">No</td><td style="text-align:center;">0%</td><td class="muted">—</td><td style="text-align:right;"><span class="status-chip wrap-up">Pre-Construction</span></td></tr>
+      <tr><td>Riverton</td><td class="pos">Yes · $14.34M GMP</td><td>Pending · Aug 2026 modeled</td><td class="neg">No</td><td style="text-align:center;">0%</td><td class="muted">—</td><td style="text-align:right;"><span class="status-chip wrap-up">Pre-Construction</span></td></tr>
+      <tr><td>Acama</td><td class="pos">Yes · $21.26M GMP</td><td>Pending · Sep 2026 modeled</td><td class="neg">No</td><td style="text-align:center;">0%</td><td class="muted">—</td><td style="text-align:right;"><span class="status-chip wrap-up">Pre-Construction</span></td></tr>
+      <tr><td>Klump</td><td class="muted">Pending capitalization</td><td class="neg">No — raising ~$1.5M pref (w/ Scott)</td><td class="neg">No</td><td style="text-align:center;">0%</td><td class="muted">—</td><td style="text-align:right;"><span class="status-chip pending">Pending Capital</span></td></tr>
+      <tr><td>Scott</td><td class="muted">Pending capitalization</td><td class="neg">No — raising ~$1.5M pref (w/ Klump)</td><td class="neg">No</td><td style="text-align:center;">0%</td><td class="muted">—</td><td style="text-align:right;"><span class="status-chip pending">Pending Capital</span></td></tr>
+      <tr class="total-row"><td>On site &amp; funded</td><td>5 jobs</td><td>$74.2M current contract value</td><td>—</td><td style="text-align:center;">—</td><td>$31.05M billed</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Status ladder built from the Active Projects tab and the Base Case model Projects sheet (contract value, start month, bonding). Califa and Whipple are the HVN third-party GC deals under construction, both bonded through the ICON National / Travelers program. The six HVN projects on the Pipeline tab (Dickens, Moorpark, Riverton&nbsp;5642, Federal, Troost, Farralone — $135.4M of ROM value across 740 units) carry <strong>no signed LV contract and no LV award</strong>; four of them hold CTCAC 4% LIHTC awards granted to HVN as developer, against which LV has issued GC bids. This column will be carried forward on every pack so the signed / funded / on-site distinction is explicit rather than inferred.</p>
+
+  <div class="section-band"><span class="t">Q1a · Contingencies on the near-term GC starts</span><span class="ln"></span><span class="note">Beyond Francis · what gates each start</span></div>
+  <div class="tbl scroll wrap"><table>
+    <thead><tr><th>Start</th><th>Modeled Start</th><th>Gating Contingency</th><th>Visibility We Have</th><th>Rating</th></tr></thead>
+    <tbody>
+      <tr><td>Francis</td><td>Aug 2026</td><td style="text-align:left;">LIHTC / lender closing. No scheduled closing date as of Aug 1; delay now 5+ months against the original Q1 2026 plan.</td><td style="text-align:left;">Closing tracked directly with the lender and syndicator; carry cost of ~$25K/month is booked and visible monthly. Each month of slip = ($163K) FY26 NI and ($155K) FY26 cash.</td><td style="text-align:right;"><span class="status-chip risk">Red</span></td></tr>
+      <tr><td>Riverton</td><td>Aug 2026</td><td style="text-align:left;">Closing, plus the largest open cost exposure in the book — 48.3% bought out with $7.41M still to buy.</td><td style="text-align:left;">Monthly Buyout Report in the richer PM format (invoiced, cost-to-complete, projected final cost). Buyout is the item to watch, not the close.</td><td style="text-align:right;"><span class="status-chip risk">Red</span></td></tr>
+      <tr><td>Lexington</td><td>Aug 2026</td><td style="text-align:left;">Closing. Pre-construction buyout is running ahead of ground-break.</td><td style="text-align:left;">Pre-con buyout log; GMP trued to $12.99M this cycle. No adverse signals as of the June close.</td><td style="text-align:right;"><span class="status-chip wrap-up">Amber</span></td></tr>
+      <tr><td>Acama</td><td>Sep 2026</td><td style="text-align:left;">Closing plus bonding — Acama sits in the Tier 2 bonding band (3.25% rate vs 0.72–0.74% on the Tier 1 jobs), so bond cost is a live GMP input.</td><td style="text-align:left;">Pre-con buyout running; bonding tier and rate carried explicitly in the model. Surety capacity confirmed through the ICON/Travelers program.</td><td style="text-align:right;"><span class="status-chip wrap-up">Amber</span></td></tr>
+      <tr><td>Klump &amp; Scott</td><td>Oct 2026</td><td style="text-align:left;">Equity. Both are ED1 projects nearing RTI and require ~$1.5M of combined preferred equity to fully capitalize; that raise is live.</td><td style="text-align:left;">Modeled only in the Klump/Scott plans at a 15% cost-of-capital placeholder repaid from project cash flow. Not bonded, so no surety dependency.</td><td style="text-align:right;"><span class="status-chip pending">Not in Base</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">The honest read: <strong>every near-term start is gated on a third-party financing close, not on LV readiness.</strong> Buyout, staffing and pre-construction are ahead of the closings on all four. The exposure that is genuinely ours to manage is Riverton&rsquo;s $7.41M of unbought scope, which is priced against a GMP that was set before the current market.</p>
+
+  <div class="section-band"><span class="t">Q2 · Cash available and the 13-week look-forward</span><span class="ln"></span><span class="note">Aug 3 – Nov 1, 2026 · Base Case</span></div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="lbl">Cash at 6/30 · Actual</div><div class="val denim">$471,507</div><div class="delta">LV $306,139 · SP $165,368</div></div>
+    <div class="kpi"><div class="lbl">Opening 13-Week Cash · 7/31</div><div class="val">$912,018</div><div class="delta">Projected · July close not yet booked</div></div>
+    <div class="kpi"><div class="lbl">13-Week Low Point</div><div class="val amber">$813,394</div><div class="delta">End of August · before Sep collections</div></div>
+    <div class="kpi"><div class="lbl">Closing 11/1 · Net Change</div><div class="val">$893,838</div><div class="delta">Net ($18,180) across the 13 weeks</div></div>
+  </div>
+  <div class="tbl scroll"><table>
+    <thead><tr><th>Cash roll-forward</th><th>Aug 2026</th><th>Sep 2026</th><th>Oct 2026</th><th>13-Week Total</th></tr></thead>
+    <tbody>
+      <tr><td>Opening cash</td><td>$912,018</td><td>$813,394</td><td>$1,001,349</td><td>$912,018</td></tr>
+      <tr><td>LV net cash flow (GC net income)</td><td class="pos">$296,395</td><td class="neg">($63,323)</td><td class="pos">$314,445</td><td class="pos">$547,517</td></tr>
+      <tr><td>Gross profit collection lag</td><td class="neg">($327,430)</td><td class="pos">$320,451</td><td class="neg">($353,768)</td><td class="neg">($360,747)</td></tr>
+      <tr><td>Retention withheld</td><td class="neg">($42,135)</td><td class="neg">($46,636)</td><td class="neg">($45,651)</td><td class="neg">($134,422)</td></tr>
+      <tr><td>Retention collected</td><td class="muted">$0</td><td class="muted">$0</td><td class="muted">$0</td><td class="muted">$0</td></tr>
+      <tr><td>Six Peak net cash flow</td><td class="neg">($25,454)</td><td class="neg">($22,537)</td><td class="neg">($22,537)</td><td class="neg">($70,528)</td></tr>
+      <tr class="total-row"><td>Closing cash</td><td>$813,394</td><td>$1,001,349</td><td>$893,838</td><td>($18,180) net</td></tr>
+      <tr><td>&nbsp;&nbsp;of which LV (GC)</td><td>$705,531</td><td>$916,023</td><td>$831,049</td><td>—</td></tr>
+      <tr><td>&nbsp;&nbsp;of which Six Peak</td><td>$107,863</td><td>$85,326</td><td>$62,789</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Thirteen weeks from Monday August 3 runs to November 1, so the window is the August, September and October model months. Figures are the Base Case cash roll-forward (LV ending cash + Six Peak ending cash), which begins at the audited June 30 balance of $471,507 and is the same roll-forward behind the FY26 figures on the board deck. The July column is a projection — the July Yardi close is not yet booked, so the $912,018 opening balance will be trued on the next pack. Note that the model&rsquo;s summary &ldquo;Total Ending Cash&rdquo; line omits the LV net-cash-flow and retention rows; the entity roll-forward above is the arithmetic that ties, and it puts FY26 year-end at ~$1.39M against the $1.26M quoted from the summary line elsewhere in the pack. That formula is being corrected in the next model build.</p>
+
+  <div class="section-band"><span class="t">Q2a · What has to &ldquo;bump&rdquo; to require a cash injection</span><span class="ln"></span><span class="note">Excluding capital investment into deals</span></div>
+  <div class="tbl scroll wrap"><table>
+    <thead><tr><th>Trigger</th><th>Size</th><th>What it does to cash</th><th style="text-align:center;">Watch</th></tr></thead>
+    <tbody>
+      <tr><td>Six Peak entity runs dry</td><td>SP cash $107.9K (Aug) &rarr; $30.9K (Nov) &rarr; ($3.8K) (Dec)</td><td style="text-align:left;">This is the binding constraint, and it bites on the Base Case with nothing going wrong. Six Peak burns ~$23–35K/month net after the LV allocation and crosses zero in December 2026. LV (GC) cash is comfortable throughout.</td><td style="text-align:center;"><span class="status-chip risk">Dec 2026</span></td></tr>
+      <tr><td>Another month of Francis delay</td><td>($155K) cash · ($163K) NI per month</td><td style="text-align:left;">Straight reduction in FY26 ending cash and ~$1.1M of billing pushed out of the year. Two more months of slip roughly consumes the Six Peak balance on its own.</td><td style="text-align:center;"><span class="status-chip risk">Live</span></td></tr>
+      <tr><td>A pay application slips one month</td><td>±$320–354K</td><td style="text-align:left;">The gross-profit collection lag swings by roughly a third of a million between months. One late owner draw is larger than the entire 13-week net change.</td><td style="text-align:center;"><span class="status-chip wrap-up">Monthly</span></td></tr>
+      <tr><td>Crenshaw retention release slips</td><td>$77,191 · assumed collected Nov 2026</td><td style="text-align:left;">The only retention release inside 2026. If closeout runs past November, the November and December balances are that much thinner at exactly the point Six Peak is at its lowest.</td><td style="text-align:center;"><span class="status-chip wrap-up">Nov 2026</span></td></tr>
+      <tr><td>The SP-to-LV payroll allocation is not booked</td><td>~$104K/month</td><td style="text-align:left;">The forward Six Peak burn of ~$25K/month assumes ~$104K/month of Six Peak payroll is allocated into LV job cost (it began in the June actuals). If that reverses, Six Peak burn returns to roughly $130K/month and the entity is out of cash by September rather than December.</td><td style="text-align:center;"><span class="status-chip risk">Assumption</span></td></tr>
+      <tr><td>Riverton buyout comes in over budget</td><td>$7.41M open to buy</td><td style="text-align:left;">Every point of adverse buyout on the unbought scope is a direct hit to job gross profit and therefore to LV cash as the job bills.</td><td style="text-align:center;"><span class="status-chip wrap-up">Through 2026</span></td></tr>
+      <tr><td>Tax distributions</td><td>Modeled at $0 for 2026</td><td style="text-align:left;">The roll-forward assumes no 30% tax distribution is made in 2026. Any distribution comes straight off the balances above.</td><td style="text-align:center;"><span class="status-chip pending">Policy call</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout warn">
+    <strong>The one to act on:</strong> LV as a general contractor is not the cash problem — it ends the 13 weeks at $831K and grows from there. <strong>Six Peak at the entity level is.</strong> On the Base Case it crosses zero in December 2026, and two of the triggers above (further Francis delay, reversal of the payroll allocation) pull that forward into the autumn. The levers are the Uplifters fee program, the Klump/Scott capitalization, or a modest working-capital line at Six Peak — none of which requires capital into a deal.
+  </div>
+
+  <div class="section-band"><span class="t">Q2b · WIP and retention</span><span class="ln"></span><span class="note">Contract-to-complete and cash held back</span></div>
+  <div class="grid2" style="grid-template-columns:1.25fr 1fr; align-items:start;">
+    <div class="tbl scroll"><table>
+      <thead><tr><th>Job</th><th>Retention Held Today</th><th>At Completion</th><th style="text-align:center;">Release</th></tr></thead>
+      <tbody>
+        <tr><td>Crenshaw</td><td>$52,966</td><td>$77,191</td><td style="text-align:center;">Nov 2026</td></tr>
+        <tr><td>Califa</td><td>$28,619</td><td>$99,978</td><td style="text-align:center;">Jun 2027</td></tr>
+        <tr><td>Whipple</td><td>$28,203</td><td>$116,250</td><td style="text-align:center;">Jun 2027</td></tr>
+        <tr><td>Ramsgate</td><td>$56,550</td><td>$137,453</td><td style="text-align:center;">Jul 2027</td></tr>
+        <tr><td>Nelrose</td><td>$10,538</td><td>$30,102</td><td style="text-align:center;">Oct 2027</td></tr>
+        <tr class="total-row"><td>Jobs on site</td><td>$176,876</td><td>$460,974</td><td style="text-align:center;">—</td></tr>
+        <tr><td>Mobilizing jobs</td><td class="muted">—</td><td>$550,120</td><td style="text-align:center;">2028–29</td></tr>
+        <tr class="total-row"><td>In-place book</td><td>$176,876</td><td>$1,011,094</td><td style="text-align:center;">—</td></tr>
+      </tbody>
+    </table></div>
+    <div>
+      <div class="kpi" style="margin-bottom:1rem;"><div class="lbl">Retention Held at 6/30</div><div class="val">$176,876</div><div class="delta">5% withholding across five active jobs</div></div>
+      <div class="kpi" style="margin-bottom:1rem;"><div class="lbl">Retention at Full Book Completion</div><div class="val denim">$1.01M</div><div class="delta">Only $77K releases inside 2026</div></div>
+      <div class="kpi"><div class="lbl">WIP · Contract vs Billed</div><div class="val green">$43.16M</div><div class="delta">Backlog on $74.21M contract · $31.05M billed (42%)</div></div>
+    </div>
+  </div>
+  <p class="tnote">Retention from the Base Case Retention tab (5% withholding, release at each job&rsquo;s completion month). WIP by job — contract value, billed to date, backlog and percent complete — is on the <strong>Active Projects</strong> tab; margin by job on a YTD and job-to-date basis is on <strong>Financial Results</strong>; committed-versus-budget cost certainty is on <strong>Project Buyout</strong>. What the pack does not yet carry in one place is a conventional WIP schedule showing <strong>earned revenue versus billings — over- and under-billing by job</strong>. That is the missing piece and it is the first addition to the next pack; the KPI workbook already holds every input it needs.</p>
+
+  <div class="section-band"><span class="t">Q3 · Budget versus actuals</span><span class="ln"></span><span class="note">Original Budget anchor · H1 2026</span></div>
+  <p class="lvl">Yes — there is a budget, and the variance is computed. The Base Case model carries an <strong>&ldquo;Original Budget&rdquo; tab</strong> described in the file as a <em>frozen v26 forecast snapshot — anchor for variance reporting, do not edit</em>, and a <strong>Variance tab</strong> that computes budget-versus-actual line by line for every month with actuals booked. It has not been surfaced in the board pack; it is now.</p>
+  <div class="tbl scroll"><table>
+    <thead><tr><th>Line</th><th>H1 Budget</th><th>H1 Actual</th><th>Variance</th><th>Q2 Budget</th><th>Q2 Actual</th><th>Variance</th></tr></thead>
+    <tbody>
+      <tr><td>Gross Profit</td><td>$2,168,589</td><td>$2,316,187</td><td class="pos">+$147,598</td><td>$1,406,655</td><td>$1,554,246</td><td class="pos">+$147,591</td></tr>
+      <tr><td>GC Costs</td><td>($2,217,264)</td><td>($1,707,648)</td><td class="pos">+$509,615</td><td>($1,349,246)</td><td>($834,800)</td><td class="pos">+$514,445</td></tr>
+      <tr class="total-row"><td>GC Net Income</td><td>($48,675)</td><td class="pos">$608,539</td><td class="pos">+$657,214</td><td>$57,409</td><td class="pos">$719,446</td><td class="pos">+$662,037</td></tr>
+      <tr><td>Six Peak Revenue</td><td>$233,187</td><td>$503,687</td><td class="pos">+$270,500</td><td>$130,844</td><td>$401,344</td><td class="pos">+$270,500</td></tr>
+      <tr><td>Six Peak Expenses</td><td>($862,730)</td><td>($1,293,871)</td><td class="neg">($431,140)</td><td>($234,270)</td><td>($647,517)</td><td class="neg">($413,246)</td></tr>
+      <tr><td>Interest, tax &amp; amort. true-up</td><td class="muted">—</td><td>$53,642</td><td class="pos">+$53,642</td><td class="muted">—</td><td>$53,642</td><td class="pos">+$53,642</td></tr>
+      <tr class="total-row"><td>Six Peak Net Income</td><td>($629,543)</td><td class="neg">($736,541)</td><td class="neg">($106,998)</td><td>($103,426)</td><td class="neg">($192,531)</td><td class="neg">($89,105)</td></tr>
+      <tr class="total-row"><td>Consolidated Net Income</td><td>($678,218)</td><td class="neg">($128,002)</td><td class="pos">+$550,216</td><td>($46,017)</td><td class="pos">$526,915</td><td class="pos">+$572,932</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Two caveats worth stating plainly. <strong>First, the budget anchor was seeded with booked actuals for January through March</strong>, so those months show a zero variance by construction — the only genuine budget-versus-actual comparison in the file today is April through June, shown in the Q2 columns. <strong>Second, the two largest variances are structural, not performance.</strong> The favorable $510K on GC costs is driven mostly by ~$333K of self-performed-trade payroll reclassified out of overhead into job cost (April $251K, May $82K) and by the Six Peak-to-LV payroll allocation the budget assumed from April but which was only booked from June. The unfavorable $431K on Six Peak expenses is the mirror image of that same allocation. They largely offset: consolidated net income came in $550K ahead of the frozen budget, which is the number that matters, and it is driven by real gross-profit outperformance of $148K plus $299K of non-cash Six Peak revenue. From the September pack, budget-versus-actual will be a standing exhibit with the budget re-anchored so every month carries a genuine comparison, and the forecast in the appendix will be shown against it rather than standing alone.</p>
+
+  <div class="section-band"><span class="t">Q4 · Justin Krueger — wage compliance and certified payroll</span><span class="ln"></span><span class="note">Raised Jul 14 · resolved Jul 17</span></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>What he raised</h3>
+      <p>On July 14 Justin asked whether LV runs weekly certified payroll on all projects, describing it as no longer optional given union pressure on general contractors in California. The underlying exposure is <strong>California Labor Code 218.8 / 218.9</strong>: on private work, the general contractor is liable for a subcontractor&rsquo;s unpaid wages and fringe benefits. Unions have been approaching non-union subcontractors&rsquo; workers, finding compensation defects and suing the sub and the GC. None of LV&rsquo;s jobs are prevailing-wage, so certified payroll in the formal sense does not apply — but the wage liability does.</p>
+    </div>
+    <div class="card">
+      <h3>How we addressed it</h3>
+      <p>We engaged <strong>Greg Korbel of Miller, Morton, Caillat &amp; Nevis</strong> and met on July 17. His read: the GC cannot escape liability for a sub&rsquo;s unpaid wages, but <em>penalties and liquidated damages</em> — which exceed the wages themselves — are avoidable if the contractor monitors sub payroll, acts on any failure, and obtains a sworn affidavit before final payment. LV&rsquo;s subcontracts already carry the right to demand this documentation and to withhold payment until it is produced.</p>
+    </div>
+  </div>
+  <div class="callout good">
+    <strong>The three procedures now being implemented:</strong> (1) every subcontractor submits pay stubs for all employees on the job each pay period; (2) those stubs must carry everything Labor Code 226(a) requires — gross wages, hours, rates, deductions, net wages, pay period, employee and employer identification; (3) every subcontractor signs an affidavit of payment of wages and fringe benefits before final payment. Grady is implementing this across the book, with case-by-case deviation possible depending on the subcontractor and the client&rsquo;s needs. Justin confirmed alignment on July 17 and added that records should be retained for years after project close, and that any rumbling of non-payment must be acted on immediately rather than ignored. <strong>Status: agreed and in rollout — no open disagreement with Justin on this issue.</strong>
+  </div>
+  <p class="tnote">Legal cost for the review was billed to 2859 Francis. This item is carried as a portfolio-level entry on the risk register below, rated amber until the paystub-and-affidavit procedure is confirmed live across every active subcontract rather than newly executed ones.</p>
+
+  <div class="section-band"><span class="t">Q5 · Deals where Six Peak holds a stake, fee or promote</span><span class="ln"></span><span class="note">Standing tracker · Base Case</span></div>
+  <div class="tbl scroll wrap"><table>
+    <thead><tr><th>Deal</th><th>Six Peak Position</th><th>FY26 to Six Peak</th><th>Life of Deal</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Ramsgate</td><td style="text-align:left;">GC + Developer · development fee</td><td>$286,875</td><td>$602,437</td><td style="text-align:left;">$430,312 construction-period fee plus three occupancy tranches of $57,375 at 20% / 50% / 90% lease-up</td></tr>
+      <tr><td>Crenshaw</td><td style="text-align:left;">GC + Developer · development fee</td><td>$93,750</td><td>$93,750</td><td style="text-align:left;">Fully recognized in FY26 as the job completes</td></tr>
+      <tr><td>12th &amp; Fir</td><td style="text-align:left;">Developer fee</td><td>$85,500</td><td>$285,000</td><td style="text-align:left;">Runs beyond FY26; not an LV construction job</td></tr>
+      <tr><td>APA LLP</td><td style="text-align:left;">50% share of entity net income</td><td>$59,783</td><td>$158,270</td><td style="text-align:left;">Equity position, not a fee — carried on its own projection tab</td></tr>
+      <tr><td>Edgemont</td><td style="text-align:left;">Management fee</td><td>$6,667</td><td>$6,667</td><td style="text-align:left;">$833/month, runs off in 2026</td></tr>
+      <tr><td>Francis</td><td style="text-align:left;">GC + Developer · LIHTC share</td><td class="muted">$0</td><td>$2,670,460</td><td style="text-align:left;">Steyn guaranty attached; distributions begin Sep 2029 (month 42)</td></tr>
+      <tr><td>Reseda</td><td style="text-align:left;">GC + Developer · LIHTC share</td><td class="muted">$0</td><td>$3,389,891</td><td style="text-align:left;">$45.3M project, not yet funded · Apr 2027 modeled start</td></tr>
+      <tr><td>3rd St</td><td style="text-align:left;">GC + Developer · LIHTC share</td><td class="muted">$0</td><td>$1,828,876</td><td style="text-align:left;">$41.4M project · 2028 start in the model</td></tr>
+      <tr><td>Klump &amp; Scott</td><td style="text-align:left;">GC + Developer · accounting, developer and guarantee fees</td><td class="muted">Not in Base</td><td class="muted">K/S plans only</td><td style="text-align:left;">Fee streams switch on only when the ~$1.5M preferred equity closes</td></tr>
+      <tr><td>Uplifters</td><td style="text-align:left;">Development-fee program · 10% SP overhead + tiered bonus</td><td class="muted">Not in Base</td><td class="muted">$4.10M in Uplifters plans</td><td style="text-align:left;">60-property program led by Schuyler Dietz · no capital required</td></tr>
+      <tr><td><strong>Deharo</strong></td><td style="text-align:left;" class="muted">Placeholder — under construction</td><td class="muted">To confirm</td><td class="muted">To confirm</td><td style="text-align:left;"><strong>Not currently carried in the model or in this pack.</strong> The project is under construction; the Six Peak position, fee basis and YTD figures need to be confirmed and added — flagged for discussion on the call.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Sourced from the Base Case model — the Projects tab flags each job as &ldquo;GC + Developer&rdquo; or &ldquo;3rd Party GC&rdquo;, and the Six Peak revenue block carries each fee line by month. Califa, Whipple, Nelrose, Lexington, Riverton and Acama are third-party GC contracts with no Six Peak development position. <strong>Important framing on the LIHTC lines:</strong> under the current rate and tax-credit environment the Steyn cost of capital absorbs most of the early LIHTC distributions, so through FY2033 the net contribution of the LIHTC strategy is close to zero — the meaningful development-fee income lands after 2033. The life-of-deal figures above are gross Six Peak share, before that Steyn absorption. This table becomes a standing exhibit and will carry actual-versus-projected columns once Deharo and any other omitted positions are confirmed.</p>
+
+  <div class="section-band"><span class="t">Q6 · Project-level dashboards</span><span class="ln"></span><span class="note">What happened and what comes back</span></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>What was lost</h3>
+      <p>The earlier draft pack carried two job-level exhibits that this portal does not: a <strong>WIP report with job-level KPIs</strong> (contract value, change orders, CO ratio, % billed, % complete, YTD and JTD gross and net margin, % buyout, buyout savings and savings ratio by job) and a <strong>metrics dashboard</strong> of backlog/burn, book-to-bill, bid pipeline and hit rate, DSO, PM retention, client concentration and bonding capacity. They were dropped when the portal was rebuilt on live data — <strong>those exhibits were built with placeholder values</strong>, and the rebuild took the position that nothing goes in the pack unless it is sourced.</p>
+    </div>
+    <div class="card">
+      <h3>What comes back, and live</h3>
+      <p>The job-level WIP and KPI table returns in full: every column in that exhibit except change-order win rate is already computable from the KPI workbook and the monthly Buyout Reports. On the metrics dashboard, backlog/burn, book-to-bill, bid pipeline, hit rate, client concentration and bonding capacity are all derivable today. <strong>DSO, PM retention and change-order win rate are not</strong> — they need a receivables aging feed and a change-order log that does not exist yet. Those three will be shown as &ldquo;not yet instrumented&rdquo; rather than filled with an estimate.</p>
+    </div>
+  </div>
+
+  <div class="section-band"><span class="t">Q7 · Job and site risk register</span><span class="ln"></span><span class="note">First pass · traffic lights from current data</span></div>
+  <p class="lvl">Operational Metrics today carries one aggregate safety box. Below is the first pass at the job-level register, rated only where there is data behind the rating. It will be maintained monthly and expanded — schedule variance in particular needs a baseline-versus-current schedule feed that is not yet in the reporting pack.</p>
+  <div class="tbl scroll wrap"><table>
+    <thead><tr><th>Job</th><th style="text-align:center;">Safety</th><th style="text-align:center;">Cost / Buyout</th><th style="text-align:center;">Schedule</th><th style="text-align:center;">Financing</th><th style="text-align:center;">Margin</th><th>Driver of the worst rating</th></tr></thead>
+    <tbody>
+      <tr><td>Crenshaw</td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:left;">73% complete against a July 2026 job end — closeout and the $77K retention release are the open items</td></tr>
+      <tr><td>Ramsgate</td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:left;">91.3% bought out, but the buyout report is April-vintage — data currency, not cost concern</td></tr>
+      <tr><td>Califa</td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:left;">90.8% bought out, 5% YTD net margin, on schedule — no flags</td></tr>
+      <tr><td>Whipple</td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:left;">91.7% bought out, 8% job-to-date net margin — the strongest job in the book</td></tr>
+      <tr><td>Nelrose</td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip active">G</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:left;">(1%) YTD and (6%) job-to-date net margin on a $4.2M job; no current buyout report</td></tr>
+      <tr><td>Francis</td><td style="text-align:center;" class="muted">n/a</td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip risk">R</span></td><td style="text-align:center;"><span class="status-chip risk">R</span></td><td style="text-align:center;"><span class="status-chip risk">R</span></td><td style="text-align:left;">No scheduled closing as of Aug 1; 5+ months late; ~$213K of carry booked in H1 against $78K of revenue</td></tr>
+      <tr><td>Riverton</td><td style="text-align:center;" class="muted">n/a</td><td style="text-align:center;"><span class="status-chip risk">R</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;" class="muted">n/a</td><td style="text-align:left;">48.3% bought out with $7.41M still open to market pricing — the book&rsquo;s largest cost exposure</td></tr>
+      <tr><td>Lexington</td><td style="text-align:center;" class="muted">n/a</td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;" class="muted">n/a</td><td style="text-align:left;">Pre-construction buyout in progress; August start contingent on close</td></tr>
+      <tr><td>Acama</td><td style="text-align:center;" class="muted">n/a</td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;" class="muted">n/a</td><td style="text-align:left;">Tier 2 bonding at a 3.25% rate versus 0.72–0.74% elsewhere in the book — bond cost is a live GMP input</td></tr>
+      <tr class="total-row"><td>Portfolio · wage compliance</td><td style="text-align:center;"><span class="status-chip wrap-up">A</span></td><td style="text-align:center;" class="muted">—</td><td style="text-align:center;" class="muted">—</td><td style="text-align:center;" class="muted">—</td><td style="text-align:center;" class="muted">—</td><td style="text-align:left;">Labor Code 218.8/218.9 procedure agreed and in rollout; amber until confirmed live across every active subcontract</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Ratings: <strong>G</strong> = no action required; <strong>A</strong> = watch item with a named owner; <strong>R</strong> = escalated, on the board agenda. Safety ratings reflect the monthly third-party inspections by Safety Compliance Company at each active site — the latest (Ramsgate, June 16) covered 52 items with 39 satisfactory and zero unsatisfactory findings, so every active site rates green on safety; jobs not yet on site are not rated. Cost/buyout is rated from each job&rsquo;s Buyout Report; margin from the Financial Results tab; financing from the closing status above. Schedule is rated conservatively from percent-complete against modeled job end, because a proper baseline-versus-current schedule feed is not yet part of the monthly reporting — instrumenting that is the main gap in this register.</p>
+
+  <div class="section-band"><span class="t">Q8 · Warranty and rework</span><span class="ln"></span><span class="note">What is captured today</span></div>
+  <div class="grid2" style="grid-template-columns:1fr 1.1fr; align-items:start;">
+    <div class="tbl scroll"><table>
+      <thead><tr><th>Warranty &amp; job adjustments</th><th>Booked</th><th style="text-align:center;">% of Revenue</th></tr></thead>
+      <tbody>
+        <tr><td>January</td><td>$17,661</td><td style="text-align:center;">1.2%</td></tr>
+        <tr><td>February</td><td>$5,799</td><td style="text-align:center;">0.2%</td></tr>
+        <tr><td>March</td><td>$3,432</td><td style="text-align:center;">0.1%</td></tr>
+        <tr><td>April</td><td class="muted">$0</td><td style="text-align:center;" class="muted">—</td></tr>
+        <tr><td>May</td><td class="neg">$73,874</td><td style="text-align:center;">1.7%</td></tr>
+        <tr><td>June</td><td class="muted">$0</td><td style="text-align:center;" class="muted">—</td></tr>
+        <tr class="total-row"><td>H1 2026</td><td>$100,766</td><td style="text-align:center;">0.47%</td></tr>
+        <tr><td>Forward assumption</td><td>$5,000/mo</td><td style="text-align:center;">~0.08%</td></tr>
+      </tbody>
+    </table></div>
+    <div>
+      <p class="lvl">It is online today, but only as a single blended general-ledger account — <strong>5900-1040, Warranty and Other Job Adjustments</strong>. H1 2026 booked $100,766, or <strong>0.47% of the $21.51M of revenue</strong>, against a model assumption of $5,000/month. The May charge of $73,874 is the item that moved the month and is called out in the June 30 financials.</p>
+      <p class="lvl">What that account cannot tell you: which job the cost belongs to, whether it was warranty callback, rework of defective work, or an unrelated job adjustment, and whether it was recoverable from a subcontractor. <strong>A rate of 0.47% is well inside a normal range for a GC — but the number is not yet reliable enough to manage against,</strong> because a single account that mixes three cost types will not show a trend until it is split.</p>
+      <p class="lvl">The change: split 5900-1040 into job-coded warranty, rework and other-adjustment codes, add a callback log at closeout, and report warranty and rework as a percentage of completed revenue by job with a target under 1%. Crenshaw closing out in the fourth quarter is the first job that will produce a clean full-cycle warranty figure.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>What changes in the next pack:</strong> five items become standing exhibits — the signed / funded / on-site ladder, the 13-week cash roll-forward, budget-versus-actual against a re-anchored budget, the stake-and-promote tracker, and the job-level risk register. Three additions require instrumentation that does not exist yet and will be shown as gaps until it does: a true WIP over/under-billing schedule, a baseline-versus-current schedule feed for the risk register, and split warranty/rework cost codes. Deharo is carried as an open item for the call. Where a number cannot be sourced, this pack will say so rather than estimate it.
+  </div>
+</section>
+
 </div></main>
 <div class="deck-controls">
-  <div class="crumb"><span class="ix" id="crumbIx">01 / 06</span><span class="name" id="crumbName">Overview</span></div>
+  <div class="crumb"><span class="ix" id="crumbIx">01 / 09</span><span class="name" id="crumbName">Overview</span></div>
   <div class="kbd-hint">Use <kbd>←</kbd> <kbd>→</kbd> arrows to advance</div>
   <div class="arrows">
     <button class="arrow-btn" id="prevBtn" onclick="goPrev()" disabled><span class="arr">←</span> Previous</button>
@@ -496,7 +718,7 @@ html, body { font-family:var(--font-primary); background:var(--steel-light); col
 <script>
 const slides = document.querySelectorAll('.slide');
 const navBtns = document.querySelectorAll('.deck-nav button');
-const slideNames = ["Overview", "Pipeline", "Active Projects", "Financial Results", "Project Buyout", "Staffing", "Operational Metrics", "6/30 Financials"];
+const slideNames = ["Overview", "Pipeline", "Active Projects", "Financial Results", "Project Buyout", "Staffing", "Operational Metrics", "6/30 Financials", "Board Q&A"];
 let cur = 0;
 function goSlide(i) {
   if (i < 0 || i >= slides.length) return;
