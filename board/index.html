@@ -199,6 +199,20 @@ details .body { padding:0 1.2rem 1.2rem; }
   .kbd-hint { display:none; }
   .deck-controls .crumb .name { display:none; }
 }
+
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1rem 0;}
+.plan-card{background:var(--surface,#fff);border:1px solid rgba(11,24,51,0.10);border-radius:12px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;}
+.plan-card .nm{font-family:var(--font-display);font-weight:700;color:var(--denim);font-size:1.02rem;margin-bottom:0.4rem;}
+.plan-card .ds{font-size:0.86rem;color:#475569;line-height:1.5;margin-bottom:0.9rem;flex:1;}
+.plan-card .m{display:flex;justify-content:space-between;gap:0.75rem;padding:0.34rem 0;border-top:1px solid rgba(11,24,51,0.07);font-size:0.82rem;font-variant-numeric:tabular-nums;}
+.plan-card .ml{color:#6B7A90;} .plan-card .mv{color:var(--denim);font-weight:700;}
+.plan-card .dl{margin-top:0.85rem;display:inline-block;font-size:0.8rem;font-weight:700;color:var(--rust);text-decoration:none;}
+.plan-card .dl:hover{text-decoration:underline;}
+
+.deck-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+.deck-nav-inner{min-width:max-content;}
+.deck-nav::-webkit-scrollbar{height:4px;}
+.deck-nav::-webkit-scrollbar-thumb{background:rgba(196,88,26,0.35);border-radius:2px;}
 </style>
 </head>
 <body>
@@ -210,7 +224,7 @@ details .body { padding:0 1.2rem 1.2rem; }
       <div style="height:1rem;"></div>
       <div class="label">Six Peak Capital · LV Construction · Board Financials</div>
       <h1>Board Financial Overview</h1>
-      <p class="sub">Consolidated LV Construction GC operations plus Six Peak Capital. Numbers pulled from the live financial models with actuals through June 2026 folded into the projection. Use the section tabs or ← → arrows to move through the deck.</p>
+      <p class="sub">Consolidated LV Construction GC operations plus Six Peak Capital. Numbers pulled from the live financial models. Actuals run through June 2026; forecast assumptions were rebuilt on August 23, 2026. Use the section tabs or ← → arrows to move through the deck.</p>
     </div>
     <div class="meta">
       <div class="now-showing">Now showing<span class="name" id="topbarName">Executive Summary</span></div>
@@ -218,218 +232,103 @@ details .body { padding:0 1.2rem 1.2rem; }
         <div class="bar"><div class="fill" id="progressFill" style="width:11.11%;"></div></div>
         <div class="counter"><span class="cur" id="counterCur">01</span> / <span id="counterTot">09</span></div>
       </div>
-      <div class="now-showing" style="opacity:0.6;">Current as of <span style="color:var(--ghost-warm);opacity:1;">June 30, 2026</span></div>
+      <div class="now-showing" style="opacity:0.6;">Actuals through <span style="color:var(--ghost-warm);opacity:1;">June 30, 2026</span></div>
+      <div class="now-showing" style="opacity:0.6;">Assumptions as of <span style="color:var(--ghost-warm);opacity:1;">August 23, 2026</span></div>
     </div>
   </div>
 </header>
 <nav class="deck-nav"><div class="deck-nav-inner">
 <button data-slide="0" class="active"><span class="ix">01</span>Executive Summary</button>
-<button data-slide="1"><span class="ix">02</span>Francis Delay</button>
+<button data-slide="1"><span class="ix">02</span>What Changed</button>
 <button data-slide="2"><span class="ix">03</span>Plans &amp; Files</button>
 <button data-slide="3"><span class="ix">04</span>Steyn Debt Facility</button>
-<button data-slide="4"><span class="ix">05</span>2026–2028 Comparison</button>
-<button data-slide="5"><span class="ix">06</span>Extended BD</button>
+<button data-slide="4"><span class="ix">05</span>Plan Comparison</button>
+<button data-slide="5"><span class="ix">06</span>BD Pipeline</button>
 <button data-slide="6"><span class="ix">07</span>Uplifters</button>
 <button data-slide="7"><span class="ix">08</span>Project Status</button>
 <button data-slide="8"><span class="ix">09</span>Appendix</button>
 </div></nav>
 <main class="stage"><div class="stage-inner">
-<section class="slide active" id="slide-0">
-  <div class="slide-cover">
-    <div class="slide-label">01 · Executive Summary · Current as of June 30, 2026</div>
-    <h1 class="title">A strong foundation — <em>building the next phase of growth</em></h1>
-    <p class="lede">Six Peak enters mid-2026 from a position of strength: an active book of construction projects generating positive consolidated net income, a full pipeline, and a stabilized team. FY2026 figures fold in actuals through June 2026; FY2027 is the Base Case revenue peak. The fiscal year is the calendar year (Jan–Dec).</p>
-  </div>
-
-  <div class="section-band"><span class="t">FY 2026</span><span class="ln"></span><span class="note">Full calendar year · H1 actuals + H2 projection</span></div>
-  <div class="kpi-row">
-  <div class="kpi"><div class="lbl">Total Revenue · Consolidated</div><div class="val ">$9.63M</div><div class="delta ">GC $8.80M · SP $0.83M</div></div>
-  <div class="kpi"><div class="lbl">Total Expenses · Consolidated</div><div class="val denim">($9.10M)</div><div class="delta ">GC ($7.34M) · SP ($1.76M)</div></div>
-  <div class="kpi"><div class="lbl">Net Income · Consolidated</div><div class="val ">$0.53M</div><div class="delta up">GC $1.46M · SP ($0.93M)</div></div>
-  <div class="kpi"><div class="lbl">Construction Billing</div><div class="val denim">$52.1M</div><div class="delta ">FY 2026 throughput</div></div>
+<section class="slide active" id="slide-01">
+<div class="slide-cover"><div class="slide-label">01 · Executive Summary · Actuals through June 30, 2026 · assumptions as of August 23, 2026</div>
+<h1 class="title">The plan we are running to <em>and</em> the floor beneath it</h1>
+<p class="lvl">This pack leads with the <strong style="color:var(--denim);">Target Business Plan</strong> — the plan the company is being run to. The <strong style="color:var(--denim);">Base Case</strong> sits underneath it as the floor: the eighteen deals already committed or in the pipeline, with no new business development at all. Actuals run January through June 2026 and have not changed since the June pack. Everything else that moved is set out in Section 02.</p></div>
+<div class="section-band"><span class="t">Target Business Plan</span><span class="ln"></span><span class="note">The plan of record · committed book + Uplifters + BD pipeline from 2028</span></div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Net Income · FY 2026</div><div class="val denim">$0.43M</div><div class="delta ">Identical in every plan</div></div>
+<div class="kpi"><div class="lbl">Net Income · FY 2027</div><div class="val ">$3.57M</div><div class="delta up">GC $3.31M · SP $0.26M</div></div>
+<div class="kpi"><div class="lbl">Net Income · FY 2028</div><div class="val ">$9.19M</div><div class="delta up">BD pipeline begins March 2028</div></div>
+<div class="kpi"><div class="lbl">Net Income · FY 2029</div><div class="val ">$11.76M</div><div class="delta up">Peak modeled year</div></div>
+</div><div class="kpi-row">
+<div class="kpi"><div class="lbl">Construction Billing · FY 2027</div><div class="val denim">$99.5M</div><div class="delta ">FY 2028 $123.5M</div></div>
+<div class="kpi"><div class="lbl">Ending Cash · FY 2027</div><div class="val denim">$2.77M</div><div class="delta ">LV $3.85M · SP ($1.09M)</div></div>
+<div class="kpi"><div class="lbl">Cash Turns Negative</div><div class="val denim sm">Never</div><div class="delta ">Across the full modeled horizon</div></div>
+<div class="kpi"><div class="lbl">Cumulative NI · FY26–33</div><div class="val ">$24.6M</div><div class="delta up">Target Business Plan</div></div>
 </div>
-  <div class="kpi-row">
-    <div class="kpi"><div class="lbl">Beginning Cash</div><div class="val denim">$0.85M</div><div class="delta ">LV $0.50M · SP $0.34M</div></div>
-    <div class="kpi"><div class="lbl">Ending Cash</div><div class="val denim">$1.26M</div><div class="delta ">LV $1.40M · SP ($0.00M)</div></div>
-    <div class="kpi"><div class="lbl">Bonding Outstanding</div><div class="val ">$86.0M</div><div class="delta ">Year-end balance</div></div>
-    <div class="kpi"><div class="lbl">Active Scenario</div><div class="val denim sm">Base Case</div><div class="delta "><a href="assets/base_case_annual_summary_2026-06-30.png" target="_blank" style="color:var(--rust);text-decoration:none;font-weight:600;">View Annual Summary ↗</a></div></div>
-  </div>
-
-  <div class="section-band"><span class="t">FY 2027</span><span class="ln"></span><span class="note">First full year · Base Case revenue peak · contingent on new project starts</span></div>
-  <div class="callout warn" style="margin:0 0 1rem;">
-    <strong>What it takes to hit the FY 2027 numbers:</strong> The $68.6M of construction billing assumes new projects step in as the FY 2026 book draws down. The largest single contract starting in FY 2027 is <strong style="color:#92670a;">Reseda — a $45.3M GMP starting April 2027</strong>, which is <strong style="color:#92670a;">not yet funded</strong>. Reseda is the single biggest in-FY27 contributor and the largest gating item to landing the FY 2027 numbers; if its financing slips, revenue, GC NI, and ending cash all step down materially.
-  </div>
-  <div class="kpi-row">
-  <div class="kpi"><div class="lbl">Total Revenue · Consolidated</div><div class="val ">$9.38M</div><div class="delta ">GC $8.77M · SP $0.61M</div></div>
-  <div class="kpi"><div class="lbl">Total Expenses · Consolidated</div><div class="val denim">($8.91M)</div><div class="delta ">GC ($7.96M) · SP ($0.95M)</div></div>
-  <div class="kpi"><div class="lbl">Net Income · Consolidated</div><div class="val ">$0.47M</div><div class="delta up">GC $0.82M · SP ($0.34M)</div></div>
-  <div class="kpi"><div class="lbl">Construction Billing</div><div class="val denim">$68.6M</div><div class="delta ">FY 2027 throughput · peak</div></div>
+<div class="section-band"><span class="t">Base Case · the floor</span><span class="ln"></span><span class="note">Eighteen committed deals · no new BD · no Uplifters</span></div>
+<div class="callout warn" style="margin:0 0 1rem;"><strong>What the floor tells you:</strong> with no new work at all, the committed book carries the business to <strong style="color:#92670a;">$5.10M of net income in FY 2028</strong> and holds cash positive until <strong style="color:#92670a;">Q4 2030</strong>. After that the book runs off and consolidated net income turns sharply negative. The Base Case is not a plan, it is the consequence of not winning new work.</div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Net Income · FY 2027</div><div class="val denim">$3.33M</div><div class="delta ">GC $3.31M · SP $0.03M</div></div>
+<div class="kpi"><div class="lbl">Net Income · FY 2028</div><div class="val denim">$5.10M</div><div class="delta ">Committed book at full run rate</div></div>
+<div class="kpi"><div class="lbl">Net Income · FY 2029</div><div class="val denim">($2.14M)</div><div class="delta ">Roll-off begins</div></div>
+<div class="kpi"><div class="lbl">Cash Turns Negative</div><div class="val denim sm">Q4 2030</div><div class="delta ">Base Case · no new work</div></div>
 </div>
-  <div class="kpi-row">
-    <div class="kpi"><div class="lbl">Beginning Cash</div><div class="val denim">$1.26M</div><div class="delta ">Roll-forward from FY 2026</div></div>
-    <div class="kpi"><div class="lbl">Ending Cash</div><div class="val denim">$0.60M</div><div class="delta ">LV $2.32M · SP ($1.69M)</div></div>
-    <div class="kpi"><div class="lbl">Bonding Outstanding</div><div class="val ">$53.0M</div><div class="delta ">Drawing down as projects close</div></div>
-    <div class="kpi"><div class="lbl">Steyn Debt Payoff</div><div class="val denim sm">Jun 2028</div><div class="delta ">Final payment · see Steyn section</div></div>
-  </div>
-  <div class="callout">
-    <strong>Read of FY26 → FY27:</strong> Consolidated net income holds roughly flat — $0.53M in FY26, $0.47M in FY27 — as construction billing ramps from $52.1M to $68.6M. The GC stays positive ($0.82M in FY27) but is largely offset by Six Peak corporate overhead (($0.34M) net). Bonding outstanding falls from $86.0M to $53.0M as in-flight projects close. With the July roster and salary update folded in (updated comp, one added field hire, two year-end departures), total ending cash holds at $1.26M (FY26) and stays positive through FY27 ($0.60M), first turning negative in Q3 2028.
-  </div>
-
-  <div class="subhead" style="margin-top:2rem;">Sustainability levers — maintaining revenue through the transition</div>
-  <p class="lvl">As a general contractor, project-to-project revenue transitions are normal. The awarded portfolio naturally rolls off — <strong style="color:var(--denim);">5 of the in-place projects complete before FY2028</strong> — creating the runway to win new work for 2028–2029. Four independent, combinable levers sustain the business through the cycle. The primary revenue engine remains GC projects, complemented by the pending Klump &amp; Scott ED1 projects, the new HVN&nbsp;3 development trio, and the Uplifters development-fee program.</p>
-  <div class="grid4">
-    <div class="card"><span class="badge bd">Lever 1</span><h3 style="margin-top:0.5rem;">Uplifters Foundation</h3><p>60-property development-fee program led by Schuyler Dietz. No capital required. 10% SP overhead ($150K/yr cap), tiered bonus (40/45/50%). Adds <strong>$4.10M</strong> of net to Six Peak over its life.</p></div>
-    <div class="card"><span class="badge steel">Lever 2</span><h3 style="margin-top:0.5rem;">Klump &amp; Scott</h3><p>Two ED1 projects nearing RTI, actively raising equity — now modeled at an <strong>October 2026</strong> start. The projects add <strong>$2.66M</strong> to the 3-year consolidated NI.</p></div>
-    <div class="card"><span class="badge ready">Lever 3</span><h3 style="margin-top:0.5rem;">HVN 3 Expansion</h3><p><strong>Dickens, Riverton &amp; Moorpark</strong> — three GC + Developer projects totaling <strong>$45.1M GMP</strong>, starting Apr–Jun 2027. Adds <strong>$5.43M</strong> of incremental FY26–28 NI and extends cash into 2030.</p></div>
-    <div class="card"><span class="badge attn">Lever 4</span><h3 style="margin-top:0.5rem;">Extended BD Pipeline</h3><p>Third-party GC pipeline led by <strong>Tom Taggart</strong> under partner oversight (Chris Aiello, Bob Kennedy), building long-term developer relationships. Stats: $432.0M aggregate GMP, ~bimonthly signings Mar 2028 – Jan 2033; with Uplifters, generates <strong>$22.93M</strong> cumulative NI through FY2033.</p></div>
-  </div>
-
-  <div class="subhead" style="margin-top:1.75rem;">The path from Base to Peak</div>
-  <div class="kpi-row">
-    <div class="kpi"><div class="lbl">Base Case · 3-yr NI (FY26–28)</div><div class="val denim">$0.16M</div><div class="delta ">Current book runs off after FY2028</div></div>
-    <div class="kpi"><div class="lbl">+ Klump/Scott · 3-yr NI</div><div class="val denim">$2.82M</div><div class="delta ">Two pending projects with no capital at risk</div></div>
-    <div class="kpi"><div class="lbl">+ HVN 3 · 3-yr NI</div><div class="val denim">$5.59M</div><div class="delta ">Dickens · Riverton · Moorpark</div></div>
-    <div class="kpi"><div class="lbl">+ Uplifters + Ext BD · FY26–33</div><div class="val ">$22.93M</div><div class="delta ">+$52.48M vs. Base</div></div>
-  </div>
-  <div class="callout">
-    <strong>The full growth plan</strong> (Base Case + Uplifters + Extended BD) generates <strong>$22.93M</strong> cumulative consolidated NI through FY2033 — a <strong>$52.48M swing</strong> versus the Base Case at <strong>($29.55M)</strong>. The swing is driven by GC fee revenue from a sustained third-party GC pipeline ($432.0M aggregate GMP, built on long-term developer relationships) paired with the Uplifters development-fee program, with bonding revenue and costs modeled as neutral in aggregate from FY2029.
-  </div>
-  <div class="callout warn">
-    <strong>Note on LIHTC:</strong> Under the current rate and tax-credit environment, the Steyn cost of capital captures most early LIHTC distributions. Through 2033 the LIHTC strategy is effectively a conduit for GC revenue — net contribution inside the modeled window is roughly zero, with the meaningful development-fee income landing after 2033. This argues for investing further in the GC platform until capital markets shift.
-  </div>
+<div class="section-band"><span class="t">FY 2026</span><span class="ln"></span><span class="note">Full calendar year · H1 actuals + H2 projection · identical in all seven plans</span></div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Total Revenue · Consolidated</div><div class="val ">$58.0M</div><div class="delta ">GC $57.2M · SP $0.80M</div></div>
+<div class="kpi"><div class="lbl">Net Income · Consolidated</div><div class="val ">$0.43M</div><div class="delta up">GC $1.39M · SP ($0.96M)</div></div>
+<div class="kpi"><div class="lbl">Construction Billing</div><div class="val denim">$51.0M</div><div class="delta ">FY 2026 throughput</div></div>
+<div class="kpi"><div class="lbl">Ending Cash</div><div class="val denim">$1.23M</div><div class="delta ">LV $1.24M · SP ($0.00M)</div></div>
+</div>
+<div class="subhead" style="margin-top:2rem;">What is committed, and what is still upside</div>
+<p class="lvl">Three of the four levers in the June pack are now inside the Base Case. What remains outside it is the Uplifters programme and the business-development pipeline.</p>
+<div class="grid4">
+<div class="card"><span class="badge ready">Committed</span><h3 style="margin-top:0.5rem;">The eighteen-deal book</h3><p>Now including <strong>Klump &amp; Scott</strong> (January 2027), the <strong>HVN 3 trio</strong> of Dickens, Riverton and Moorpark (May to July 2027), <strong>Troost</strong> (January 2027) and <strong>Beverly</strong> (November 2027). Total contract value <strong>$337.7M</strong>.</p></div>
+<div class="card"><span class="badge bd">Upside 1</span><h3 style="margin-top:0.5rem;">Uplifters Foundation</h3><p>60-property development-fee programme led by Schuyler Dietz, now beginning <strong>April 2027</strong>. No capital required. Adds <strong>$4.10M</strong> of net to Six Peak over its life.</p></div>
+<div class="card"><span class="badge attn">Upside 2</span><h3 style="margin-top:0.5rem;">BD pipeline</h3><p>Third-party GC pipeline led by <strong>Tom Taggart</strong> under partner oversight. In the Target Business Plan, <strong>23 signings</strong> from March 2028, <strong>$372.0M</strong> aggregate GMP.</p></div>
+<div class="card"><span class="badge steel">Watch</span><h3 style="margin-top:0.5rem;">Reseda funding</h3><p><strong>$45.3M GMP starting May 2027</strong> and still not funded. It is the largest single contributor to FY 2027 and the biggest gating item in the year. If financing slips, revenue, GC net income and ending cash all step down materially.</p></div>
+</div>
+<div class="callout"><strong>Read of the two lines:</strong> the gap between the Target Business Plan and the Base Case is <strong>$48.0M</strong> of cumulative net income across FY2026 to FY2033. That gap is what business development and the Uplifters programme are worth. Neither line changes FY 2026, which is fixed at $0.43M by the half-year of actuals and a book that is already set for the rest of the year.</div>
+<div class="callout warn"><strong>Note on LIHTC:</strong> Under the current rate and tax-credit environment, the Steyn cost of capital captures most early LIHTC distributions. Through 2033 the LIHTC strategy is effectively a conduit for GC revenue — net contribution inside the modeled window is roughly zero, with the meaningful development-fee income landing after 2033. This argues for investing further in the GC platform until capital markets shift.</div>
 </section>
-<section class="slide" id="slide-francis">
-  <div class="slide-cover">
-    <div class="slide-label">02 · FY2026 Bridge · The Francis start delay</div>
-    <h1 class="title">Francis delay <em>·</em> carrying costs now, revenue pushed into 2028–29</h1>
-    <p class="lede"><strong style="color:var(--denim);">Francis</strong>, the largest project in the book at <strong>$42.8M GMP</strong>, was planned for a <strong>Q1 2026 start</strong> and LV staffed up for it in late 2025. The job has not broken ground, so the delay now stands at <strong style="color:var(--denim);">five-plus months and counting</strong>. The team hired for Francis has been carried on overhead since late 2025, and revenue we were counting on in the 2026 financials is being pushed out into <strong>2028 and 2029</strong>. The current model assumes an <strong>August 2026</strong> start; as of August 1 there is no scheduled closing date in August, so the project is potentially delayed beyond the current projections.</p>
-  </div>
-  <div class="section-band"><span class="t">FY 2026 Impact</span><span class="ln"></span><span class="note">Base Case · what each month of Francis delay costs</span></div>
-  <div class="kpi-row" style="grid-template-columns:repeat(3,1fr);">
-    <div class="kpi"><div class="lbl">Delay vs. Q1 2026 Plan</div><div class="val">5+ mos</div><div class="delta dn">Staffed in late 2025 · not yet broken ground</div></div>
-    <div class="kpi"><div class="lbl">Carry Cost Booked · H1</div><div class="val">($213K)</div><div class="delta dn">Francis overhead vs. $78K revenue · ~$25K/mo continues until start</div></div>
-    <div class="kpi"><div class="lbl">Revenue Pushed Out</div><div class="val denim">$42.8M</div><div class="delta">GMP counted on for 2026 now bills into 2028–29</div></div>
-  </div>
-  <div class="subhead">Cost of each month of delay · FY2026 Base Case sensitivity</div>
-  <div class="tbl scroll"><table>
-    <thead><tr><th>FY2026 metric</th><th>Start one month sooner</th><th>Current model (Aug start)</th><th>Cost of one month</th></tr></thead>
-    <tbody>
-      <tr><td>Consolidated Net Income</td><td>$688,720</td><td>$525,570</td><td class="neg">($163,150)</td></tr>
-      <tr><td>GC Net Income</td><td>$1,619,557</td><td>$1,456,407</td><td class="neg">($163,150)</td></tr>
-      <tr><td>Six Peak Net Income</td><td class="neg">($930,837)</td><td class="neg">($930,837)</td><td class="muted">—</td></tr>
-      <tr><td>Total Ending Cash</td><td>$1,417,726</td><td>$1,262,733</td><td class="neg">($154,993)</td></tr>
-      <tr class="row-total"><td>Construction Billing</td><td>$53.2M</td><td>$52.1M</td><td>($1.1M)</td></tr>
-    </tbody>
-  </table></div>
-  <p class="tnote">Sensitivity computed from the live June Base Case model by shifting only Francis's start month and recalculating; all other June actuals held constant. Each month of delay costs FY2026 roughly ($163K) of net income and ($155K) of ending cash, and pushes ~$1.1M of billing out of the year; the impact lands entirely in GC net income (Six Peak net income is unaffected). Carry to date: ~$213K of Francis-dedicated overhead booked in H1 against $78K of early revenue, with roughly $25K/month continuing until the job starts billing.</p>
-  <div class="callout"><strong>Read-through:</strong> The revenue is not lost, but it is late. The $42.8M of Francis work we were counting on to drive the 2026 financials now bills out through 2028 and into 2029 on the current schedule (Aug 2026 to Jan 2029), and every additional month of delay pushes that tail further into 2029. In the meantime the carry is real cash out the door each month.</div>
-  <div class="callout warn"><strong>Watch item:</strong> As of August 1 there is no scheduled closing date in August, so the model's August 2026 start is at risk and the project is potentially delayed beyond the current projections. Every month of further slippage repeats the FY2026 cost above and extends the carry; pinning down the closing date is the top near-term priority.</div>
+<section class="slide" id="slide-02">
+<div class="slide-cover"><div class="slide-label">02 · What changed since the June 30 pack</div>
+<h1 class="title">FY 2027 net income is up sevenfold. <em>Almost none of it is performance.</em></h1>
+<p class="lvl">The June pack showed FY 2027 consolidated net income of $471,288 and cash going negative in Q3 2028. This pack shows <strong style="color:var(--denim);">$3,334,020</strong> and cash holding to <strong style="color:var(--denim);">Q4 2030</strong>. The reason is not a better year. It is that the base case now contains work that the June pack showed as upside. This section reconciles the two, line by line.</p></div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Base case redefinition</div><div class="val ">+$3.07M</div><div class="delta up">FY 2027 effect · scope, not performance</div></div>
+<div class="kpi"><div class="lbl">Deal retiming</div><div class="val denim">($153K)</div><div class="delta ">FY 2027 · six deals, all later</div></div>
+<div class="kpi"><div class="lbl">Defect fixes</div><div class="val denim">($57K)</div><div class="delta ">FY 2027 · Ramsgate double count</div></div>
+<div class="kpi"><div class="lbl">FY 2026 net effect</div><div class="val denim">($96,794)</div><div class="delta ">$525,570 → $428,776</div></div>
+</div>
+<div class="subhead">Reconciliation · Base Case consolidated net income</div>
+<table class="tbl"><thead><tr><th>Step</th><th>FY 2026 NI</th><th>FY 2027 NI</th><th>FY 2028 NI</th><th>FY 2026 end cash</th><th>Effect on NI</th></tr></thead><tbody>
+<tr><td><strong>June 30 pack, as published</strong></td><td>$525,570</td><td>$471,288</td><td>($837,502)</td><td>$1,262,733</td><td>—</td></tr><tr><td>14 August defect fixes</td><td>$600,904</td><td>$471,288</td><td>($837,502)</td><td>$1,262,733</td><td class="">FY26 +$75,334 · FY27 +$0</td></tr><tr><td>23 August defect fixes</td><td>$600,904</td><td>$471,288</td><td>($837,502)</td><td>$1,393,604</td><td class="">cash only</td></tr><tr><td>Base case redefined</td><td>$653,071</td><td>$3,544,660</td><td>$4,801,782</td><td>$1,349,765</td><td class="">FY26 +$52,167 · FY27 +$3,073,372</td></tr><tr><td>Deal retiming</td><td>$428,776</td><td>$3,391,395</td><td>$5,095,876</td><td>$1,231,610</td><td class="neg">FY26 ($224,295) · FY27 ($153,265)</td></tr><tr><td>Ramsgate de-duplication</td><td>$428,776</td><td>$3,334,020</td><td>$5,095,876</td><td>$1,231,610</td><td class="neg">FY26 +$0 · FY27 ($57,375)</td></tr><tr class="row-total"><td>Today</td><td>$428,776</td><td>$3,334,020</td><td>$5,095,876</td><td>$1,231,610</td><td>—</td></tr>
+</tbody></table>
+<p class="tnote">Each row is a saved model state, recalculated and read directly. Every step is reproducible from the dated backup folders in the projections directory.</p>
+<div class="subhead" style="margin-top:1.75rem;">What sits behind each step</div>
+<div class="grid4">
+<div class="card"><span class="badge ready">Step 1–2</span><h3 style="margin-top:0.5rem;">Defect fixes</h3><p>Twelve model defects found and fixed across two passes. Two moved FY 2026 net income: the August 14 batch added <strong>$75,333</strong>; the August 23 batch left net income unchanged but corrected FY 2026 ending cash by <strong>$130,871</strong>, because consolidated Total Ending Cash was not the sum of the two entity cash lines.</p></div>
+<div class="card"><span class="badge attn">Step 3</span><h3 style="margin-top:0.5rem;">Base case redefined</h3><p>The single largest move. HVN 3, Troost, Beverly and Klump &amp; Scott came into the base case, taking it from eleven deals to eighteen. Adds <strong>$3.07M</strong> to FY 2027 and <strong>$5.64M</strong> to FY 2028. The tax distribution assumption also moves from 30% to 50.3% of consolidated NI, which affects cash but not net income.</p></div>
+<div class="card"><span class="badge steel">Step 4</span><h3 style="margin-top:0.5rem;">Deal retiming</h3><p>Six deals moved later and none moved earlier. Acama slipped two months to November 2026, which alone accounts for most of the <strong>($224,295)</strong> FY 2026 effect. Klump and Scott moved to January 2027, the HVN trio out one month each, Reseda to May 2027, and the Uplifters programme out a full quarter.</p></div>
+<div class="card"><span class="badge bd">Step 5</span><h3 style="margin-top:0.5rem;">Ramsgate de-duplication</h3><p>The Ramsgate 20 percent occupancy fee of <strong>$57,375</strong> was being recognised twice in December 2027, once on its own line and once inside Non-Cash Revenue Items. Removing the duplicate is the last movement in the chain.</p></div>
+</div>
+<div class="callout"><strong>The honest summary:</strong> on a like-for-like basis the business is slightly weaker than the June pack showed, not stronger. Retiming and the fee correction together take <strong>$211K</strong> out of FY 2027 and <strong>$224K</strong> out of FY 2026. The entire apparent improvement, and more, comes from the base case now including deals that were previously presented as upside.</div>
+<div class="callout warn"><strong>Francis:</strong> the project started in August 2026, on the date the model carried. It was late against the original Q1 2026 plan, which is what the June pack&rsquo;s delay analysis measured, but that analysis is now spent and the slide it occupied has been retired.</div>
 </section>
-<section class="slide" id="slide-1">
-  <div class="slide-cover">
-    <div class="slide-label">03 · Plans &amp; Files</div>
-    <h1 class="title">Eleven modeled plans <em>·</em> outcomes at a glance</h1>
-    <p class="lede">Each plan is a fully-built Excel model with actuals through June 2026 folded into the projection. The metrics on every card are <strong style="color:var(--denim);">cumulative across the FY2026–FY2033 horizon</strong>. The Base Case shows the awarded book running off; the Uplifters, Klump/Scott and new HVN&nbsp;3 levers soften the near-term transition; the Extended and Breakeven BD plans are what turn the consolidated business cash-positive through 2033. Files are date-stamped (June 30, 2026) and tracked by date going forward; the models were last revised <strong style="color:var(--denim);">July 24, 2026</strong> with a personnel roster and salary update (updated comp, one added field hire, two year-end departures).</p>
-  <div class="callout warn" style="margin-top:1.25rem;"><strong>Correction (introduced with the May refresh) — GC fee was overstated.</strong> Earlier projection versions recognized GC fee and general-conditions income as a flat <strong>~12% of each job's projected remaining contract value</strong>. That remaining-contract figure was carried from an earlier snapshot and was not reduced for interim billing, so it was overstated by roughly <strong style="color:#92670a;">~15%</strong> across the active in-place jobs — inflating projected GC fee by approximately <strong style="color:#92670a;">$1.3M</strong>. This version recognizes GC fee directly from the <strong>actual job draw-sheet backlogs</strong> (reconciled job-by-job), which corrects the overstatement. The underlying ~12% fee rate is unchanged; this is a correction, not a rate cut, and it accounts for the bulk of the lower projected GC income versus prior versions.</div>
-  </div>
-  <div class="subhead" style="margin-top:0;">Primary plans</div>
-  <div class="scen-grid"><div class="scen"><div class="accent" style="background:var(--space-light);"></div>
-      <div class="nm">Base Case (In-Place)</div><div class="ds">The awarded book runs off through FY2029 — without new work, consolidated NI turns negative in FY2028 and total cash goes negative in Q3 2028.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">11</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$32.4M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">($29.5M)</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$242M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_BaseCase_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:var(--rust);"></div>
-      <div class="nm">Base Case + Uplifters</div><div class="ds">Layering the Uplifters development-fee program onto the Base Case lifts Six Peak income and pushes the cash shortfall out to Q1 2030, but the GC book still rolls off.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">11</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$36.4M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">($25.4M)</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$242M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_Uplifters_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:var(--space);"></div>
-      <div class="nm">Base Case + Klump/Scott</div><div class="ds">Two ED1 projects nearing RTI, actively raising equity — now modeled at an October 2026 start. They add roughly $2.7M of 2026–28 NI and stretch cash into Q3 2029.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">13</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$35.4M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">($26.9M)</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$259M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_KlumpScott_2026-06-30.xlsx" download>↓ Download .xlsx</a></div></div>
-  <div class="subhead" style="margin-top:1.5rem;">HVN 3 expansion plans — Dickens · Riverton · Moorpark ($45.1M GMP, Apr–Jun 2027 starts)</div>
-  <div class="scen-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));"><div class="scen"><div class="accent" style="background:#4E6E8E;"></div>
-      <div class="nm">Base + HVN 3</div><div class="ds">Adds the three HVN projects to the base book — FY27–28 NI turns strongly positive and cash stays positive into Q2 2030.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">14</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$37.8M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">($24.1M)</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$287M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_HVN3_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:#6E8CAB;"></div>
-      <div class="nm">Base + HVN 3 + Uplifters</div><div class="ds">HVN 3 plus the development-fee program — cash positive into Q1 2031.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">14</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$41.9M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">($20.0M)</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$287M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_HVN3_Uplifters_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:#3F5572;"></div>
-      <div class="nm">Base + HVN 3 + Klump/Scott</div><div class="ds">The full near-term GC stack — FY26–28 NI of $8.2M and cash positive into Q4 2030.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">16</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$40.7M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">($21.5M)</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$304M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_HVN3_KlumpScott_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:#2C3A51;"></div>
-      <div class="nm">Base + HVN 3 + K/S + Uplifters</div><div class="ds">Every near-term lever stacked — $10.6M of FY26–28 NI, the strongest three-year outcome; cash positive into Q2 2031.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">16</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$44.8M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv neg">($17.4M)</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$304M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_HVN3_KlumpScott_Uplifters_2026-06-30.xlsx" download>↓ Download .xlsx</a></div></div>
-  <div class="subhead" style="margin-top:1.5rem;">Extended &amp; Breakeven BD plans (FY2026–FY2033)</div>
-  <div class="scen-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));"><div class="scen"><div class="accent" style="background:var(--rust-glow);"></div>
-      <div class="nm">Base Case + Extended BD</div><div class="ds">A sustained BD pipeline of long-term developer relationships refills the book — consolidated NI holds in the $3–4M range from FY2029; cumulative NI reaches $18.8M by FY2033 (total cash dips negative in Q3 2028 before recovering).</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">38</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$82.4M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$18.8M</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$664M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_ExtendedBD_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:var(--warning);"></div>
-      <div class="nm">Base + Uplifters + Extended BD</div><div class="ds">The full growth plan (sustained BD pipeline plus Uplifters) is the strongest outcome — the highest cumulative NI ($22.9M) through FY2033, with total cash never going negative.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">38</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$86.5M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$22.9M</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$664M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_Uplifters_ExtendedBD_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:#4A8B8C;"></div>
-      <div class="nm">Base Case + Breakeven BD</div><div class="ds">The minimum BD volume sized to hold consolidated NI near zero each year; with the June actuals and July roster update folded in it is back in the black (cum. +$1.5M).</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">28</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$64.0M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$1.5M</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$511M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_BreakevenBD_2026-06-30.xlsx" download>↓ Download .xlsx</a></div><div class="scen"><div class="accent" style="background:#7B9464;"></div>
-      <div class="nm">Base + Uplifters + Breakeven BD</div><div class="ds">Breakeven BD plus the Uplifters program delivers modest positive NI ($5.6M cum.) with total cash positive throughout.</div>
-      <div class="metrics">
-        <div class="m"><span class="ml">Projects</span><span class="mv">28</span></div>
-        <div class="m"><span class="ml">Total Revenue</span><span class="mv">$68.1M</span></div>
-        <div class="m"><span class="ml">Consolidated NI</span><span class="mv pos">$5.6M</span></div>
-        <div class="m"><span class="ml">Construction Billing</span><span class="mv">$511M</span></div>
-      </div>
-      <a class="dl" href="../models/SixPeak_Uplifters_BreakevenBD_2026-06-30.xlsx" download>↓ Download .xlsx</a></div></div>
+<section class="slide" id="slide-03">
+<div class="slide-cover"><div class="slide-label">03 · Plans &amp; Files</div>
+<h1 class="title">Seven modeled plans <em>·</em> outcomes at a glance</h1>
+<p class="lvl">Each plan is a fully-built Excel model with actuals through June 2026 folded into the projection. The metrics on every card are <strong>cumulative across the FY2026–FY2033 horizon</strong>. Files are date-stamped August 23, 2026. The eleven plans in the June pack were consolidated into these seven when the base case was redefined; the retired workbooks remain archived in the projections directory.</p></div>
+<div class="callout"><strong>Correction carried forward from the May refresh — GC fee was overstated.</strong> Earlier projection versions recognized GC fee and general-conditions income as a flat ~12% of each job&rsquo;s projected remaining contract value, carried from an earlier snapshot and not reduced for interim billing. This and every later version recognize GC fee directly from the actual job draw-sheet backlogs, reconciled job by job. The underlying ~12% fee rate is unchanged; this is a correction, not a rate cut.</div>
+<div class="plan-grid">
+<div class="plan-card"><div class="nm">Target Business Plan</div><div class="ds">The plan of record. The committed book, the Uplifters programme, and Tom Taggart&rsquo;s BD pipeline signing from March 2028. Cash never goes negative across the modeled horizon.</div><div class="m"><span class="ml">Active deals</span><span class="mv">41</span></div><div class="m"><span class="ml">Cumulative NI · FY26–33</span><span class="mv">$24.6M</span></div><div class="m"><span class="ml">FY 2028 NI</span><span class="mv">$9.19M</span></div><div class="m"><span class="ml">Cash turns negative</span><span class="mv">never</span></div><a class="dl" href="../models/SixPeak_TargetBusinessPlan_2026-08-23.xlsx">↓ Download .xlsx</a></div><div class="plan-card"><div class="nm">Base Case</div><div class="ds">The floor. Eighteen committed deals and nothing else. Carries the business through FY 2028, then the book runs off and net income turns sharply negative.</div><div class="m"><span class="ml">Active deals</span><span class="mv">18</span></div><div class="m"><span class="ml">Cumulative NI · FY26–33</span><span class="mv">($23.4M)</span></div><div class="m"><span class="ml">FY 2028 NI</span><span class="mv">$5.10M</span></div><div class="m"><span class="ml">Cash turns negative</span><span class="mv">Q4 2030</span></div><a class="dl" href="../models/SixPeak_BaseCase_2026-08-23.xlsx">↓ Download .xlsx</a></div><div class="plan-card"><div class="nm">Base Case + Uplifters</div><div class="ds">The base case with the Uplifters development-fee programme layered on. Lifts Six Peak income and pushes the cash shortfall out, but the GC book still rolls off.</div><div class="m"><span class="ml">Active deals</span><span class="mv">18</span></div><div class="m"><span class="ml">Cumulative NI · FY26–33</span><span class="mv">($19.3M)</span></div><div class="m"><span class="ml">FY 2028 NI</span><span class="mv">$6.74M</span></div><div class="m"><span class="ml">Cash turns negative</span><span class="mv">Q2 2031</span></div><a class="dl" href="../models/SixPeak_BaseCase_Uplifters_2026-08-23.xlsx">↓ Download .xlsx</a></div><div class="plan-card"><div class="nm">Base + LV BD (breakeven)</div><div class="ds">The base case plus seventeen BD signings from October 2028 — the volume LV needs to cover overhead rather than to grow.</div><div class="m"><span class="ml">Active deals</span><span class="mv">35</span></div><div class="m"><span class="ml">Cumulative NI · FY26–33</span><span class="mv">$7.6M</span></div><div class="m"><span class="ml">FY 2028 NI</span><span class="mv">$5.37M</span></div><div class="m"><span class="ml">Cash turns negative</span><span class="mv">never</span></div><a class="dl" href="../models/SixPeak_BreakevenBD_2026-08-23.xlsx">↓ Download .xlsx</a></div><div class="plan-card"><div class="nm">Base + LV BD (breakeven) + Uplifters</div><div class="ds">Breakeven BD with the Uplifters programme on top.</div><div class="m"><span class="ml">Active deals</span><span class="mv">35</span></div><div class="m"><span class="ml">Cumulative NI · FY26–33</span><span class="mv">$11.7M</span></div><div class="m"><span class="ml">FY 2028 NI</span><span class="mv">$7.01M</span></div><div class="m"><span class="ml">Cash turns negative</span><span class="mv">never</span></div><a class="dl" href="../models/SixPeak_BreakevenBD_Uplifters_2026-08-23.xlsx">↓ Download .xlsx</a></div><div class="plan-card"><div class="nm">Base + LV BD (extended)</div><div class="ds">The base case plus all twenty-five remaining BD placeholders, signing from March 2028.</div><div class="m"><span class="ml">Active deals</span><span class="mv">43</span></div><div class="m"><span class="ml">Cumulative NI · FY26–33</span><span class="mv">$22.1M</span></div><div class="m"><span class="ml">FY 2028 NI</span><span class="mv">$5.37M</span></div><div class="m"><span class="ml">Cash turns negative</span><span class="mv">never</span></div><a class="dl" href="../models/SixPeak_ExtendedBD_2026-08-23.xlsx">↓ Download .xlsx</a></div><div class="plan-card"><div class="nm">Base + LV BD (extended) + Uplifters</div><div class="ds">Extended BD with the Uplifters programme on top. The strongest cumulative outcome of the seven.</div><div class="m"><span class="ml">Active deals</span><span class="mv">43</span></div><div class="m"><span class="ml">Cumulative NI · FY26–33</span><span class="mv">$26.2M</span></div><div class="m"><span class="ml">FY 2028 NI</span><span class="mv">$7.01M</span></div><div class="m"><span class="ml">Cash turns negative</span><span class="mv">never</span></div><a class="dl" href="../models/SixPeak_ExtendedBD_Uplifters_2026-08-23.xlsx">↓ Download .xlsx</a></div>
+</div>
+<div class="callout warn"><strong>Twelve defect fixes were applied to all seven workbooks on August 23.</strong> Three changed a board-facing number: consolidated Total Ending Cash was not the sum of the two entity cash lines; the quarterly Investment Capital Outstanding line read an interest row from Q1 2027 onward; and the Ramsgate 20 percent occupancy fee was recognised twice. The full register is filed with the models.</div>
 </section>
-<section class="slide" id="slide-5">
+<section class="slide" id="slide-04">
   <div class="slide-cover">
-    <div class="slide-label">04 · Steyn Debt Facility</div>
+    <div class="slide-label">04 · Steyn Debt Facility · carried forward unchanged</div>
     <h1 class="title">$1.5M Steyn loan <em>·</em> a pro forma path to full repayment by June 2028</h1>
     <p class="lede">A $1.5M principal-balance loan carrying ~$176K of accrued interest at the June close (June 2026 balance: $1,676,066). It accrues at a 15% annual rate (3.75% quarterly). <strong style="color:var(--denim);">The schedule below is a pro forma, not a commitment</strong>: with the construction book still ramping, we need to be careful with cash flow, and we need this facility to stay flexible. On the current model, full repayment looks achievable with payments beginning <strong>January 2027</strong>, shown as 18 illustrative $112K monthly installments to a full payoff by <strong>June 2028</strong>. Timing and amounts will flex with actual cash; the 15% rate keeps Steyn well compensated while the balance is outstanding.</p>
   </div>
@@ -454,163 +353,126 @@ details .body { padding:0 1.2rem 1.2rem; }
     </tbody>
   </table></div>
   <div class="callout"><strong>Note on the schedule:</strong> Interest accrues quarterly at 3.75% (15% annual). No payments are made in 2026 — the balance accrues to $1,804,128 by year-end. From January 2027, 18 fixed $112K monthly payments amortize the loan, with a final $91,981 payment in June 2028 clearing the balance. Total interest over the life: <strong>$495,981</strong>: total payments of $1,995,981 less the $1,500,000 original principal (the loan began prior to 2026; $115K of interest accrued before the April model window shown above).</div>
+<div class="callout"><strong>Re-checked against the August 23 models:</strong> the facility carries through the model rebuild unchanged. April 2026 opening balance $1,615,485, no payments in 2026, eighteen payments of $112,000 from January 2027, cleared June 2028, $1,995,981 paid in total. It remains a pro forma path rather than a committed schedule.</div>
 </section>
-<section class="slide" id="slide-2">
-  <div class="slide-cover">
-    <div class="slide-label">05 · Primary Plan Comparison · FY2026–FY2028</div>
-    <h1 class="title">Base Case <em>vs.</em> Uplifters <em>vs.</em> Klump/Scott</h1>
-    <p class="lede">The three primary plans through the 2026–2028 transition. All are profitable in 2026 and 2027; the differences show up in 2028 and in how long cash stays positive. Extended/Breakeven BD plans run a different horizon — see Section 06.</p>
-  </div>
-  <div class="kpi-row" style="grid-template-columns:repeat(3,1fr);">
-    <div class="kpi"><div class="lbl"><span class="badge steel">Base Case</span></div>
-      <div class="val" style="font-size:1.5rem;">$0.16M</div><div class="delta">2026–28 cumulative NI</div>
-      <div class="delta">2028 ending cash: <strong>($0.98M)</strong></div>
-      <div class="delta dn">Cash negative: Q3 2028</div></div>
-    <div class="kpi"><div class="lbl"><span class="badge bd">+ Uplifters</span></div>
-      <div class="val" style="font-size:1.5rem;">$2.51M</div><div class="delta">2026–28 cumulative NI</div>
-      <div class="delta">2028 ending cash: <strong>$1.37M</strong></div>
-      <div class="delta dn">Cash negative: Q1 2030</div></div>
-    <div class="kpi"><div class="lbl"><span class="badge steel">+ Klump/Scott</span></div>
-      <div class="val" style="font-size:1.5rem;">$2.82M</div><div class="delta">2026–28 cumulative NI</div>
-      <div class="delta">2028 ending cash: <strong>$1.18M</strong></div>
-      <div class="delta dn">Cash negative: Q3 2029</div></div>
-  </div>
-  <div class="subhead">Consolidated Net Income &amp; Ending Cash</div>
-  <div class="tbl scroll"><table>
-    <thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th></tr></thead>
-    <tbody>
-      <tr class="row-section"><td colspan="4">Consolidated Net Income</td></tr>
-      <tr class=""><td>Base Case</td><td class="">$525,570</td><td class="">$471,288</td><td class="neg">($837,502)</td></tr>
-      <tr class=""><td>Base Case + Uplifters</td><td class="">$525,570</td><td class="">$969,697</td><td class="">$1,012,815</td></tr>
-      <tr class=""><td>Base Case + Klump/Scott</td><td class="">$1,050,331</td><td class="">$1,992,322</td><td class="neg">($227,422)</td></tr>
-      <tr class="row-section"><td colspan="4">Total Ending Cash</td></tr>
-      <tr class=""><td>Base Case</td><td class="">$1,262,733</td><td class="">$603,475</td><td class="neg">($977,009)</td></tr>
-      <tr class=""><td>Base Case + Uplifters</td><td class="">$1,262,733</td><td class="">$1,101,884</td><td class="">$1,371,717</td></tr>
-      <tr class=""><td>Base Case + Klump/Scott</td><td class="">$1,571,049</td><td class="">$2,120,984</td><td class="">$1,178,865</td></tr>
-    </tbody>
-  </table></div>
-  <p class="tnote">Base Case + Klump/Scott includes ~$1.5M of preferred equity to fully capitalize the two ED1 projects (nearing RTI, actively raising that equity), modeled at a 15% cost-of-capital placeholder repaid from project cash flows — the cash figures reflect that repayment. Klump &amp; Scott are not bonded, so they carry no bonding impact.</p>
-
-  <div class="subhead">Incremental consolidated NI vs. Base Case</div>
-  <div class="tbl scroll"><table>
-    <thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>3-Year Total</th></tr></thead>
-    <tbody>
-      <tr><td>Base Case</td><td>$525,570</td><td>$471,288</td><td class="neg">($837,502)</td><td><strong>$159,356</strong></td></tr>
-      <tr><td>+ Uplifters</td><td class="pos">+$0</td><td class="pos">+$498,409</td><td class="pos">+$1,850,318</td><td class="pos"><strong>+$2,348,727</strong></td></tr>
-      <tr><td>+ Klump/Scott</td><td class="pos">+$524,761</td><td class="pos">+$1,521,034</td><td class="pos">+$610,080</td><td class="pos"><strong>+$2,655,875</strong></td></tr>
-    </tbody>
-  </table></div>
-  <div class="callout"><strong>Key takeaway:</strong> All three primary plans are profitable through 2027. Base Case + Uplifters adds <strong>$2.35M</strong> to 2026–28 cumulative NI; Base Case + Klump/Scott adds <strong>$2.66M</strong> (after the $900K outsourced consulting cost). Under the Base Case cash turns negative in <strong>Q3 2028</strong>; Uplifters pushes that to <strong>Q1 2030</strong>. The HVN&nbsp;3 plans (Section 03 cards) stack on top of any of these.</div>
-  <div class="callout warn"><strong>Klump &amp; Scott:</strong> Both are ED1 projects nearing RTI, requiring ~$1.5M of combined preferred equity to fully capitalize and <strong style="color:#92670a;">actively raising that equity;</strong> the model carries a 15% cost-of-capital placeholder repaid from project cash flows. After the $900K outsourced PM/onsite consultant cost (3rd-party labor for K/S only), they add <strong>$2.66M</strong> of incremental 2026–28 NI.</div>
+<section class="slide" id="slide-05">
+<div class="slide-cover"><div class="slide-label">05 · Plan Comparison · FY2026–FY2029</div>
+<h1 class="title">Target Business Plan <em>vs.</em> the floor <em>vs.</em> Uplifters alone</h1>
+<p class="lvl">The three plans that frame the decision. All are identical in FY 2026 and differ only from FY 2027 onward, because the committed book is already set for this year. Klump &amp; Scott no longer appear as a separate plan: they are inside all three.</p></div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Target Business Plan</div><div class="val ">$24.6M</div><div class="delta up">Cumulative NI FY26–33 · cash never negative</div></div>
+<div class="kpi"><div class="lbl">Base Case</div><div class="val denim">($23.4M)</div><div class="delta ">Cumulative NI FY26–33 · cash negative Q4 2030</div></div>
+<div class="kpi"><div class="lbl">+ Uplifters</div><div class="val denim">($19.3M)</div><div class="delta ">Cumulative NI FY26–33 · cash negative Q2 2031</div></div>
+<div class="kpi"><div class="lbl">The gap</div><div class="val ">$48.0M</div><div class="delta up">What BD and Uplifters are worth</div></div>
+</div>
+<div class="subhead">Consolidated net income</div>
+<table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th></tr></thead><tbody>
+<tr class="row-total"><td>Target Business Plan</td><td class="">$428,776</td><td class="">$3,569,142</td><td class="">$9,192,998</td><td class="">$11,761,367</td></tr>
+<tr><td>Base Case</td><td class="">$428,776</td><td class="">$3,334,020</td><td class="">$5,095,876</td><td class="neg">($2,140,321)</td></tr>
+<tr><td>Base Case + Uplifters</td><td class="">$428,776</td><td class="">$3,569,142</td><td class="">$6,736,759</td><td class="neg">($808,627)</td></tr>
+</tbody></table>
+<div class="subhead" style="margin-top:1.5rem;">Total ending cash</div>
+<table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th></tr></thead><tbody>
+<tr class="row-total"><td>Target Business Plan</td><td class="">$1,231,610</td><td class="">$2,768,779</td><td class="">$10,461,559</td><td class="">$22,100,720</td></tr>
+<tr><td>Base Case</td><td class="">$1,231,610</td><td class="">$2,533,657</td><td class="">$6,855,273</td><td class="">$5,799,064</td></tr>
+<tr><td>Base Case + Uplifters</td><td class="">$1,231,610</td><td class="">$2,768,779</td><td class="">$8,731,277</td><td class="">$9,006,763</td></tr>
+</tbody></table>
+<div class="subhead" style="margin-top:1.5rem;">Construction billing</div>
+<table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th></tr></thead><tbody>
+<tr class="row-total"><td>Target Business Plan</td><td class="">$50,998,030</td><td class="">$99,472,214</td><td class="">$123,521,256</td><td class="">$140,423,155</td></tr>
+<tr><td>Base Case</td><td class="">$50,998,030</td><td class="">$99,472,214</td><td class="">$107,515,591</td><td class="">$34,159,203</td></tr>
+<tr><td>Base Case + Uplifters</td><td class="">$50,998,030</td><td class="">$99,472,214</td><td class="">$107,515,591</td><td class="">$34,159,203</td></tr>
+</tbody></table>
+<div class="callout"><strong>Key takeaway:</strong> the committed book alone carries the business through FY 2028 and holds cash positive until Q4 2030. From FY 2029 the three lines separate hard: the Base Case falls to ($2.14M) while the Target Business Plan reaches $11.76M. The decision the numbers frame is not whether this year works. It is whether the pipeline that replaces the book in 2028 and 2029 gets built.</div>
 </section>
-<section class="slide" id="slide-3">
-  <div class="slide-cover">
-    <div class="slide-label">06 · Extended BD · FY2026–FY2033 outlook</div>
-    <h1 class="title">Sustained BD <em>·</em> 27 deals <em>·</em> $432.0M aggregate GMP</h1>
-    <p class="lede">The Extended BD plans model Tom Taggart's third-party GC pipeline — sourced and closed under partner oversight from Chris Aiello (principal) and Bob Kennedy (legal &amp; deal closing) — across the full FY2026–FY2033 horizon. Each deal targets LA multifamily, ~$15–18M GMP. Bonding revenue and costs are modeled neutral in aggregate from FY2029, preserving the marginal NI rate.</p>
-  </div>
-  <div class="kpi-row" style="grid-template-columns:repeat(3,1fr);">
-    <div class="kpi"><div class="lbl">Aggregate GMP · Extended</div><div class="val ">$432.0M</div><div class="delta ">27 deals · Mar 2028 – Jan 2033</div></div>
-    <div class="kpi"><div class="lbl">Cumulative NI · FY26–33</div><div class="val denim">$22.93M</div><div class="delta ">Base + Uplifters + Extended BD</div></div>
-    <div class="kpi"><div class="lbl">Swing vs. Base Case</div><div class="val ">+$52.48M</div><div class="delta ">vs. ($29.55M) Base cumulative</div></div>
-  </div>
-  <div class="subhead">Consolidated net income by fiscal year — all BD plans vs. Base Case</div>
-  <div class="tbl scroll"><table>
-    <thead><tr><th>$ in millions</th><th>FY26</th><th>FY27</th><th>FY28</th><th>FY29</th><th>FY30</th><th>FY31</th><th>FY32</th><th>FY33</th><th>Cum.</th></tr></thead>
-    <tbody>
-      <tr class=""><td>Base Case (ref)</td><td class="">$0.53M</td><td class="">$0.47M</td><td class="neg">($0.84M)</td><td class="neg">($3.10M)</td><td class="neg">($5.46M)</td><td class="neg">($7.44M)</td><td class="neg">($7.40M)</td><td class="neg">($6.31M)</td><td class="neg"><strong>($29.55M)</strong></td></tr>
-      <tr class=""><td>+ Breakeven BD (17 deals)</td><td class="">$0.53M</td><td class="">$0.47M</td><td class="neg">($0.60M)</td><td class="">$0.57M</td><td class="">$0.19M</td><td class="">$0.26M</td><td class="neg">($0.08M)</td><td class="">$0.15M</td><td class=""><strong>$1.48M</strong></td></tr>
-      <tr class=""><td>+ Extended BD (27 deals)</td><td class="">$0.53M</td><td class="">$0.47M</td><td class="">$0.86M</td><td class="">$3.20M</td><td class="">$4.20M</td><td class="">$3.66M</td><td class="">$3.75M</td><td class="">$2.17M</td><td class=""><strong>$18.83M</strong></td></tr>
-      <tr class="row-total"><td>+ Uplifters + Extended BD</td><td class="">$0.53M</td><td class="">$0.97M</td><td class="">$2.71M</td><td class="">$4.25M</td><td class="">$4.67M</td><td class="">$3.89M</td><td class="">$3.75M</td><td class="">$2.17M</td><td class=""><strong>$22.93M</strong></td></tr>
-      <tr style="border-top:2px solid var(--rust);"><td><strong>Swing: Full vs. Base</strong></td><td class="pos">+$0.00M</td><td class="pos">+$0.50M</td><td class="pos">+$3.54M</td><td class="pos">+$7.35M</td><td class="pos">+$10.13M</td><td class="pos">+$11.33M</td><td class="pos">+$11.15M</td><td class="pos">+$8.49M</td><td class="pos"><strong>+$52.48M</strong></td></tr>
-    </tbody>
-  </table></div>
-  <p class="tnote">FY2034 is a wind-down tail beyond the pipeline and is excluded from the cumulative columns above. Breakeven BD sizes the pipeline so consolidated NI stays within roughly ±$0.7M of zero each year FY28–FY33; its total cash dips negative during FY2028 before recovering by year-end FY2029.</p>
-
-  <div class="subhead" style="margin-top:1.75rem;">When the deals sign — pipeline sequencing</div>
-  <p class="lvl">The in-place book runs through ~FY2028. From there, BD decides whether the line holds at the Breakeven floor (17 signings from Oct 2028) or hits the Extended target (27 signings, ~bimonthly from Mar 2028). The earlier, denser Extended ramp is the difference between consolidated NI in the $3–4M range and NI hovering near zero.</p>
-  <div class="pipeline-timeline"><div class="inner-tl">
-    <div class="axis"><span style="left:0.0%;">FY26</span><span style="left:10.8%;">FY27</span><span style="left:25.3%;">FY28</span><span style="left:39.8%;">FY29</span><span style="left:54.2%;">FY30</span><span style="left:68.7%;">FY31</span><span style="left:83.1%;">FY32</span><span style="left:97.6%;">FY33</span></div>
-    <div class="row"><div class="row-lbl"><span class="swatch denim"></span><div>In-place book<br><span class="count">11 active GC projects</span></div></div><div class="track"><span class="dot denim" style="left:0.0%;" title="Crenshaw · Apr 2026"></span><span class="dot denim" style="left:0.0%;" title="Ramsgate · Apr 2026"></span><span class="dot denim" style="left:0.0%;" title="Califa · Apr 2026"></span><span class="dot denim" style="left:0.0%;" title="Whipple · Apr 2026"></span><span class="dot denim" style="left:0.0%;" title="Nelrose · Apr 2026"></span><span class="dot denim" style="left:4.8%;" title="Francis · Aug 2026"></span><span class="dot denim" style="left:4.8%;" title="Lexington · Aug 2026"></span><span class="dot denim" style="left:4.8%;" title="Denny · Aug 2026"></span><span class="dot denim" style="left:6.0%;" title="Acama · Sep 2026"></span><span class="dot denim" style="left:14.5%;" title="Reseda · Apr 2027"></span><span class="dot denim" style="left:31.3%;" title="3rd St · Jun 2028"></span></div></div>
-    <div class="row"><div class="row-lbl"><span class="swatch warn"></span><div>Breakeven plan · 17 signings<br><span class="count">Oct 2028 → Jan 2033 · $279.0M GMP</span></div></div><div class="track"><span class="dot warn" style="left:36.1%;" title="BD-06 · Oct 2028 · $15M"></span><span class="dot warn" style="left:39.8%;" title="BD-07 · Jan 2029 · $15M"></span><span class="dot warn" style="left:43.4%;" title="BD-08 · Apr 2029 · $18M"></span><span class="dot warn" style="left:47.0%;" title="BD-09 · Jul 2029 · $18M"></span><span class="dot warn" style="left:56.6%;" title="BD-13 · Mar 2030 · $15M"></span><span class="dot warn" style="left:61.4%;" title="BD-15 · Jul 2030 · $18M"></span><span class="dot warn" style="left:63.9%;" title="BD-16 · Sep 2030 · $15M"></span><span class="dot warn" style="left:66.3%;" title="BD-17 · Nov 2030 · $15M"></span><span class="dot warn" style="left:68.7%;" title="BD-18 · Jan 2031 · $18M"></span><span class="dot warn" style="left:71.1%;" title="BD-19 · Mar 2031 · $15M"></span><span class="dot warn" style="left:73.5%;" title="BD-20 · May 2031 · $18M"></span><span class="dot warn" style="left:80.7%;" title="BD-23 · Nov 2031 · $18M"></span><span class="dot warn" style="left:88.0%;" title="BD-26 · May 2032 · $18M"></span><span class="dot warn" style="left:90.4%;" title="BD-27 · Jul 2032 · $15M"></span><span class="dot warn" style="left:92.8%;" title="BD-28 · Sep 2032 · $15M"></span><span class="dot warn" style="left:95.2%;" title="BD-29 · Nov 2032 · $18M"></span><span class="dot warn" style="left:97.6%;" title="BD-30 · Jan 2033 · $15M"></span></div></div>
-    <div class="row"><div class="row-lbl"><span class="swatch rust"></span><div>Extended BD target · 27 signings<br><span class="count">Mar 2028 → Jan 2033 · $432.0M GMP</span></div></div><div class="track"><span class="dot rust" style="left:27.7%;" title="BD-04 · Mar 2028 · $15M"></span><span class="dot rust" style="left:31.3%;" title="BD-05 · Jun 2028 · $15M"></span><span class="dot rust" style="left:36.1%;" title="BD-06 · Oct 2028 · $15M"></span><span class="dot rust" style="left:39.8%;" title="BD-07 · Jan 2029 · $15M"></span><span class="dot rust" style="left:43.4%;" title="BD-08 · Apr 2029 · $18M"></span><span class="dot rust" style="left:47.0%;" title="BD-09 · Jul 2029 · $18M"></span><span class="dot rust" style="left:49.4%;" title="BD-10 · Sep 2029 · $18M"></span><span class="dot rust" style="left:51.8%;" title="BD-11 · Nov 2029 · $15M"></span><span class="dot rust" style="left:54.2%;" title="BD-12 · Jan 2030 · $15M"></span><span class="dot rust" style="left:56.6%;" title="BD-13 · Mar 2030 · $15M"></span><span class="dot rust" style="left:59.0%;" title="BD-14 · May 2030 · $15M"></span><span class="dot rust" style="left:61.4%;" title="BD-15 · Jul 2030 · $18M"></span><span class="dot rust" style="left:63.9%;" title="BD-16 · Sep 2030 · $15M"></span><span class="dot rust" style="left:66.3%;" title="BD-17 · Nov 2030 · $15M"></span><span class="dot rust" style="left:68.7%;" title="BD-18 · Jan 2031 · $18M"></span><span class="dot rust" style="left:71.1%;" title="BD-19 · Mar 2031 · $15M"></span><span class="dot rust" style="left:73.5%;" title="BD-20 · May 2031 · $18M"></span><span class="dot rust" style="left:75.9%;" title="BD-21 · Jul 2031 · $15M"></span><span class="dot rust" style="left:78.3%;" title="BD-22 · Sep 2031 · $15M"></span><span class="dot rust" style="left:80.7%;" title="BD-23 · Nov 2031 · $18M"></span><span class="dot rust" style="left:83.1%;" title="BD-24 · Jan 2032 · $15M"></span><span class="dot rust" style="left:85.5%;" title="BD-25 · Mar 2032 · $15M"></span><span class="dot rust" style="left:88.0%;" title="BD-26 · May 2032 · $18M"></span><span class="dot rust" style="left:90.4%;" title="BD-27 · Jul 2032 · $15M"></span><span class="dot rust" style="left:92.8%;" title="BD-28 · Sep 2032 · $15M"></span><span class="dot rust" style="left:95.2%;" title="BD-29 · Nov 2032 · $18M"></span><span class="dot rust" style="left:97.6%;" title="BD-30 · Jan 2033 · $15M"></span></div></div>
-    <div class="key-row"><strong>Read across:</strong> Extended BD signs its first deals in Mar–Jun 2028, ahead of the Breakeven plan's Oct 2028 start, and runs a denser cadence. Aggregate GMP: <strong>$279.0M (Breakeven, 17 deals)</strong> vs. <strong>$432.0M (Extended, 27 deals)</strong>. Hover any dot for the deal label, signing month, and GMP.</div>
-  </div></div>
-
-  <div class="subhead" style="margin-top:1.75rem;">Extended BD revenue engines</div>
-  <div class="tbl scroll"><table>
-    <thead><tr><th>Engine</th><th>Lead &amp; oversight</th><th>Scope</th><th>Contribution</th></tr></thead>
-    <tbody>
-      <tr><td>BD Pipeline</td><td style="text-align:left;">Tom Taggart<br><span style="font-size:0.72rem;opacity:0.8;">Oversight: C. Aiello, B. Kennedy</span></td><td style="text-align:left;">27 third-party GC contracts, ~$15–18M GMP each</td><td style="text-align:left;color:#0b6e54;">$432.0M GMP · bonding neutral in aggregate</td></tr>
-      <tr><td>Uplifters Foundation</td><td style="text-align:left;">Schuyler Dietz</td><td style="text-align:left;">60 SFR properties over 5 yrs (Jan 2027–Dec 2031)</td><td style="text-align:left;color:#0b6e54;">$4.10M SP net dev-fee revenue</td></tr>
-      <tr><td>Developer Portfolio</td><td style="text-align:left;">Derek Sanders</td><td style="text-align:left;">Francis, Reseda, 3rd Street, Ramsgate</td><td style="text-align:left;color:#0b6e54;">LIHTC + developer fees (mostly post-2033)</td></tr>
-    </tbody>
-  </table></div>
-  <div class="callout good"><strong>Partner oversight of BD:</strong> All sourcing, qualification, and closing by Tom Taggart is overseen by Chris Aiello (principal) and Bob Kennedy (legal &amp; deal closing). Chris co-sources the top of the pipeline by GMP; Bob gates all contract execution, targeting under 45 days from term sheet to executed contract.</div>
-  <div class="callout warn"><strong>Bonding assumption:</strong> The new BD projects that fill FY2028 onward have not yet been won, so bonding requirements are unknown. The model assumes bonding revenue and costs net to zero from FY2029 — presupposing LV stands up its own bonding capacity. If LV instead stays reliant on third-party surety, a bonding-cost line must be added back.</div>
+<section class="slide" id="slide-06">
+<div class="slide-cover"><div class="slide-label">06 · BD Pipeline · FY2026–FY2033 outlook</div>
+<h1 class="title">The pipeline that replaces the book <em>·</em> 23 signings <em>·</em> $372.0M</h1>
+<p class="lvl">The BD plans model Tom Taggart&rsquo;s third-party GC pipeline, sourced and closed under partner oversight from Chris Aiello and Bob Kennedy. Each deal targets LA multifamily at roughly $15–18M GMP. Bonding revenue and costs are modeled neutral in aggregate from FY2029, preserving the marginal NI rate.</p>
+<p class="lvl"><strong style="color:var(--denim);">The deal counts moved this cycle.</strong> The base case now uses five of the former BD placeholder slots for real named deals — Dickens, Riverton, Moorpark, Beverly and Troost — so the extended plan carries 25 placeholders rather than the 27 shown in June. No capacity was lost: those five are simply named projects now instead of anonymous ones.</p></div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Target Business Plan</div><div class="val denim sm">23 deals</div><div class="delta ">$372.0M aggregate GMP</div></div>
+<div class="kpi"><div class="lbl">Extended BD</div><div class="val denim sm">25 deals</div><div class="delta ">$402.0M aggregate GMP</div></div>
+<div class="kpi"><div class="lbl">Breakeven BD</div><div class="val denim sm">17 deals</div><div class="delta ">$279.0M aggregate GMP</div></div>
+<div class="kpi"><div class="lbl">Swing vs. Base Case</div><div class="val ">$48.0M</div><div class="delta up">Cumulative NI, Target vs. floor</div></div>
+</div>
+<div class="subhead">Consolidated net income by fiscal year — all plans</div>
+<table class="tbl"><thead><tr><th>Plan</th><th>FY26</th><th>FY27</th><th>FY28</th><th>FY29</th><th>FY30</th><th>FY31</th><th>FY32</th><th>FY33</th><th>Cum.</th></tr></thead><tbody>
+<tr><td>Base Case</td><td class="">$0.43M</td><td class="">$3.33M</td><td class="">$5.10M</td><td class="neg">($2.14M)</td><td class="neg">($6.31M)</td><td class="neg">($8.32M)</td><td class="neg">($8.29M)</td><td class="neg">($7.22M)</td><td><strong>($23.4M)</strong></td></tr>
+<tr><td>Base Case + Uplifters</td><td class="">$0.43M</td><td class="">$3.57M</td><td class="">$6.74M</td><td class="neg">($0.81M)</td><td class="neg">($5.76M)</td><td class="neg">($7.97M)</td><td class="neg">($8.29M)</td><td class="neg">($7.22M)</td><td><strong>($19.3M)</strong></td></tr>
+<tr><td>Base + LV BD (breakeven)</td><td class="">$0.43M</td><td class="">$3.33M</td><td class="">$5.37M</td><td class="">$1.52M</td><td class="neg">($0.71M)</td><td class="neg">($0.61M)</td><td class="neg">($0.98M)</td><td class="neg">($0.76M)</td><td><strong>$7.6M</strong></td></tr>
+<tr><td>Base + LV BD (breakeven) + Uplifters</td><td class="">$0.43M</td><td class="">$3.57M</td><td class="">$7.01M</td><td class="">$2.86M</td><td class="neg">($0.16M)</td><td class="neg">($0.27M)</td><td class="neg">($0.98M)</td><td class="neg">($0.76M)</td><td><strong>$11.7M</strong></td></tr>
+<tr><td>Base + LV BD (extended)</td><td class="">$0.43M</td><td class="">$3.33M</td><td class="">$5.37M</td><td class="">$2.06M</td><td class="">$3.41M</td><td class="">$2.99M</td><td class="">$3.10M</td><td class="">$1.41M</td><td><strong>$22.1M</strong></td></tr>
+<tr><td>Base + LV BD (extended) + Uplifters</td><td class="">$0.43M</td><td class="">$3.57M</td><td class="">$7.01M</td><td class="">$3.39M</td><td class="">$3.96M</td><td class="">$3.34M</td><td class="">$3.10M</td><td class="">$1.41M</td><td><strong>$26.2M</strong></td></tr>
+<tr class="row-total"><td>Target Business Plan</td><td class="">$0.43M</td><td class="">$3.57M</td><td class="">$9.19M</td><td class="">$11.76M</td><td class="">$9.91M</td><td class="">$3.32M</td><td class="neg">($6.36M)</td><td class="neg">($7.22M)</td><td><strong>$24.6M</strong></td></tr>
+</tbody></table>
+<p class="tnote">FY2034 is a wind-down tail beyond the pipeline and is excluded from the cumulative column. Breakeven BD sizes the pipeline so consolidated NI stays close to zero each year rather than to grow.</p>
+<div class="subhead" style="margin-top:1.75rem;">When the deals sign</div>
+<div class="grid4">
+<div class="card"><span class="badge attn">23 signings</span><h3 style="margin-top:0.5rem;">Target Business Plan</h3><p><strong>$372.0M</strong> aggregate GMP · Apr 2029 through Sep 2030. Average deal size <strong>$16.17M</strong>.</p></div>
+<div class="card"><span class="badge ready">25 signings</span><h3 style="margin-top:0.5rem;">Extended BD</h3><p><strong>$402.0M</strong> aggregate GMP · Apr 2029 through Sep 2032. Average deal size <strong>$16.08M</strong>.</p></div>
+<div class="card"><span class="badge steel">17 signings</span><h3 style="margin-top:0.5rem;">Breakeven BD</h3><p><strong>$279.0M</strong> aggregate GMP · Apr 2029 through Sep 2032. Average deal size <strong>$16.41M</strong>.</p></div>
+<div class="card"><span class="badge bd">The gap</span><h3 style="margin-top:0.5rem;">Why the cadence matters</h3><p>The committed book runs through FY 2028. The difference between signing from <strong>Apr 2029</strong> and signing from <strong>Apr 2029</strong> is the difference between consolidated NI in the $11.8M range and NI hovering near zero.</p></div>
+</div>
+<div class="callout"><strong>Read across:</strong> the Target Business Plan signs its first deals in Apr 2029 and reaches $11.76M of consolidated net income by FY 2029. The Breakeven plan starts in Apr 2029 and holds the line near zero. The Base Case signs nothing and falls to ($2.14M) by FY 2029. All three share an identical FY 2026 and FY 2027 book.</div>
 </section>
-<section class="slide" id="slide-4">
-  <div class="slide-cover">
-    <div class="slide-label">07 · Uplifters Foundation · Development-fee program</div>
-    <h1 class="title">60 properties <em>·</em> $4.10M net to Six Peak <em>·</em> no construction risk</h1>
-    <p class="lede">Six Peak can run the Uplifters Foundation development program — 60 single-family residential properties generating fee revenue from acquisition, development management, leasing, and exit over five years (Jan 2027 – Dec 2031). Six Peak does <strong>not</strong> perform the construction; it earns a 10% overhead fee plus a share of net income.</p>
-  </div>
-  <div class="kpi-row" style="grid-template-columns:repeat(3,1fr);">
-    <div class="kpi"><div class="lbl">Total Fee Revenue</div><div class="val ">$9.0M</div><div class="delta ">60 properties over 5 years</div></div>
-    <div class="kpi"><div class="lbl">Total to Six Peak</div><div class="val denim">$4.1M</div><div class="delta ">After OH, staffing, opex &amp; Schuyler bonus</div></div>
-    <div class="kpi"><div class="lbl">Cash Runway Extension</div><div class="val ">+6 quarters</div><div class="delta up">Base Q3 2028 → +Upl Q1 2030</div></div>
-  </div>
-  <div class="subhead">Uplifters P&amp;L summary (Six Peak fiscal year)</div>
-  <div class="tbl scroll"><table>
-    <thead><tr><th>Line item</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th><th>FY 2031</th><th>Total</th></tr></thead>
-    <tbody>
-      <tr><td>Total Fee Revenue</td><td>$1,084,382</td><td>$3,698,017</td><td>$2,427,299</td><td>$1,369,332</td><td>$430,635</td><td><strong>$9,009,665</strong></td></tr>
-      <tr><td>Staffing Cost</td><td>($202,088)</td><td>($397,927)</td><td>($450,012)</td><td>($450,012)</td><td>$0</td><td><strong>($1,500,039)</strong></td></tr>
-      <tr><td>Other OpEx</td><td>($114,000)</td><td>($114,000)</td><td>($114,000)</td><td>($114,000)</td><td>$0</td><td><strong>($456,000)</strong></td></tr>
-      <tr style="font-weight:700;"><td>Net Fee Income</td><td>$768,294</td><td>$3,186,090</td><td>$1,863,287</td><td>$805,320</td><td>$430,635</td><td><strong>$7,053,626</strong></td></tr>
-      <tr><td>SP Overhead Fee (10%, $150K cap)</td><td>$93,582</td><td>$150,000</td><td>$148,450</td><td>$136,933</td><td>$34,227</td><td><strong>$563,193</strong></td></tr>
-      <tr style="font-weight:700;"><td>Net Before Bonus</td><td>$674,712</td><td>$3,036,090</td><td>$1,714,837</td><td>$668,387</td><td>$396,407</td><td><strong>$6,490,433</strong></td></tr>
-      <tr class="row-total"><td>Schuyler Bonus (40/45/50%)</td><td>$269,885</td><td>$1,335,773</td><td>$813,611</td><td>$334,194</td><td>$198,204</td><td><strong>$2,951,666</strong></td></tr>
-      <tr class="row-total"><td>Total to Six Peak</td><td>$498,409</td><td>$1,850,318</td><td>$1,049,676</td><td>$471,127</td><td>$232,431</td><td><strong>$4,101,960</strong></td></tr>
-    </tbody>
-  </table></div>
-  <div class="callout good"><strong>Program leadership:</strong> Schuyler Dietz leads with leadership from Chris Aiello. Derek Sanders advises on PM staffing; Chris Andresen and Robert Carrega run accounting and back office; Tom Taggart assists acquisitions. Six Peak earns a <strong>10% overhead fee (capped at $150K/yr)</strong>; after overhead, staffing, and opex, Schuyler receives a tiered bonus (40% first 20 deals, 45% next 20, 50% final 20).</div>
-  <div class="callout warn"><strong>Negotiation note:</strong> Schuyler initially proposed 50/50. Target is the 10% overhead fee to Six Peak then a 60/40 net-income split (60% Schuyler / 40% Six Peak). The model currently reflects 10% OH (capped) + the tiered bonus as the working baseline.</div>
+<section class="slide" id="slide-07">
+<div class="slide-cover"><div class="slide-label">07 · Uplifters Foundation · Development-fee programme</div>
+<h1 class="title">60 properties <em>·</em> $4.10M net to Six Peak <em>·</em> no construction risk</h1>
+<p class="lvl">Six Peak can run the Uplifters Foundation development programme: 60 single-family residential properties generating fee revenue from acquisition, development management, leasing and exit over five years. Six Peak does <strong>not</strong> perform the construction; it earns a 10% overhead fee plus a share of net income.</p>
+<p class="lvl"><strong style="color:var(--denim);">The programme moved out one quarter this cycle</strong>, from a January 2027 start to <strong>Apr 2027</strong>. The whole programme shifted together — fee revenue, staffing, operating costs, the four acquisition phases and the tiered profit-share boundaries — so the economics are unchanged and only the timing moved.</p></div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Total Fee Revenue</div><div class="val denim">$9.0M</div><div class="delta ">60 properties over 5 years</div></div>
+<div class="kpi"><div class="lbl">Total to Six Peak</div><div class="val ">$4.10M</div><div class="delta up">After OH, staffing, opex &amp; Schuyler bonus</div></div>
+<div class="kpi"><div class="lbl">Programme window</div><div class="val denim sm">5 Years (Apr 2027 – Mar 2032)</div><div class="delta ">Was Jan 2027 – Dec 2031</div></div>
+<div class="kpi"><div class="lbl">Cash runway extension</div><div class="val denim sm">Q4 2030 → Q2 2031</div><div class="delta ">Base Case vs. + Uplifters</div></div>
+</div>
+<div class="subhead">Uplifters P&amp;L summary (Six Peak fiscal year)</div>
+<table class="tbl"><thead><tr><th>Line item</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th><th>FY 2031</th><th>Total</th></tr></thead><tbody>
+<tr><td>Total Fee Revenue</td><td class="">$560,818</td><td class="">$3,251,765</td><td class="">$2,911,624</td><td class="">$1,523,049</td><td class="">$762,409</td><td><strong>$9,009,665</strong></td></tr>
+<tr><td>Staffing Cost</td><td class="neg">($120,836)</td><td class="neg">($366,676)</td><td class="neg">($450,012)</td><td class="neg">($450,012)</td><td class="neg">($112,503)</td><td><strong>($1,500,039)</strong></td></tr>
+<tr><td>Other OpEx</td><td class="neg">($85,500)</td><td class="neg">($114,000)</td><td class="neg">($114,000)</td><td class="neg">($114,000)</td><td class="neg">($28,500)</td><td><strong>($456,000)</strong></td></tr>
+<tr><td>Net Fee Income</td><td class="">$354,482</td><td class="">$2,771,089</td><td class="">$2,347,612</td><td class="">$959,037</td><td class="">$621,406</td><td><strong>$7,053,626</strong></td></tr>
+<tr><td>SP Overhead Fee</td><td class="">$56,082</td><td class="">$150,000</td><td class="">$149,031</td><td class="">$140,675</td><td class="">$67,405</td><td><strong>$563,193</strong></td></tr>
+<tr><td>Net Before Bonus</td><td class="">$298,400</td><td class="">$2,621,089</td><td class="">$2,198,581</td><td class="">$818,361</td><td class="">$554,001</td><td><strong>$6,490,433</strong></td></tr>
+<tr><td>Schuyler Bonus</td><td class="">$119,360</td><td class="">$1,130,207</td><td class="">$1,015,918</td><td class="">$409,181</td><td class="">$277,001</td><td><strong>$2,951,666</strong></td></tr>
+<tr class="row-total"><td>Total to Six Peak</td><td class="">$235,122</td><td class="">$1,640,883</td><td class="">$1,331,694</td><td class="">$549,856</td><td class="">$344,405</td><td><strong>$4,101,960</strong></td></tr>
+</tbody></table>
+<div class="callout"><strong>Programme leadership:</strong> Schuyler Dietz leads with leadership from Chris Aiello. Derek Sanders advises on PM staffing; Chris Andresen and Robert Carrega run accounting and back office; Tom Taggart assists acquisitions. Six Peak earns a <strong>10% overhead fee capped at $150K a year</strong>; after overhead, staffing and opex, Schuyler receives a tiered bonus of 40% on the first 20 deals, 45% on the next 20 and 50% on the final 20.</div>
+<div class="callout warn"><strong>Negotiation note:</strong> Schuyler initially proposed 50/50. Target is the 10% overhead fee to Six Peak then a 60/40 net-income split. The model reflects 10% overhead capped plus the tiered bonus as the working baseline.</div>
 </section>
-<section class="slide" id="slide-6">
-  <div class="slide-cover">
-    <div class="slide-label">08 · Project Status · In-place book</div>
-    <h1 class="title">The awarded construction portfolio</h1>
-    <p class="lede">The in-place book underpinning the Base Case, refreshed to the June draw-sheet backlogs — Francis, Lexington and Denny now start August 2026 and Acama September 2026. Klump and Scott are pending ED1 projects modeled at an October 2026 start (Klump/Scott plans only); Dickens, Riverton and Moorpark are the HVN&nbsp;3 trio (HVN&nbsp;3 plans only). Extended and Breakeven BD plans layer additional third-party contracts on top (Section 06).</p>
-  </div>
-  <div class="tbl scroll"><table>
-    <thead><tr><th>Project</th><th>GMP</th><th style="text-align:center;">Type</th><th style="text-align:center;">Start</th><th style="text-align:center;">End</th><th>Status</th></tr></thead>
-    <tbody><tr><td>Crenshaw</td><td>$7,126,075</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Apr 2026</td><td style="text-align:center;">Nov 2026</td><td class="muted" style="text-align:right;">Completes before FY2028</td></tr><tr><td>Ramsgate</td><td>$20,176,449</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Apr 2026</td><td style="text-align:center;">Jul 2027</td><td class="muted" style="text-align:right;">Completes before FY2028</td></tr><tr><td>Califa</td><td>$11,929,880</td><td style="text-align:center;">3rd Party GC</td><td style="text-align:center;">Apr 2026</td><td style="text-align:center;">Jun 2027</td><td class="muted" style="text-align:right;">Completes before FY2028</td></tr><tr><td>Whipple</td><td>$14,427,884</td><td style="text-align:center;">3rd Party GC</td><td style="text-align:center;">Apr 2026</td><td style="text-align:center;">Jun 2027</td><td class="muted" style="text-align:right;">Completes before FY2028</td></tr><tr><td>Nelrose</td><td>$3,623,245</td><td style="text-align:center;">3rd Party GC</td><td style="text-align:center;">Apr 2026</td><td style="text-align:center;">Oct 2027</td><td class="muted" style="text-align:right;">Completes before FY2028</td></tr><tr><td>Francis</td><td>$42,794,765</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Aug 2026</td><td style="text-align:center;">Jan 2029</td><td class="pos" style="text-align:right;">Active into FY2028+</td></tr><tr><td>Lexington</td><td>$12,993,776</td><td style="text-align:center;">3rd Party GC</td><td style="text-align:center;">Aug 2026</td><td style="text-align:center;">Feb 2028</td><td class="pos" style="text-align:right;">Active into FY2028+</td></tr><tr><td>Denny</td><td>$14,337,011</td><td style="text-align:center;">3rd Party GC</td><td style="text-align:center;">Aug 2026</td><td style="text-align:center;">Jan 2029</td><td class="pos" style="text-align:right;">Active into FY2028+</td></tr><tr><td>Acama</td><td>$21,263,405</td><td style="text-align:center;">3rd Party GC</td><td style="text-align:center;">Sep 2026</td><td style="text-align:center;">Aug 2028</td><td class="pos" style="text-align:right;">Active into FY2028+</td></tr><tr style="opacity:0.55;"><td>Klump</td><td>$9,577,109</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Oct 2026</td><td style="text-align:center;">Apr 2028</td><td class="text-warning" style="text-align:right;">Pending — in Klump/Scott plans</td></tr><tr style="opacity:0.55;"><td>Scott</td><td>$7,545,203</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Oct 2026</td><td style="text-align:center;">Apr 2028</td><td class="text-warning" style="text-align:right;">Pending — in Klump/Scott plans</td></tr><tr style="opacity:0.55;"><td>Dickens</td><td>$15,316,015</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Apr 2027</td><td style="text-align:center;">Oct 2028</td><td class="text-warning" style="text-align:right;">Pending — in HVN 3 plans</td></tr><tr style="opacity:0.55;"><td>Riverton</td><td>$11,317,385</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">May 2027</td><td style="text-align:center;">Nov 2028</td><td class="text-warning" style="text-align:right;">Pending — in HVN 3 plans</td></tr><tr style="opacity:0.55;"><td>Moorpark</td><td>$18,442,769</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Jun 2027</td><td style="text-align:center;">Dec 2028</td><td class="text-warning" style="text-align:right;">Pending — in HVN 3 plans</td></tr><tr><td>Reseda</td><td>$45,266,770</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Apr 2027</td><td style="text-align:center;">Sep 2029</td><td class="pos" style="text-align:right;">Active into FY2028+</td></tr><tr><td>3rd St</td><td>$41,354,632</td><td style="text-align:center;">GC + Dev</td><td style="text-align:center;">Jun 2028</td><td style="text-align:center;">Nov 2030</td><td class="pos" style="text-align:right;">Active into FY2028+</td></tr>
-  </tbody>
-  </table></div>
-  <p class="tnote">GMP values reflect remaining contract balances from the June draw sheets — Crenshaw, Ramsgate, Califa, Whipple, and Nelrose are under construction; Francis, Lexington and Denny were trued up this cycle ($42.79M / $12.99M / $14.34M). Reseda ($45.3M, Apr 2027 start) is not yet funded; see the FY2027 risk note in Section 01. Dickens, Riverton and Moorpark ($45.1M combined) appear only in the HVN 3 plans.</p>
+<section class="slide" id="slide-08">
+<div class="slide-cover"><div class="slide-label">08 · Project Status · The committed book</div>
+<h1 class="title">Eighteen deals <em>·</em> $337.7M of contract value</h1>
+<p class="lvl">Every deal in the table is inside the Base Case. That is the change from the June pack, where Klump, Scott and the HVN trio carried a &ldquo;pending, in X plans&rdquo; status. Six deals moved later this cycle and two are new. Nothing moved earlier.</p></div>
+<div class="kpi-row">
+<div class="kpi"><div class="lbl">Active deals</div><div class="val denim sm">18</div><div class="delta ">All inside the Base Case</div></div>
+<div class="kpi"><div class="lbl">Contract value</div><div class="val denim">$337.7M</div><div class="delta ">Aggregate GMP</div></div>
+<div class="kpi"><div class="lbl">Starting in FY 2026</div><div class="val denim sm">9</div><div class="delta ">Acama is the only remaining 2026 start</div></div>
+<div class="kpi"><div class="lbl">Starting in FY 2027</div><div class="val denim sm">8</div><div class="delta ">Six deals across the year</div></div>
+</div>
+<table class="tbl"><thead><tr><th>Project</th><th>GMP</th><th>Type</th><th>Start</th><th>End</th><th>Change this cycle</th></tr></thead><tbody>
+<tr><td>Califa</td><td>$11,929,880</td><td>3rd Party GC</td><td>Apr 2026</td><td>Jun 2027</td><td></td></tr><tr><td>Crenshaw</td><td>$7,126,075</td><td>GC + Developer</td><td>Apr 2026</td><td>Nov 2026</td><td></td></tr><tr><td>Nelrose</td><td>$3,623,245</td><td>3rd Party GC</td><td>Apr 2026</td><td>Oct 2027</td><td></td></tr><tr><td>Ramsgate</td><td>$20,176,449</td><td>GC + Developer</td><td>Apr 2026</td><td>Jul 2027</td><td></td></tr><tr><td>Whipple</td><td>$14,427,884</td><td>3rd Party GC</td><td>Apr 2026</td><td>Jun 2027</td><td></td></tr><tr><td>Denny</td><td>$14,337,011</td><td>3rd Party GC</td><td>Aug 2026</td><td>Jan 2029</td><td></td></tr><tr><td>Francis</td><td>$42,794,765</td><td>GC + Developer</td><td>Aug 2026</td><td>Jan 2029</td><td></td></tr><tr><td>Lexington</td><td>$12,993,776</td><td>3rd Party GC</td><td>Aug 2026</td><td>Feb 2028</td><td></td></tr><tr><td>Acama</td><td>$21,263,405</td><td>3rd Party GC</td><td>Nov 2026</td><td>Oct 2028</td><td><span class="badge attn">Moved from Sep 2026</span></td></tr><tr><td>Klump</td><td>$9,577,109</td><td>GC + Developer</td><td>Jan 2027</td><td>Jul 2028</td><td><span class="badge attn">Moved from Oct 2026</span></td></tr><tr><td>Scott</td><td>$7,545,203</td><td>GC + Developer</td><td>Jan 2027</td><td>Jul 2028</td><td><span class="badge attn">Moved from Oct 2026</span></td></tr><tr><td>Troost (HVN)</td><td>$15,189,509</td><td>GC + Developer</td><td>Jan 2027</td><td>Jul 2028</td><td><span class="badge ready">New this cycle</span></td></tr><tr><td>Dickens</td><td>$15,316,015</td><td>GC + Developer</td><td>May 2027</td><td>Nov 2028</td><td><span class="badge attn">Moved from Apr 2027</span></td></tr><tr><td>Reseda</td><td>$45,266,770</td><td>GC + Developer</td><td>May 2027</td><td>Oct 2029</td><td><span class="badge attn">Moved from Apr 2027</span></td></tr><tr><td>Riverton</td><td>$11,317,385</td><td>GC + Developer</td><td>Jun 2027</td><td>Dec 2028</td><td><span class="badge attn">Moved from May 2027</span></td></tr><tr><td>Moorpark</td><td>$18,442,769</td><td>GC + Developer</td><td>Jul 2027</td><td>Jan 2029</td><td><span class="badge attn">Moved from Jun 2027</span></td></tr><tr><td>Beverly (BD-04)</td><td>$25,026,331</td><td>3rd Party GC</td><td>Nov 2027</td><td>Oct 2029</td><td><span class="badge ready">New this cycle</span></td></tr><tr><td>3rd St</td><td>$41,354,632</td><td>GC + Developer</td><td>Jun 2028</td><td>Nov 2030</td><td></td></tr>
+</tbody></table>
+<p class="tnote">GMP values reflect remaining contract balances from the June draw sheets. Crenshaw, Ramsgate, Califa, Whipple and Nelrose are under construction. Francis started in August 2026 as planned.</p>
+<div class="callout warn"><strong>Two clusters worth watching:</strong> Klump, Scott and Troost all start in <strong>January 2027</strong>, and Dickens and Reseda both start in <strong>May 2027</strong> — with Reseda the $45.3M job. Three simultaneous starts and then a $45.3M job alongside a $15.3M job is a real load on field supervision. The model carries a named superintendent per major job, but the sequencing is worth a look before it is committed.</div>
+<div class="callout"><strong>Reseda remains the gating item.</strong> $45.3M of GMP starting May 2027 and still not funded. It is the single largest in-FY27 contributor; if financing slips, FY 2027 revenue, GC net income and ending cash all step down materially.</div>
 </section>
-<section class="slide" id="slide-7">
-  <div class="slide-cover">
-    <div class="slide-label">09 · Appendix · Supporting detail</div>
-    <h1 class="title">Appendix &amp; supporting detail</h1>
-    <p class="lede">Drill-down tables behind the headline numbers. All figures pulled from the live models (June 30, 2026 snapshot). Extended/Breakeven BD detail is in Section 06.</p>
-  </div>
-  <details open><summary>Net income &amp; cash — all plans (FY2026–FY2029)</summary><div class="body">
-    <div class="tbl scroll"><table><thead><tr><th></th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th></tr></thead>
-    <tbody><tr class="row-section"><td colspan="5">Consolidated Net Income</td></tr><tr><td>Base Case</td><td class="">$525,570</td><td class="">$471,288</td><td class="neg">($837,502)</td><td class="neg">($3,097,067)</td></tr><tr><td>+ Uplifters</td><td class="">$525,570</td><td class="">$969,697</td><td class="">$1,012,815</td><td class="neg">($2,047,391)</td></tr><tr><td>+ Klump/Scott</td><td class="">$1,050,331</td><td class="">$1,992,322</td><td class="neg">($227,422)</td><td class="neg">($3,097,067)</td></tr><tr><td>+ HVN 3</td><td class="">$525,570</td><td class="">$2,623,173</td><td class="">$2,437,378</td><td class="neg">($3,097,067)</td></tr><tr><td>+ HVN 3 + Uplifters</td><td class="">$525,570</td><td class="">$3,121,582</td><td class="">$4,287,696</td><td class="neg">($2,047,391)</td></tr><tr><td>+ HVN 3 + Klump/Scott</td><td class="">$1,050,331</td><td class="">$4,144,207</td><td class="">$3,047,458</td><td class="neg">($3,097,067)</td></tr><tr><td>+ HVN 3 + K/S + Uplifters</td><td class="">$1,050,331</td><td class="">$4,642,616</td><td class="">$4,897,776</td><td class="neg">($2,047,391)</td></tr><tr><td>+ Extended BD</td><td class="">$525,570</td><td class="">$471,288</td><td class="">$855,863</td><td class="">$3,199,953</td></tr><tr><td>+ Uplifters + Extended BD</td><td class="">$525,570</td><td class="">$969,697</td><td class="">$2,706,180</td><td class="">$4,249,628</td></tr><tr><td>+ Breakeven BD</td><td class="">$525,570</td><td class="">$471,288</td><td class="neg">($604,122)</td><td class="">$567,749</td></tr><tr><td>+ Uplifters + Breakeven BD</td><td class="">$525,570</td><td class="">$969,697</td><td class="">$1,246,195</td><td class="">$1,617,425</td></tr><tr class="row-section"><td colspan="5">Total Ending Cash</td></tr><tr><td>Base Case</td><td class="">$1,262,733</td><td class="">$603,475</td><td class="neg">($977,009)</td><td class="neg">($2,902,058)</td></tr><tr><td>+ Uplifters</td><td class="">$1,262,733</td><td class="">$1,101,884</td><td class="">$1,371,717</td><td class="">$246,344</td></tr><tr><td>+ Klump/Scott</td><td class="">$1,571,049</td><td class="">$2,120,984</td><td class="">$1,178,865</td><td class="neg">($746,184)</td></tr><tr><td>+ HVN 3</td><td class="">$1,262,733</td><td class="">$2,118,656</td><td class="">$3,655,772</td><td class="">$2,024,707</td></tr><tr><td>+ HVN 3 + Uplifters</td><td class="">$1,262,733</td><td class="">$2,617,065</td><td class="">$6,004,498</td><td class="">$5,423,109</td></tr><tr><td>+ HVN 3 + Klump/Scott</td><td class="">$1,571,049</td><td class="">$3,636,165</td><td class="">$6,061,646</td><td class="">$4,430,581</td></tr><tr><td>+ HVN 3 + K/S + Uplifters</td><td class="">$1,571,049</td><td class="">$4,134,574</td><td class="">$8,410,372</td><td class="">$7,828,984</td></tr><tr><td>+ Extended BD</td><td class="">$1,262,733</td><td class="">$603,475</td><td class="">$97,847</td><td class="">$3,287,456</td></tr><tr><td>+ Uplifters + Extended BD</td><td class="">$1,262,733</td><td class="">$1,101,884</td><td class="">$2,446,573</td><td class="">$6,435,859</td></tr><tr><td>+ Breakeven BD</td><td class="">$1,262,733</td><td class="">$603,475</td><td class="neg">($933,245)</td><td class="">$18,262</td></tr><tr><td>+ Uplifters + Breakeven BD</td><td class="">$1,262,733</td><td class="">$1,101,884</td><td class="">$1,415,481</td><td class="">$3,166,665</td></tr><tr class="row-section"><td colspan="5">GC Net Income</td></tr><tr><td>Base Case</td><td class="">$1,456,407</td><td class="">$815,101</td><td class="">$9,848</td><td class="neg">($2,048,294)</td></tr><tr><td>+ Uplifters</td><td class="">$1,456,407</td><td class="">$815,101</td><td class="">$9,848</td><td class="neg">($2,048,294)</td></tr><tr><td>+ Klump/Scott</td><td class="">$1,765,613</td><td class="">$2,051,924</td><td class="">$525,191</td><td class="neg">($2,048,294)</td></tr><tr><td>+ HVN 3</td><td class="">$1,456,407</td><td class="">$2,966,985</td><td class="">$3,284,729</td><td class="neg">($2,048,294)</td></tr><tr><td>+ HVN 3 + Uplifters</td><td class="">$1,456,407</td><td class="">$2,966,985</td><td class="">$3,284,729</td><td class="neg">($2,048,294)</td></tr><tr><td>+ HVN 3 + Klump/Scott</td><td class="">$1,765,613</td><td class="">$4,203,809</td><td class="">$3,800,072</td><td class="neg">($2,048,294)</td></tr><tr><td>+ HVN 3 + K/S + Uplifters</td><td class="">$1,765,613</td><td class="">$4,203,809</td><td class="">$3,800,072</td><td class="neg">($2,048,294)</td></tr><tr><td>+ Extended BD</td><td class="">$1,456,407</td><td class="">$815,101</td><td class="">$1,703,213</td><td class="">$4,248,726</td></tr><tr><td>+ Uplifters + Extended BD</td><td class="">$1,456,407</td><td class="">$815,101</td><td class="">$1,703,213</td><td class="">$4,248,726</td></tr><tr><td>+ Breakeven BD</td><td class="">$1,456,407</td><td class="">$815,101</td><td class="">$243,228</td><td class="">$1,616,523</td></tr><tr><td>+ Uplifters + Breakeven BD</td><td class="">$1,456,407</td><td class="">$815,101</td><td class="">$243,228</td><td class="">$1,616,523</td></tr>
-    </tbody></table></div>
-    <p class="tnote">Uplifters affects Six Peak revenue only, so an Uplifters-on/off pairing (e.g. Base vs. + Uplifters, or + Extended BD vs. + Uplifters + Extended BD) shows identical GC Net Income; the differences land in Consolidated NI and Total Ending Cash.</p>
-  </div></details>
-  <details><summary>Bonding &amp; PIK (Base Case, FY2026–FY2029)</summary><div class="body">
-    <div class="tbl scroll"><table><thead><tr><th></th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th></tr></thead>
-    <tbody><tr><td>Bonding Outstanding</td><td>$86,032,874</td><td>$52,993,543</td><td>$45,500,358</td><td>$13,258,585</td></tr><tr><td>Investment Capital Outstanding (PIK)</td><td>$2,378,400</td><td>$1,714,451</td><td>$1,035,129</td><td>$1,199,352</td></tr></tbody></table></div>
-    <p class="tnote">All primary plans share the same bonding profile (Klump &amp; Scott are not bonded). Extended/Breakeven BD assume bonding revenue and costs net to zero in aggregate from FY2029. PIK (Investment Capital Outstanding) accrues at 15% annually and is repaid from LIHTC cash flows.</p>
-  </div></details>
-  <details><summary>Steyn debt facility</summary><div class="body">
-    <p class="lvl">$1.5M loan, 15% annual (3.75%/qtr). Pro forma repayment schedule, flexible and subject to change with actual cash flow: 18 payments of $112K/mo from Jan 2027, full payoff Jun 2028. Total interest $0.50M over the life (total payments less the $1.5M original principal). Full month-by-month schedule in Section 04.</p>
-  </div></details>
-  <div class="callout"><strong>Methodology:</strong> FY = calendar year (Jan–Dec). FY2026 folds in actuals through June 2026; personnel roster and salary assumptions updated July 24, 2026. FY2034 is a wind-down tail excluded from cumulative figures. Each scenario is an independent Excel model; numbers above are recalculated outputs, not estimates.</div>
+<section class="slide" id="slide-09">
+<div class="slide-cover"><div class="slide-label">09 · Appendix · Supporting detail</div>
+<h1 class="title">Appendix &amp; supporting detail</h1>
+<p class="lvl">Drill-down tables behind the headline numbers, across all seven plans. All figures read directly from the live models, actuals through June 30 2026, assumptions as of August 23 2026.</p></div>
+<div class="subhead" style="margin-top:1.5rem;">Consolidated net income</div><table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th></tr></thead><tbody><tr class="row-total"><td>Target Business Plan</td><td class="">$428,776</td><td class="">$3,569,142</td><td class="">$9,192,998</td><td class="">$11,761,367</td><td class="">$9,913,415</td></tr><tr><td>Base Case</td><td class="">$428,776</td><td class="">$3,334,020</td><td class="">$5,095,876</td><td class="neg">($2,140,321)</td><td class="neg">($6,312,523)</td></tr><tr><td>Base Case + Uplifters</td><td class="">$428,776</td><td class="">$3,569,142</td><td class="">$6,736,759</td><td class="neg">($808,627)</td><td class="neg">($5,762,667)</td></tr><tr><td>Base + LV BD (breakeven)</td><td class="">$428,776</td><td class="">$3,334,020</td><td class="">$5,366,756</td><td class="">$1,524,496</td><td class="neg">($709,313)</td></tr><tr><td>Base + LV BD (breakeven) + Uplifters</td><td class="">$428,776</td><td class="">$3,569,142</td><td class="">$7,007,639</td><td class="">$2,856,190</td><td class="neg">($159,457)</td></tr><tr><td>Base + LV BD (extended)</td><td class="">$428,776</td><td class="">$3,334,020</td><td class="">$5,366,756</td><td class="">$2,055,990</td><td class="">$3,405,294</td></tr><tr><td>Base + LV BD (extended) + Uplifters</td><td class="">$428,776</td><td class="">$3,569,142</td><td class="">$7,007,639</td><td class="">$3,387,684</td><td class="">$3,955,149</td></tr></tbody></table>
+<div class="subhead" style="margin-top:1.5rem;">Total ending cash</div><table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th></tr></thead><tbody><tr class="row-total"><td>Target Business Plan</td><td class="">$1,231,610</td><td class="">$2,768,779</td><td class="">$10,461,559</td><td class="">$22,100,720</td><td class="">$32,353,286</td></tr><tr><td>Base Case</td><td class="">$1,231,610</td><td class="">$2,533,657</td><td class="">$6,855,273</td><td class="">$5,799,064</td><td class="neg">($206,022)</td></tr><tr><td>Base Case + Uplifters</td><td class="">$1,231,610</td><td class="">$2,768,779</td><td class="">$8,731,277</td><td class="">$9,006,763</td><td class="">$3,551,533</td></tr><tr><td>Base + LV BD (breakeven)</td><td class="">$1,231,610</td><td class="">$2,533,657</td><td class="">$7,022,315</td><td class="">$9,134,310</td><td class="">$8,393,043</td></tr><tr><td>Base + LV BD (breakeven) + Uplifters</td><td class="">$1,231,610</td><td class="">$2,768,779</td><td class="">$8,898,320</td><td class="">$12,342,009</td><td class="">$12,150,598</td></tr><tr><td>Base + LV BD (extended)</td><td class="">$1,231,610</td><td class="">$2,533,657</td><td class="">$7,022,315</td><td class="">$9,436,460</td><td class="">$12,419,732</td></tr><tr><td>Base + LV BD (extended) + Uplifters</td><td class="">$1,231,610</td><td class="">$2,768,779</td><td class="">$8,898,320</td><td class="">$12,644,158</td><td class="">$16,177,287</td></tr></tbody></table>
+<div class="subhead" style="margin-top:1.5rem;">GC net income</div><table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th></tr></thead><tbody><tr class="row-total"><td>Target Business Plan</td><td class="">$1,388,113</td><td class="">$3,306,495</td><td class="">$8,156,236</td><td class="">$11,419,236</td><td class="">$10,372,913</td></tr><tr><td>Base Case</td><td class="">$1,388,113</td><td class="">$3,306,495</td><td class="">$5,699,997</td><td class="neg">($1,150,757)</td><td class="neg">($5,303,168)</td></tr><tr><td>Base Case + Uplifters</td><td class="">$1,388,113</td><td class="">$3,306,495</td><td class="">$5,699,997</td><td class="neg">($1,150,757)</td><td class="neg">($5,303,168)</td></tr><tr><td>Base + LV BD (breakeven)</td><td class="">$1,388,113</td><td class="">$3,306,495</td><td class="">$5,970,877</td><td class="">$2,514,059</td><td class="">$300,041</td></tr><tr><td>Base + LV BD (breakeven) + Uplifters</td><td class="">$1,388,113</td><td class="">$3,306,495</td><td class="">$5,970,877</td><td class="">$2,514,059</td><td class="">$300,041</td></tr><tr><td>Base + LV BD (extended)</td><td class="">$1,388,113</td><td class="">$3,306,495</td><td class="">$5,970,877</td><td class="">$3,045,553</td><td class="">$4,414,648</td></tr><tr><td>Base + LV BD (extended) + Uplifters</td><td class="">$1,388,113</td><td class="">$3,306,495</td><td class="">$5,970,877</td><td class="">$3,045,553</td><td class="">$4,414,648</td></tr></tbody></table>
+<div class="subhead" style="margin-top:1.5rem;">Six Peak net income</div><table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th></tr></thead><tbody><tr class="row-total"><td>Target Business Plan</td><td class="neg">($959,337)</td><td class="">$262,647</td><td class="">$1,036,762</td><td class="">$342,131</td><td class="neg">($459,499)</td></tr><tr><td>Base Case</td><td class="neg">($959,337)</td><td class="">$27,525</td><td class="neg">($604,121)</td><td class="neg">($989,563)</td><td class="neg">($1,009,355)</td></tr><tr><td>Base Case + Uplifters</td><td class="neg">($959,337)</td><td class="">$262,647</td><td class="">$1,036,762</td><td class="">$342,131</td><td class="neg">($459,499)</td></tr><tr><td>Base + LV BD (breakeven)</td><td class="neg">($959,337)</td><td class="">$27,525</td><td class="neg">($604,121)</td><td class="neg">($989,563)</td><td class="neg">($1,009,355)</td></tr><tr><td>Base + LV BD (breakeven) + Uplifters</td><td class="neg">($959,337)</td><td class="">$262,647</td><td class="">$1,036,762</td><td class="">$342,131</td><td class="neg">($459,499)</td></tr><tr><td>Base + LV BD (extended)</td><td class="neg">($959,337)</td><td class="">$27,525</td><td class="neg">($604,121)</td><td class="neg">($989,563)</td><td class="neg">($1,009,355)</td></tr><tr><td>Base + LV BD (extended) + Uplifters</td><td class="neg">($959,337)</td><td class="">$262,647</td><td class="">$1,036,762</td><td class="">$342,131</td><td class="neg">($459,499)</td></tr></tbody></table>
+<div class="subhead" style="margin-top:1.5rem;">Construction billing</div><table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th></tr></thead><tbody><tr class="row-total"><td>Target Business Plan</td><td class="">$51.0M</td><td class="">$99.5M</td><td class="">$123.5M</td><td class="">$140.4M</td><td class="">$119.4M</td></tr><tr><td>Base Case</td><td class="">$51.0M</td><td class="">$99.5M</td><td class="">$107.5M</td><td class="">$34.2M</td><td class="">$11.3M</td></tr><tr><td>Base Case + Uplifters</td><td class="">$51.0M</td><td class="">$99.5M</td><td class="">$107.5M</td><td class="">$34.2M</td><td class="">$11.3M</td></tr><tr><td>Base + LV BD (breakeven)</td><td class="">$51.0M</td><td class="">$99.5M</td><td class="">$108.7M</td><td class="">$64.9M</td><td class="">$50.8M</td></tr><tr><td>Base + LV BD (breakeven) + Uplifters</td><td class="">$51.0M</td><td class="">$99.5M</td><td class="">$108.7M</td><td class="">$64.9M</td><td class="">$50.8M</td></tr><tr><td>Base + LV BD (extended)</td><td class="">$51.0M</td><td class="">$99.5M</td><td class="">$108.7M</td><td class="">$67.7M</td><td class="">$87.4M</td></tr><tr><td>Base + LV BD (extended) + Uplifters</td><td class="">$51.0M</td><td class="">$99.5M</td><td class="">$108.7M</td><td class="">$67.7M</td><td class="">$87.4M</td></tr></tbody></table>
+<div class="subhead" style="margin-top:1.5rem;">Bonding outstanding · year-end</div><table class="tbl"><thead><tr><th>Plan</th><th>FY 2026</th><th>FY 2027</th><th>FY 2028</th><th>FY 2029</th><th>FY 2030</th></tr></thead><tbody><tr class="row-total"><td>Target Business Plan</td><td class="">$87.9M</td><td class="">$87.5M</td><td class="">$47.8M</td><td class="">$13.3M</td><td class="">$0.0M</td></tr><tr><td>Base Case</td><td class="">$87.9M</td><td class="">$87.5M</td><td class="">$47.8M</td><td class="">$13.3M</td><td class="">$0.0M</td></tr><tr><td>Base Case + Uplifters</td><td class="">$87.9M</td><td class="">$87.5M</td><td class="">$47.8M</td><td class="">$13.3M</td><td class="">$0.0M</td></tr><tr><td>Base + LV BD (breakeven)</td><td class="">$87.9M</td><td class="">$87.5M</td><td class="">$47.8M</td><td class="">$13.3M</td><td class="">$0.0M</td></tr><tr><td>Base + LV BD (breakeven) + Uplifters</td><td class="">$87.9M</td><td class="">$87.5M</td><td class="">$47.8M</td><td class="">$13.3M</td><td class="">$0.0M</td></tr><tr><td>Base + LV BD (extended)</td><td class="">$87.9M</td><td class="">$87.5M</td><td class="">$47.8M</td><td class="">$13.3M</td><td class="">$0.0M</td></tr><tr><td>Base + LV BD (extended) + Uplifters</td><td class="">$87.9M</td><td class="">$87.5M</td><td class="">$47.8M</td><td class="">$13.3M</td><td class="">$0.0M</td></tr></tbody></table>
+<div class="subhead" style="margin-top:1.75rem;">Notes</div>
+<details><summary>Steyn debt facility</summary><div class="body"><p class="lvl">$1.5M loan, 15% annual (3.75% quarterly). Pro forma repayment schedule, flexible and subject to change with actual cash flow: 18 payments of $112K a month from January 2027, fully repaid June 2028. Full month-by-month schedule in Section 04. Carried forward unchanged through the August model rebuild.</p></div></details>
+<details><summary>What changed in the models on August 23</summary><div class="body"><p class="lvl">The base case was redefined from eleven in-place deals to eighteen; six deals were retimed later; the Uplifters programme moved out a quarter; APA net income is floored at zero from January 2028; non-cash revenue no longer moves the cash balance; and twelve model defects were fixed. The reconciliation is in Section 02 and the full defect register is filed with the models.</p></div></details>
+<details><summary>APA LLP</summary><div class="body"><p class="lvl">The Adam Polk architecture partnership turns cash-negative from January 2028 in the underlying projection. The consolidated model now floors Six Peak&rsquo;s 50% share at zero from that point, on the basis that the partnership would be wound down or replaced rather than run at a loss. The underlying detail still shows the deficit.</p></div></details>
+<div class="callout"><strong>Methodology:</strong> FY = calendar year (Jan–Dec). FY2026 folds in actuals through June 2026; July financials are not yet in these models and will follow in a later update. Personnel roster and salary assumptions updated July 24, 2026. FY2034 is a wind-down tail excluded from cumulative figures. Each plan is an independent Excel model; the numbers above are recalculated outputs, not estimates.</div>
 </section>
 </div></main>
 <div class="deck-controls">
@@ -625,7 +487,7 @@ details .body { padding:0 1.2rem 1.2rem; }
 <script>
 const slides = document.querySelectorAll('.slide');
 const navBtns = document.querySelectorAll('.deck-nav button');
-const slideNames = ["Executive Summary", "Francis Delay", "Plans & Files", "Steyn Debt Facility", "2026\u20132028 Comparison", "Extended BD", "Uplifters", "Project Status", "Appendix"];
+const slideNames = ["Executive Summary", "What Changed", "Plans & Files", "Steyn Debt Facility", "Plan Comparison", "BD Pipeline", "Uplifters", "Project Status", "Appendix"];
 let cur = 0;
 function goSlide(i) {
   if (i < 0 || i >= slides.length) return;
