@@ -1,212 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="noindex, nofollow" />
-<title>SPC Board Portal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
-<script>
-  /* Gate the entrance animation on JS + motion support so content is never hidden if JS fails. */
-  try {
-    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.className += ' js';
-    }
-  } catch (e) {}
-</script>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Six Peak Capital · Board Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --denim:#0B1833;
-    --denim-deep:#070F22;
-    --space:#2C3A51;
-    --space-muted:#1E2C44;
-    --steel:#BFC7DA;
-    --steel-dim:#8A96AE;
-    --steel-light:#E2E7F0;
-    --rust:#C4581A;
-    --rust-glow:#E8935A;
-    --ghost:#F8F9F4;
-    --ghost-warm:#FAFAF6;
-    --line:rgba(191,199,218,0.14);
-    --line-soft:rgba(191,199,218,0.08);
-    --display:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    --body:'Aptos','DM Sans',Calibri,'Segoe UI',sans-serif;
-    --ease:cubic-bezier(.22,.61,.36,1);
-  }
+:root{--denim:#0B1833;--space:#2C3A51;--steel:#BFC7DA;--rust:#C4581A;--bg:#E2E7F0;--card:#fff;--ink:#2D2D2D;--gray:#475569;--line:#E0E0E0;--band:#F5F7FA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 'Aptos','DM Sans',Calibri,'Segoe UI',sans-serif}
+.hwrap,.wrap{max-width:1080px;margin:0 auto}
+header.top{position:sticky;top:0;z-index:10;background:rgba(11,24,51,.97);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid rgba(191,199,218,.12)}
+.bar{max-width:1080px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;gap:16px}
+.home{display:flex;align-items:center;flex:none}.home img{height:26px;width:auto;filter:invert(1);opacity:.95;display:block}
+.sep{width:1px;height:24px;background:rgba(191,199,218,.25);flex:none}
+.ptl{font:600 11px/1 'DM Sans',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);white-space:nowrap;flex:none}
+header.top nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;height:100%}
+header.top nav::-webkit-scrollbar{display:none}
+header.top nav a{display:flex;align-items:center;height:100%;color:var(--steel);text-decoration:none;font:600 13px/1 'DM Sans',sans-serif;padding:0 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+header.top nav a:hover{color:#fff}
+header.top nav a.on{color:#fff;border-bottom-color:var(--rust)}
+.hero{background:radial-gradient(900px 420px at 85% -20%,rgba(196,88,26,.18),transparent 70%),linear-gradient(105deg,#0B1833 0%,#15223D 60%,#1E2C44 100%);color:#fff;padding:40px 0 76px}
+.hero .hwrap{padding:0 16px}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font:600 11px/1 'DM Sans',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--rust)}
+.eyebrow .tick{width:32px;height:2px;background:linear-gradient(90deg,var(--rust),transparent)}
+h1{font:600 clamp(30px,4.6vw,44px)/1.05 'DM Sans',sans-serif;letter-spacing:-.02em;margin:14px 0 18px;color:#F8F9F4}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 12px/1 'DM Sans',sans-serif;color:var(--steel);border:1px solid rgba(191,199,218,.22);border-radius:999px;padding:7px 12px;background:rgba(255,255,255,.03)}
+.chip b{color:#fff;font-weight:600}
+main.wrap{margin-top:-48px;position:relative}
+.wrap{padding:18px 16px 60px}
+.slide,.apx{background:var(--card);border:1px solid rgba(11,24,51,.08);border-radius:12px;padding:22px 22px 18px;margin:0 0 18px;scroll-margin-top:76px}
+.lbl{color:var(--rust);font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+h2{font:700 24px/1.25 'DM Sans',sans-serif;color:var(--denim);margin:6px 0 16px}
+h3{font:700 13px/1 'DM Sans',sans-serif;color:var(--denim);text-transform:uppercase;letter-spacing:.08em;margin:18px 0 8px}
+h4{font:700 14px/1.3 'DM Sans',sans-serif;color:var(--denim);margin:16px 0 8px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:14px}
+.tile{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff}
+.tl{font-size:12px;color:var(--gray);font-weight:600}
+.tv{font:700 26px/1.2 'DM Sans',sans-serif;color:var(--rust);margin:4px 0 2px}
+.ts{font-size:12px;color:var(--gray)}
+.tv sup,.ts sup{font-size:11px}
+.p{margin:12px 0 0;color:var(--gray)}.n{margin:10px 0 0;color:var(--gray);font-size:13px}
+ul.chg{margin:0;padding-left:18px;color:var(--ink)}ul.chg li{margin:4px 0}
+.tw{overflow-x:auto;margin:8px 0}
+.tbl{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+.tbl th{background:var(--denim);color:#fff;font-weight:700;padding:7px 9px;text-align:right;white-space:nowrap;border-bottom:2px solid var(--rust)}
+.tbl td{padding:6px 9px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl .l{text-align:left}.tbl td.l{white-space:normal;min-width:120px}.tbl.wide{font-size:12px}.tbl.wide td.l:first-child{white-space:nowrap;min-width:0}.tbl.wide th,.tbl.wide td{padding:6px 7px}
+.tbl tbody tr:nth-child(even){background:var(--band)}
+.tbl tr.tot td{font-weight:700;color:var(--rust);border-top:2px solid var(--denim);background:#fff}
+.neg{color:#9B2C2C}
+.apx h2{margin-bottom:6px}.apx .sub{color:var(--gray);margin:0 0 12px;font-size:13px}
+details.ax{border-top:1px solid var(--line)}
+details.ax summary{cursor:pointer;list-style:none;padding:12px 4px;font:600 15px/1.3 'DM Sans',sans-serif;color:var(--denim);display:flex;gap:12px;align-items:center}
+details.ax summary::-webkit-details-marker{display:none}
+details.ax summary:after{content:'+';margin-left:auto;color:var(--rust);font-size:20px}
+details.ax[open] summary:after{content:'-'}
+.code{display:inline-block;min-width:38px;font:700 12px/1 'DM Sans',sans-serif;color:#fff;background:var(--rust);border-radius:6px;padding:5px 7px;text-align:center}
+.axb{padding:0 4px 16px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.qa{padding:9px 0;border-bottom:1px solid var(--line)}.q{font-weight:700;color:var(--denim)}.a{color:var(--gray)}
+ul.files{padding-left:18px;margin:6px 0}ul.files a{color:var(--rust);font-weight:600}
+.two-col{columns:2;column-gap:28px}@media(max-width:600px){.two-col{columns:1}}
+ol.fn{color:var(--gray);font-size:12px;padding-left:18px;margin:14px 0 0}ol.fn li{margin:3px 0}
+sup a{color:var(--rust);text-decoration:none;font-weight:700}
+footer{color:var(--gray);font-size:12px;text-align:center;padding:10px}
+@media(max-width:700px){.bar{height:auto;flex-wrap:wrap;padding:10px 16px 0;gap:10px}.home img{height:22px}header.top nav{margin-left:0;width:100%;height:42px;margin-top:2px}header.top nav a{padding:0 10px}.slide,.apx{scroll-margin-top:110px}.hero{padding:28px 0 64px}}
+@media(max-width:600px){h2{font-size:20px}.slide,.apx{padding:16px 14px}.tv{font-size:21px}.tiles{grid-template-columns:1fr 1fr}.tile{padding:10px}}
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:var(--body);
-    /* slate-blue brand background (Space Blue) */
-    background:
-      radial-gradient(1100px 560px at 50% -8%, rgba(196,88,26,0.08), transparent 70%),
-      linear-gradient(105deg, #34435B 0%, #2E3D54 55%, #2A384F 100%);
-    background-attachment:fixed;
-    color:var(--steel);
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-    min-height:100vh;
-    display:flex;align-items:center;
-  }
-
-  .shell{max-width:900px;margin:0 auto;padding:48px 32px;width:100%;}
-
-  /* ---------- hero ---------- */
-  .hero{padding:0 0 36px;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:14px;
-    font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.26em;
-    text-transform:uppercase;color:var(--rust);margin-bottom:22px;
-  }
-  .eyebrow .tick{width:36px;height:2px;background:linear-gradient(90deg,var(--rust),transparent);}
-  h1{
-    font-family:var(--display);font-weight:600;color:var(--ghost);
-    font-size:clamp(2.4rem,5.4vw,3.9rem);line-height:1.02;letter-spacing:-.025em;
-  }
-  h1 .light{display:block;color:var(--steel);font-weight:300;font-size:clamp(1.2rem,2.6vw,1.7rem);letter-spacing:-.01em;margin-top:12px;}
-  .lede{font-size:1.02rem;line-height:1.6;color:var(--steel);max-width:600px;margin:22px 0 0;}
-
-  /* ---------- section heading ---------- */
-  .sec-head{
-    display:flex;align-items:baseline;justify-content:space-between;
-    padding-top:16px;margin:14px 0 18px;border-top:1px solid var(--line-soft);
-  }
-  .sec-head .label{font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-dim);}
-  .sec-head .count{font-family:var(--display);font-size:.7rem;letter-spacing:.16em;color:var(--rust);}
-
-  /* ---------- portal buttons (stacked vertically) ---------- */
-  .stack{display:flex;flex-direction:column;gap:18px;}
-
-  .portal{
-    position:relative;display:flex;align-items:center;gap:28px;
-    /* button surface distinct from the dark background */
-    background:linear-gradient(165deg,rgba(86,103,130,0.55),rgba(64,82,109,0.45));
-    border:1px solid rgba(191,199,218,0.22);border-radius:16px;
-    padding:24px 28px;text-decoration:none;color:inherit;overflow:hidden;
-    box-shadow:0 10px 30px -16px rgba(0,0,0,0.6);
-    transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease),background .45s var(--ease);
-  }
-  .portal::before{
-    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
-    background:var(--rust);transform:scaleY(0);transform-origin:center;
-    transition:transform .45s var(--ease);
-  }
-  .portal:hover{
-    transform:translateY(-6px);
-    border-color:rgba(196,88,26,0.45);
-    background:linear-gradient(165deg,rgba(99,117,145,0.65),rgba(76,95,123,0.55));
-    box-shadow:0 26px 52px -22px rgba(0,0,0,0.7);
-  }
-  .portal:active{transform:translateY(-2px);}
-  .portal:hover::before{transform:scaleY(1);}
-  .portal:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
-
-  /* logo plate: light so the logos read clearly */
-  .plate{
-    flex:0 0 auto;width:168px;height:140px;border-radius:14px;
-    background:#FFFFFF;border:1px solid rgba(255,255,255,0.6);
-    box-shadow:0 6px 18px rgba(0,0,0,0.22);
-    display:flex;align-items:center;justify-content:center;padding:14px;
-    transition:border-color .45s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease);
-  }
-  .portal:hover .plate{border-color:rgba(196,88,26,0.3);transform:scale(1.02);}
-  .plate img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
-  /* icon plate for the initiative (no wordmark logo) */
-  .plate.icon{background:var(--denim);border-color:var(--space);color:var(--steel-light);}
-  .plate.icon svg{width:72px;height:72px;}
-
-  .pbody{flex:1;min-width:0;}
-  .pidx{
-    font-family:var(--display);font-size:.66rem;font-weight:600;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--rust);margin-bottom:6px;
-  }
-  .pbody h3{
-    font-family:var(--display);font-weight:600;font-size:1.42rem;color:var(--ghost);
-    letter-spacing:-.01em;margin-bottom:7px;
-  }
-  .pbody p{font-size:.93rem;line-height:1.52;color:var(--steel);}
-  .pbody .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
-  .chip{
-    font-family:var(--display);font-size:.64rem;font-weight:500;letter-spacing:.07em;
-    text-transform:uppercase;color:var(--steel-dim);
-    border:1px solid var(--line);border-radius:100px;padding:4px 10px;
-    transition:color .4s var(--ease),border-color .4s var(--ease);
-  }
-  .portal:hover .chip{color:var(--steel);border-color:rgba(191,199,218,0.25);}
-
-  .cta{
-    flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:8px;
-    font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--steel);text-align:right;
-  }
-  .cta .arrow{
-    width:40px;height:40px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--line);color:var(--rust);font-size:1.05rem;
-    transition:transform .45s var(--ease),background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease);
-  }
-  .portal:hover .cta{color:var(--ghost);}
-  .portal:hover .cta .arrow{background:var(--rust);color:#fff;border-color:var(--rust);transform:translateX(4px);}
-
-  /* ---------- entrance animation (progressive enhancement) ---------- */
-  /* Content is visible by default; only hide-then-reveal when JS confirms support. */
-  html.js .rise{opacity:0;transform:translateY(20px);animation:rise .8s var(--ease) forwards;}
-  @keyframes rise{to{opacity:1;transform:translateY(0);}}
-  .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}
-  .d4{animation-delay:.32s}.d5{animation-delay:.42s}.d6{animation-delay:.52s}.d7{animation-delay:.62s}
-  @media(prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none;}}
-
-  /* ---------- responsive ---------- */
-  @media(max-width:620px){
-    .shell{padding:36px 20px;}
-    .portal{flex-wrap:wrap;gap:18px;padding:22px 22px;}
-    .plate{width:100%;height:110px;}
-    .cta{flex-direction:row;width:100%;justify-content:space-between;align-items:center;
-         border-top:1px solid var(--line);padding-top:14px;margin-top:2px;}
-  }
-</style>
-</head>
-<body>
-
-  <div class="shell">
-
-    <!-- hero -->
-    <section class="hero">
-      <span class="eyebrow rise d1"><span class="tick"></span>Portal Directory</span>
-      <h1 class="rise d2">SPC Board Portal<span class="light">Board, operating company &amp; strategic initiative.</span></h1>
-      <p class="lede rise d3">One board pack each month: a five-slide summary with supporting tables for Six Peak Capital, LV Construction and Mission Control, plus the plan models.</p>
-    </section>
-
-    <!-- portals -->
-    <div class="sec-head rise d3">
-      <span class="label">Portals</span>
-      <span class="count">01 / Portal</span>
-    </div>
-
-    <div class="stack">
-
-      <!-- 01 Six Peak Capital / Board -->
-      <a class="portal rise d5" href="board/">
-        <div class="plate"><img src="images/six-peak-logo.webp" alt="Six Peak Capital" /></div>
-        <div class="pbody">
-          <div class="pidx">01 &middot; Board</div>
-          <h3>Six Peak Capital</h3>
-          <p>August 2026 pack: FY2026 results and bridge, four plans, LV Construction, bonding and capital, Uplifters, Mission Control and the models.</p>
-          <div class="meta">
-            <span class="chip">Financials</span>
-            <span class="chip">Scenarios</span>
-            <span class="chip">Models</span>
-          </div>
-        </div>
-        <div class="cta">Enter <span class="arrow">&rarr;</span></div>
-      </a>
-
-
-    </div>
-  </div>
-
-</body>
-</html>
+.land{padding-bottom:40px}
+.lede{color:var(--steel);font-size:16px;line-height:1.6;max-width:620px;margin:0}
+.pack{display:grid;grid-template-columns:1fr 280px;gap:0;padding:0;overflow:hidden}
+.pmain{padding:26px 26px 24px}.pside{background:var(--band);border-left:1px solid var(--line);padding:26px 22px}
+.pmain h2{margin:6px 0 4px}.when{color:var(--gray);font-size:13px;margin:0 0 14px}
+.desc{color:var(--ink);margin:0 0 16px}
+.sls{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px}
+.sl{font:600 12px/1 'DM Sans',sans-serif;color:var(--denim);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#fff;transition:border-color .15s,color .15s}
+.sl:hover{border-color:var(--rust);color:var(--rust)}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--rust);color:#fff;text-decoration:none;font:600 14px/1 'DM Sans',sans-serif;padding:13px 18px;border-radius:8px;transition:background .15s}
+.cta:hover{background:#A94A14}.cta span{transition:transform .15s}.cta:hover span{transform:translateX(3px)}
+.pside h3{margin:0 0 12px}
+ul.dl{list-style:none;padding:0;margin:0 0 18px}ul.dl li{border-bottom:1px solid var(--line)}
+ul.dl a{display:flex;justify-content:space-between;align-items:center;padding:9px 0;color:var(--denim);text-decoration:none;font-weight:600;font-size:13px}
+ul.dl a em{font-style:normal;color:var(--gray);font-weight:500;font-size:11px}ul.dl a:hover span{color:var(--rust)}
+.mc{display:block;color:var(--rust);font-weight:600;font-size:13px;text-decoration:none}.mc:hover{text-decoration:underline}
+@media(max-width:760px){.pack{grid-template-columns:1fr}.pside{border-left:0;border-top:1px solid var(--line)}.pmain{padding:20px 16px}.pside{padding:20px 16px}}
+</style></head><body>
+<header class="top"><div class="bar"><a class="home" href="./"><img src="images/six-peak-logo.webp" alt="Six Peak Capital"></a><span class="sep"></span><span class="ptl">Board Portal</span>
+<nav><a href="board/">Board pack</a><a href="board/#A9">Models</a><a href="board/#A10">Mission Control</a></nav></div></header>
+<section class="hero"><div class="hwrap"><div class="eyebrow"><span class="tick"></span>Six Peak Capital</div>
+<h1>Board Portal</h1>
+<p class="lede">One pack each month: a five-slide summary with supporting tables for Six Peak Capital, LV Construction and Mission Control, plus the plan models.</p></div></section>
+<main class="wrap land">
+<section class="slide pack"><div class="pmain"><div class="lbl">Latest pack</div>
+<h2>August 2026 close</h2><p class="when">Updated September 28, 2026 · actuals through August 31, 2026</p>
+<p class="desc">FY2026 results and bridge, four plans, LV Construction, bonding and capital, Uplifters, and the Mission Control library.</p>
+<div class="sls"><a class="sl" href="board/#s1">Summary</a><a class="sl" href="board/#s2">Plans</a><a class="sl" href="board/#s3">LV Construction</a><a class="sl" href="board/#s4">Capital</a><a class="sl" href="board/#s5">Growth</a><a class="sl" href="board/#apx">Appendix</a></div>
+<a class="cta" href="board/">Open the board pack <span>&rarr;</span></a></div>
+<aside class="pside"><h3>Plan models</h3><ul class="dl"><li><a href="models/SixPeak_TargetBusinessPlan_2026-09-28.xlsx"><span>Target Business Plan</span><em>.xlsx</em></a></li><li><a href="models/SixPeak_BaseCase_Uplifters_2026-09-28.xlsx"><span>Base Case + Uplifters</span><em>.xlsx</em></a></li><li><a href="models/SixPeak_BaseCase_2026-09-28.xlsx"><span>Base Case</span><em>.xlsx</em></a></li><li><a href="models/SixPeak_InPlace_Acama_2026-09-28.xlsx"><span>In-place + Acama (floor)</span><em>.xlsx</em></a></li></ul>
+<a class="mc" href="board/#A10">Mission Control library &rarr;</a></aside></section>
+</main>
+<footer>Six Peak Capital · Board Portal</footer>
+</body></html>
