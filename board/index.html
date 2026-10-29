@@ -85,6 +85,11 @@ footer{color:var(--gray);font-size:12px;text-align:center;padding:10px}
 .slide{padding-bottom:14px}
 .xall{font:500 12px/1 var(--sans);color:var(--steel);border:1px solid rgba(191,199,218,.22);border-radius:999px;padding:7px 12px;background:rgba(255,255,255,.03);cursor:pointer}
 .xall:hover{color:#fff}
+
+.slide,.apx{transition:box-shadow .2s}
+.slide.wide,.apx.wide{width:min(1560px,calc(100vw - 32px));position:relative;left:50%;transform:translateX(-50%);box-shadow:0 18px 48px rgba(11,24,51,.18)}
+.slide.wide .tbl,.apx.wide .tbl{font-size:14px}
+@media print{.slide.wide,.apx.wide{width:auto;left:0;transform:none;box-shadow:none}}
 </style></head><body>
 <header class="top"><div class="bar"><a class="home" href="../" title="Portal home"><img src="../images/six-peak-capital-lockup-white.svg" alt="Six Peak Capital"></a><span class="sep"></span><span class="ptl">Board Portal</span>
 <nav><a href="#s1">Summary</a><a href="#s2">Plans</a><a href="#s3">LV Construction</a><a href="#s4">Capital</a><a href="#s5">Growth</a><a href="#apx">Appendix</a></nav></div></header>
@@ -104,4 +109,5 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener
 window.addEventListener('hashchange',function(){openFor(location.hash)});openFor(location.hash);
 var b=document.getElementById('xall');if(b){b.addEventListener('click',function(){var anyClosed=D.some(function(d){return !d.open});D.forEach(function(d){d.open=anyClosed});b.textContent=anyClosed?'Collapse all':'Expand all'})}
 var was=[];window.addEventListener('beforeprint',function(){was=D.map(function(d){return d.open});D.forEach(function(d){d.open=true})});
-window.addEventListener('afterprint',function(){D.forEach(function(d,i){d.open=was[i]})});})();</script></body></html>
+window.addEventListener('afterprint',function(){D.forEach(function(d,i){d.open=was[i]})});})();</script><script>(function(){function sync(d){var s=d.closest('.slide,.apx');if(!s)return;var any=[].some.call(s.querySelectorAll('details'),function(x){return x.open});s.classList.toggle('wide',any);}
+document.querySelectorAll('.slide details,.apx details').forEach(function(d){d.addEventListener('toggle',function(){sync(d);if(d.open&&d.classList.contains('sx')){var s=d.closest('.slide');setTimeout(function(){var r=s.getBoundingClientRect();if(r.top<70||r.top>window.innerHeight*0.6)window.scrollTo({top:window.scrollY+r.top-76,behavior:'smooth'})},30)}});sync(d)});})();</script></body></html>
